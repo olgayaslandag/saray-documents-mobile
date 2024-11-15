@@ -1,28 +1,39 @@
 {
   "expo": {
-    "name": "saray-mobile-yeni",
-    "slug": "saray-mobile-yeni",
-    "version": "1.0.0",
+    "name": "Saray",
+    "slug": "saray-mobile",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.olgayaslandag.saraymobile",
+      "buildNumber": "2"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.olgayaslandag.saraymobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6e26c145-6bc5-49e9-a419-90ee76de323d"
+      }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
