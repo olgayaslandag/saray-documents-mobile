@@ -47,6 +47,8 @@ export default function DocumentListItem({ item, setSelected, setSearch="", setO
         } else {
             dispatch(addToFav(item))        
         } 
+
+        console.log(item)
     }
 
     return (

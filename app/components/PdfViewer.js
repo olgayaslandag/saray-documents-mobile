@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, View } from 'react-native';
+import { Modal, StyleSheet, View } from 'react-native';
 import { WebView } from 'react-native-webview';
-import { Button, Text } from 'native-base';
+import { Button } from 'native-base';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import * as Device from 'expo-device';
 
 
 
@@ -12,8 +13,11 @@ export default function PdfViewer({ uri }) {
   useEffect(() => {        
     setModalVisible(uri ? true : false);    
   }, [uri]);
-  //const googleDocsUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(uri)}`;
 
+  const DocsUrl = Device.osName === 'Android' ? `https://docs.google.com/viewer?url=${encodeURIComponent(uri)}` : encodeURI(uri); 
+
+  if(!uri)
+    return null;
 
   return (
     <View style={{ flex: 1 }}>
@@ -24,14 +28,14 @@ export default function PdfViewer({ uri }) {
         onRequestClose={() => setModalVisible(false)}
       >
         <View style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
-          <View style={{ flex: 1, marginTop: 0, backgroundColor: 'white' }}>
-            <View style={{ alignItems: 'flex-end' }}>
-              <Button size="sm" variant="ghost" px="5" onPress={() => setModalVisible(false)}>
+          <View style={{ flex: 1, marginTop: 0, backgroundColor: 'white', position: 'relative' }}>
+            <View style={styles.button}>
+              <Button size="sm" variant="ghost" onPress={() => setModalVisible(false)}>
                 <FontAwesome5 name="times" size={20} color="black" />               
               </Button>
             </View>
             <WebView 
-              source={{ uri: encodeURI(uri) }}
+              source={{ uri: DocsUrl }}
               style={{ flex: 1 }}
               startInLoadingState
             />
@@ -41,3 +45,20 @@ export default function PdfViewer({ uri }) {
     </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  button: { 
+    position: 'absolute', 
+    top: 20, 
+    right: 10, 
+    backgroundColor: 'white', 
+    zIndex: 99, 
+    width: 50, 
+    height: 50, 
+    padding: 0, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    borderRadius: 30 
+  }
+});

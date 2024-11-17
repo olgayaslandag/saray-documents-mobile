@@ -35,7 +35,7 @@ export default function DocumentsView() {
       </Box>
       <FlatList
         data={items}
-        keyExtractor={(item, index) => `document-${index}`}
+        keyExtractor={(item, index) => index}
         renderItem={renderDocumentList}
         contentContainerStyle={{
           backgroundColor: "#F1F1F1",

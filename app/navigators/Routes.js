@@ -2,7 +2,6 @@ import CompanyView from "../views/CompanyView";
 import DocumentsView from "../views/DocumentsView";
 import FavoritesView from "../views/FavoritesView";
 import HomeView from "../views/HomeView";
-import NotificationsView from "../views/NotificationsView";
 import SustainabilityView from "../views/SustainabilityView";
 
 const routes = [
@@ -28,8 +27,8 @@ const routes = [
         component: CompanyView
     },
     {
-        name: "Notification",
-        label: "Bildirimler",
+        name: "Favorites",
+        label: "Favoriler",
         component: FavoritesView
     }
 ];

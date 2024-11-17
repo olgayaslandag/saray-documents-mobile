@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 import { Box, Text, View } from "native-base";
-import { Dimensions, FlatList } from "react-native";
+import { FlatList } from "react-native";
 import PdfViewer from "../PdfViewer";
 import DocumentListItem from "./DocumentListItem";
 
-
-
-
-const imageSize = Dimensions.get("window").width / 3 - 20;
 
 export default function DocumentList({ dirs, display, search = false }) {
   const [selected, setSelected] = useState("");
@@ -20,7 +16,9 @@ export default function DocumentList({ dirs, display, search = false }) {
     }
   }, [dirs]);
 
-
+  if (isLoading)
+    return null;
+  
   const renderDirectory = ({ item: dir }) => (
     <Box mb={search ? 0 : 4}>
       {!search && (
@@ -36,10 +34,7 @@ export default function DocumentList({ dirs, display, search = false }) {
         columnWrapperStyle={{ justifyContent: "space-between", marginBottom: 16 }}
       />
     </Box>
-  );
-
-  if (isLoading)
-    return null;
+  );  
 
   return (
     <View>

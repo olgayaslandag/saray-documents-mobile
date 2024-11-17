@@ -1,13 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import CustomTabBar from "../components/CustomTabBar";
 import routes from "./Routes";
 
-
-
-
 const Tab = createBottomTabNavigator();
-
 
 export default function TabNavigator() {
     return (

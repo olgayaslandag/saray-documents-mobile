@@ -7,7 +7,7 @@ import DocumentIcon from "./icons/DocumentIcon";
 import SustainabilityIcon from "./icons/SustainabilityIcon";
 import CompanyIcon from "./icons/CompanyIcon";
 import NotificationIcon from "./icons/NotificationIcon";
-
+import FavoritesIcon from "./icons/FavoritesIcon";
 
 
 function GetIcon({ name, isFocused, callback }) {
@@ -17,6 +17,7 @@ function GetIcon({ name, isFocused, callback }) {
     Sustainability: SustainabilityIcon,
     Company: CompanyIcon,
     Notification: NotificationIcon,
+    Favorites: FavoritesIcon,
   };
 
   const IconComponent = icons[name] || HomeIcon;
