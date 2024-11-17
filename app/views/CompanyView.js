@@ -18,7 +18,7 @@ export default function CompanyView() {
 
                     <Text fontSize="16">CE, ISO 9001, Qualanod, Qualicolat, TS EN 755, TS EN 12020,IATF 16949, SEPRO ve GOST-R kalite sertifikalarına sahip olan Saray Alüminyum, İstanbul Güneşli ve Tekirdağ Çerkezköy’deki 175.000 metrekarelik kapalı alanda üretim yapmaktadır. Saray Alüminyum, alüminyum eloksal, alüminyum elektrostatik toz boya, alüminyum ekstrüzyon, alüminyum biyet döküm, alüminyum kompozit panel, alüminyum panjur ve PVC ekstrüzyon üretim tesisleri ile tam entegre bir şirkettir.</Text>
 
-                    <Text fontSize="16">Saray Alüminyum’un proje ve AR-GE birimleri sayesinde, çok katlı ve nitelikli binalar için özel çözümler sunarak, cephe tasarımından uygulamaya kadar her aşamada teknik destek sağlayarak mimari ofislere ve bina yatırımcılarına katkıda bulunur. Saray Alüminyum, yüksek performanslı yenilikçi ürünleri ile geleceğin mimari yapılarını inşa etme ve yaşam kalitesini yükseltme konularında önemli bir rol oynamaktadır.</Text>                    
+                    <Text fontSize="16" style={{paddingBottom: 120}}>Saray Alüminyum’un proje ve AR-GE birimleri sayesinde, çok katlı ve nitelikli binalar için özel çözümler sunarak, cephe tasarımından uygulamaya kadar her aşamada teknik destek sağlayarak mimari ofislere ve bina yatırımcılarına katkıda bulunur. Saray Alüminyum, yüksek performanslı yenilikçi ürünleri ile geleceğin mimari yapılarını inşa etme ve yaşam kalitesini yükseltme konularında önemli bir rol oynamaktadır.</Text>                    
                 </Box>
             </ScrollView>
         </ImageBackground>

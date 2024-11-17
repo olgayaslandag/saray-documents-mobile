@@ -1,5 +1,6 @@
 import { View } from "native-base";
 import { TouchableOpacity } from 'react-native';
+import * as Device from 'expo-device';
 
 import HomeIcon from "./icons/HomeIcon"
 import DocumentIcon from "./icons/DocumentIcon";
@@ -77,7 +78,7 @@ const styles = {
         width: 300,
         height: 60,
         position: "absolute",
-        bottom: 20,
+        bottom: Device.osName === "Android" ? 40 : 20,
         alignSelf: "center",
         flexDirection: "row",
         justifyContent: "space-around",

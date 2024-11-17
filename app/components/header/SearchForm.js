@@ -13,7 +13,7 @@ export default function SearchForm({ pt }) {
 
     function HandleClose() {
         setSearch("");
-        setOpen(false)
+        setOpen(false);
     }
     
     return (
@@ -43,7 +43,7 @@ export default function SearchForm({ pt }) {
                         </Box>
                     </HStack>
                     
-                    <SearchResult search={search} />
+                    <SearchResult search={search} setSearch={setSearch} setOpen={setOpen} />
                 </Box>
             </Modal>
         </Box>

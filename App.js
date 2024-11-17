@@ -1,24 +1,20 @@
 import React, { useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NativeBaseProvider, StatusBar, extendTheme } from "native-base";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-
-
 import store from './app/store'
 import { Provider } from 'react-redux'
 
-import CustomTabBar from "./app/components/CustomTabBar";
 
-import HomeView from "./app/views/HomeView";
-import DocumentsView from "./app/views/DocumentsView";
-import SustainabilityView from "./app/views/SustainabilityView";
-import NotificationsView from "./app/views/NotificationsView";
-import CompanyView from "./app/views/CompanyView";
-import Synchronize from "./app/components/Synchronize";
 
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import TabNavigator from "./app/navigators/TabNavigator";
+import Synchronize from "./app/components/Synchronize";
+import DrawerCustomContent from "./app/navigators/DrawerCustomContent";
+import routes from "./app/navigators/Routes";
+
 
 const theme = extendTheme({
   fontConfig: {
@@ -44,8 +40,6 @@ const theme = extendTheme({
   },
 });
 
-const Tab = createBottomTabNavigator();
-
 SplashScreen.preventAutoHideAsync();
 
 
@@ -53,6 +47,7 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     'SarayFont': require('./assets/fonts/SF-Pro-Rounded-Regular.otf'),
     'SarayFontBold': require('./assets/fonts/SF-Pro-Rounded-Bold.otf'),
+    'Roboto': require('./assets/fonts/SF-Pro-Rounded-Regular.otf'),
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -65,6 +60,8 @@ export default function App() {
     return null; 
   }
 
+
+  const Drawer = createDrawerNavigator();
   return (
     <Provider store={store}>    
     <SafeAreaProvider>
@@ -72,13 +69,12 @@ export default function App() {
         <Synchronize />
         <StatusBar style="auto" hidden={true} />
         <NavigationContainer onReady={onLayoutRootView}>
-            <Tab.Navigator tabBar={(props) => <CustomTabBar {...props} />} screenOptions={{headerShown: false}}>
-              <Tab.Screen name="Home" component={HomeView} options={{headerShown: false}} />
-              <Tab.Screen name="Documents" component={DocumentsView} />
-              <Tab.Screen name="Sustainability" component={SustainabilityView} />
-              <Tab.Screen name="Company" component={CompanyView} />
-              <Tab.Screen name="Notification" component={NotificationsView} />
-            </Tab.Navigator>
+          <Drawer.Navigator screenOptions={{ headerShown: false }} drawerContent={(props) => <DrawerCustomContent {...props} />}>
+            <Drawer.Screen name="Main" component={TabNavigator} />
+            {routes.map((route, index) => (
+                <Drawer.Screen key={index} name={route.name} component={route.component} />
+            ))} 
+          </Drawer.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
       </SafeAreaProvider>
