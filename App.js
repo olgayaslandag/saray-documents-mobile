@@ -14,6 +14,7 @@ import TabNavigator from "./app/navigators/TabNavigator";
 import Synchronize from "./app/components/Synchronize";
 import DrawerCustomContent from "./app/navigators/DrawerCustomContent";
 import routes from "./app/navigators/Routes";
+import AuthNavigator from "./app/navigators/AuthNavigator";
 
 
 const theme = extendTheme({
@@ -73,7 +74,8 @@ export default function App() {
             <Drawer.Screen name="Main" component={TabNavigator} />
             {routes.map((route, index) => (
                 <Drawer.Screen key={index} name={route.name} component={route.component} />
-            ))} 
+            ))}
+            <Drawer.Screen name="Auth" component={AuthNavigator} />          
           </Drawer.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>

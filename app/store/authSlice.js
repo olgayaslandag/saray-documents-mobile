@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const initialState = {
   value: null,
+  code: null
 };
 
 export const authSlice = createSlice({
@@ -15,10 +16,16 @@ export const authSlice = createSlice({
     clearUser: (state) => {
       state.value = null;
     },
+    setCode: (state, action) => {
+      state.code = action.payload;
+    },
+    clearCode: (state) => {
+      state.code = null;
+    }
   },
 });
 
-export const { setUser, clearUser } = authSlice.actions;
+export const { setUser, clearUser, setCode, clearCode } = authSlice.actions;
 
 export const initializeAuth = () => async (dispatch) => {
   try {

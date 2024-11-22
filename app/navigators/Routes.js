@@ -30,7 +30,7 @@ const routes = [
         name: "Favorites",
         label: "Favoriler",
         component: FavoritesView
-    }
+    },    
 ];
 
 

@@ -1,22 +1,21 @@
 import { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View, Alert, StyleSheet } from "react-native";
-import { LoginApi } from "../../api/authApi";
+import { RegisterApi } from "../../api/authApi";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/authSlice";
 import LayoutAuth from "./LayoutAuth";
 import { useNavigation } from "@react-navigation/native";
-import BottomButton from "../../components/auth/BottomButton";
 import styleAuth from "../../styles/styleAuth";
 
 
-export default function LoginView() {
-    const [form, setForm] = useState({email: '', password: ''});
+export default function RegisterView() {
+    const [form, setForm] = useState({name: '', email: '', password: ''});
     const dispatch = useDispatch();
     const navigation = useNavigation();
 
     async function HandleLogin() {
-        const result = await LoginApi(form);
-        
+        const result = await RegisterApi(form);
+        console.log(result)
         if(result.status)
             dispatch(login(result.data));
 
@@ -27,7 +26,19 @@ export default function LoginView() {
     return (
         <LayoutAuth>
             <View style={styleAuth.form.container}>
-                <Text style={styleAuth.form.title}>Giriş Yapın</Text>
+                <Text style={styleAuth.form.title}>Kayıt Olun</Text>
+                <View style={styleAuth.form.item.container}>
+                    <TextInput
+                        style={styleAuth.form.item.input}
+                        onChangeText={val => setForm({...form, name: val})}
+                        value={form.name}
+                        placeholder="Adınızı soyadınızı girin"
+                        autoComplete="name"
+                        placeholderTextColor="black"
+                        inputMode="text"
+                    />
+                </View>
+                
                 <View style={styleAuth.form.item.container}>
                     <TextInput
                         style={styleAuth.form.item.input}
@@ -52,16 +63,12 @@ export default function LoginView() {
                 </View>
 
                 <TouchableOpacity onPress={HandleLogin} activeOpacity={0.8} style={{marginBottom: 10}}>
-                    <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>Giriş Yap</Text>
+                    <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>Kayıt</Text>
                 </TouchableOpacity>        
 
-                <TouchableOpacity onPress={() => navigation.navigate('Auth', {screen: 'Forget'})} activeOpacity={0.8} style={{marginBottom: 10}}>
-                    <Text style={{...styleAuth.form.button.text, borderWidth: 0}}>Şifremi Unuttum</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Auth', {screen: 'Login'})} activeOpacity={0.8} style={{marginBottom: 10}}>
+                    <Text style={{...styleAuth.form.button.text, borderWidth: 0}}>Giriş Ekranı</Text>
                 </TouchableOpacity>      
-            </View>
-
-            <View style={{flex: 1, paddingBottom: 20}}>
-                <BottomButton />
             </View>
         </LayoutAuth>
     );
