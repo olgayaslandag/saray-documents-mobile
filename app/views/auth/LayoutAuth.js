@@ -18,8 +18,7 @@ export default function LayoutAuth({ children }) {
         */
     }
     return (
-        <SafeAreaView style={{flex: 1, padding: 10, backgroundColor: '#FFF'}}>
-            
+        <SafeAreaView style={{flex: 1, padding: 10, backgroundColor: '#FFF'}}>            
             <TouchableOpacity onPress={HandleClose} style={{marginBottom: -30}}>
                 <FontAwesome5 name="times" size={20} color="black" style={{textAlign: 'right'}} />
             </TouchableOpacity>

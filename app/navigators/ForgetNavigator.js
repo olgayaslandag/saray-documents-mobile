@@ -3,7 +3,7 @@ import EnterEmail from '../views/auth/forget/EnterEmail';
 import EnterCode from '../views/auth/forget/EnterCode';
 import EnterPass from '../views/auth/forget/EnterPass';
 
-import ProfileView from "../views/ProfileView";
+import ProfileView from "../views/auth/ProfileView";
 import { useSelector } from 'react-redux';
 
 
