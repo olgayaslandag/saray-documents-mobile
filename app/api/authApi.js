@@ -128,3 +128,37 @@ export const ForgetApi = async (data) => {
         }
     }
 }
+
+export const UpdateApi = async (data) => {
+    axios.defaults.headers.Authorization = prefix + data.token;
+
+    try {
+        const result = await axios.post('auth/update', JSON.stringify(data));
+        return {
+            status: true,
+            data: result.data,
+            message: "Tebrikler, bilgileriniz başarıyla güncellendi.",
+        };
+    } catch(error){
+        if(error.response){
+            console.log(error.response)
+            return {
+                status: false,
+                result: error.response.data.errors ? error.response.data.errors : null,
+                message: typeof error.response.data === "string" ? error.response.data : "Güncelleme işlemi başarısız!"
+            }
+        }else if(error.request){
+            return {
+                status: false,
+                result: null,
+                message: error.message
+            }
+        }else{
+            return {
+                status: false,
+                result: null,
+                message: "Bir sorun oluştu!"
+            }
+        }
+    }
+}

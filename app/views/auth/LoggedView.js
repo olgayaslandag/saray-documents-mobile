@@ -28,22 +28,17 @@ export default function LoggedView() {
                     <Text style={styles.button.text}>Favorilerim</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Favorites'})}>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Documents'})}>
                     <Text style={styles.button.text}>Dökümanlar</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Favorites'})}>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Sustainability'})}>
                     <Text style={styles.button.text}>Sürdürülebilirlik</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Favorites'})}>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Company'})}>
                     <Text style={styles.button.text}>Kurumsal</Text>
                 </TouchableOpacity>
-
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Favorites'})}>
-                    <Text style={styles.button.text}>İletişim</Text>
-                </TouchableOpacity>
-                
                 
                 
             </View>

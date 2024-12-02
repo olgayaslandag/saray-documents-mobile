@@ -1,26 +1,77 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useDispatch } from "react-redux";
-import { clearAuth } from "../../store/authSlice";
+import { useState, useEffect } from "react";
+import { StyleSheet, Text, TouchableOpacity, View, TextInput, Alert } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { clearAuth, login } from "../../store/authSlice";
 import LayoutAuth from "./LayoutAuth";
 import BottomButton from "../../components/auth/BottomButton";
-import { useNavigation } from "@react-navigation/native";
+import styleAuth from "../../styles/styleAuth";
+import { UpdateApi } from "../../api/authApi";
 
 export default function ProfileView() {
+    const [form, setForm] = useState({name: '', email: '', password: ''});
+    const auth = useSelector(state => state.auth.value);
     const dispatch = useDispatch();
-    const navigation = useNavigation();
 
-    function HandleLogout() {
-        dispatch(clearAuth())
+    useEffect(() => {
+        setForm(auth);
+    }, []);
+
+
+    async function HandleUpdate() {
+        if(form === auth)
+            return false;
+
+        const result = await UpdateApi(form);
+        if(result.status)
+            dispatch(login({...auth, name: result.data.name, email: result.data.email}));
+        
+        Alert.alert(result.status ? "Tebrikler" : "Hata Oluştu!", result.message)        
     }
 
     return (
         <LayoutAuth>
-            <View>
+            <View style={{flex: 1, justifyContent: 'center'}}>
+                <Text style={styleAuth.form.title}>Hesabım</Text>
+                <View style={styleAuth.form.item.container}>
+                    <TextInput
+                        style={styleAuth.form.item.input}
+                        onChangeText={val => setForm({...form, name: val})}
+                        value={form.name}
+                        placeholder="Adınızı soyadınızı girin"
+                        autoComplete="name"
+                        placeholderTextColor="black"
+                        inputMode="text"
+                    />
+                </View>
                 
-                
-                
-                
+                <View style={styleAuth.form.item.container}>
+                    <TextInput
+                        style={styleAuth.form.item.input}
+                        onChangeText={val => setForm({...form, email: val})}
+                        value={form.email}
+                        placeholder="Eposta adresinizi girin"
+                        autoComplete="email"
+                        placeholderTextColor="black"
+                        inputMode="email"
+                    />
+                </View>
+                <View style={styleAuth.form.item.container}>
+                    <TextInput
+                        style={styleAuth.form.item.input}
+                        onChangeText={val => setForm({...form, password: val})}
+                        value={form.password}
+                        placeholder="Şifrenizi girin"
+                        autoComplete="current-password"
+                        secureTextEntry={true}
+                        placeholderTextColor="black"
+                    />
+                </View>   
+
+                <TouchableOpacity activeOpacity={0.8} onPress={HandleUpdate}>
+                    <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>Güncelle</Text>
+                </TouchableOpacity>             
             </View>
+            
 
             <View style={{flex: 1, paddingBottom: 20}}>
                 <BottomButton />
