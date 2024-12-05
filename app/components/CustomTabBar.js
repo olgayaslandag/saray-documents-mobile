@@ -79,7 +79,7 @@ const styles = {
         width: 300,
         height: 60,
         position: "absolute",
-        bottom: Device.osName === "Android" ? 40 : 20,
+        bottom: Device.osName === "Android" ? 40 : 30,
         alignSelf: "center",
         flexDirection: "row",
         justifyContent: "space-around",

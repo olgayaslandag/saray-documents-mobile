@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.saray.documentsmobile",
+      "bundleIdentifier": "com.olgayaslandag.saraymobile",
       "buildNumber": "2"
     },
     "android": {
@@ -22,7 +22,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.saray.documentsmobile"
+      "package": "com.olgayaslandag.saraymobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"

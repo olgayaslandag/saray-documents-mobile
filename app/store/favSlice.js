@@ -28,7 +28,7 @@ export const addToFav = (item) => async (dispatch) => {
   var storedDocs = JSON.parse(await AsyncStorage.getItem('fav_documents')) ?? [];
   storedDocs = [...storedDocs, item];
   await AsyncStorage.setItem("fav_documents", JSON.stringify(storedDocs));
-  dispatch(setFavs(storedDocs));
+  dispatch(setFavs(storedDocs));  
 }
 
 export const removeFromFav = (item) => async (dispatch) => {
@@ -36,7 +36,7 @@ export const removeFromFav = (item) => async (dispatch) => {
   storedDocs = storedDocs.filter(doc => doc.path !== item.path);
 
   await AsyncStorage.setItem("fav_documents", JSON.stringify(storedDocs));
-  dispatch(setFavs(storedDocs));
+  dispatch(setFavs(storedDocs));  
 }
 
 export default favSlice.reducer

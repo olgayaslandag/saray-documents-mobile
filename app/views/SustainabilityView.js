@@ -1,6 +1,7 @@
 import { Text, Box, ScrollView, Image } from "native-base"
 import { ImageBackground, StyleSheet } from "react-native"
 import StaticHeader from "../components/header/StaticHeader";
+import * as Device from "expo-device";
 
 const backgroundImage = 'https://saray.com/wp-content/uploads/2024/04/enerji-content.jpg';
 
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
         width: '100%', 
         height: '45%', 
         flex: 1,        
+        paddingTop: Device.osName === "iOS" ? 30 : 0
     },
     contentBox: {
         backgroundColor: 'white', 

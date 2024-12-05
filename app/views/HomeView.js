@@ -8,6 +8,7 @@ import PushNotification from "../components/PushNotification";
 import { useDispatch } from "react-redux";
 import { initializeAuth } from "../store/authSlice";
 import { initializeFavs } from "../store/favSlice";
+import * as Device from 'expo-device';
 
 const WIDTH = Dimensions.get('window').height;
 
@@ -25,7 +26,7 @@ export default function HomeScreen() {
       source={active.bgimage}
       style={{ width: "100%", height: "100%" }} 
       resizeMode="cover">
-      <Box px="5" flex="3">
+      <Box px="5" flex="3" style={{paddingTop: Device.osName === "iOS" ? 30 : 0}}>
         <HeaderUser />
         <SearchForm />
       </Box>

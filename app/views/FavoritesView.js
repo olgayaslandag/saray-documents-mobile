@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import DocumentListItem from "../components/document/DocumentListItem";
 import PdfViewer from "../components/PdfViewer";
 import StaticHeader from "../components/header/StaticHeader";
-
+import * as Device from "expo-device"
 
 export default function FavoritesView() {
     const [selected, setSelected] = useState("");
@@ -44,22 +44,25 @@ export default function FavoritesView() {
     
     
     return (
-        <View style={{flex: 1, backgroundColor: 'white'}}>
+        <View style={{flex: 1, backgroundColor: 'white', paddingTop: Device.osName === "iOS" ? 30 : 0}}>
             <StaticHeader />
             <View style={{flex: 1, marginTop: -20, justifyContent: 'center', paddingLeft: 20}}>                
                 <Text style={{fontSize: 30, fontWeight: 700}}>Favoriler</Text>
             </View>
-                        
-            <View style={{flex: 15, padding: 20, justifyContent: 'flex-start'}}>
+            
+            <View style={{flex: 15, padding: 20, justifyContent: 'flex-start'}}>            
                 <ErrorMessage />
-                <PdfViewer uri={selected} />
-                <FlatList
-                    data={items}
-                    renderItem={({item}) => <DocumentListItem item={item} setSelected={setSelected} />}
-                    keyExtractor={(item, index) => index}
-                    numColumns={3}
-                    columnWrapperStyle={{ justifyContent: "space-between", marginBottom: 16 }}
-                />
+                {auth &&
+                <View>
+                    <PdfViewer uri={selected} />
+                    <FlatList
+                        data={items}
+                        renderItem={({item}) => <DocumentListItem item={item} setSelected={setSelected} />}
+                        keyExtractor={(item, index) => index}
+                        numColumns={3}
+                        columnWrapperStyle={{ justifyContent: "space-between", marginBottom: 16 }}
+                    />
+                </View>}
             </View>
         </View>
     );

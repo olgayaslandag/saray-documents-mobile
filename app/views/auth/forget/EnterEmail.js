@@ -30,6 +30,7 @@ export default function EnterEmail() {
         if(!result.status)
             Alert.alert(result.message);
 
+        Alert.alert("tebrikler", result.message);
         if(result.status)
             navigation.navigate('Forget', {screen: 'EnterCode'})
     }

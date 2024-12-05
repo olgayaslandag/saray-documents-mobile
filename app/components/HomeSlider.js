@@ -57,7 +57,7 @@ const ITEM_WIDTH = width * 0.7;
 
 function Item({ title, index, img }) {
     return (
-        <Box style={{...styles.item, marginRight: index === DATA.length-1 ? 20 : 15}}>
+        <Box style={{...styles.item, marginRight: index === DATA.length-1 ? 20 : 15, marginLeft: index===0 ? 20 : 0}}>
             <Image source={img} alt={title} width={ITEM_WIDTH} height="100%" style={styles.image} resizeMode="cover"></Image>
             
             <LinearGradient colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.4)']} style={{...styles.overlayTitle, width: ITEM_WIDTH}}>
@@ -114,13 +114,13 @@ const styles = StyleSheet.create({
     },
     image: {
         borderRadius: 30,
-        marginLeft: 20
+        marginLeft: 0
     },
     overlayTitle: {
         flex: 1,
         position: 'absolute',
         top: 0,
-        left: 20,
+        left: 0,
         height: "100%",
         padding: 20,
         justifyContent: 'flex-end',    

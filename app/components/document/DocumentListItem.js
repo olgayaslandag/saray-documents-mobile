@@ -6,10 +6,11 @@ import { addToFav, removeFromFav } from "../../store/favSlice";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 
+
 const imageSize = Dimensions.get("window").width / 3 - 20;
 
 
-export default function DocumentListItem({ item, setSelected, setSearch="", setOpen=false }) {
+export default function DocumentListItem({ item, setSelected, setSearch, setOpen }) {
     const favorites = useSelector(state => state.favorites.value);
     const auth = useSelector(state => state.auth.value);
     const [check, setCheck] = useState(false);
@@ -20,13 +21,13 @@ export default function DocumentListItem({ item, setSelected, setSearch="", setO
     useEffect(() => {
         const findItem = favorites.findIndex(fav => fav.path === item.path)
         if(findItem > -1)
-        setCheck(true);
-    }, []);
+            setCheck(true);
+    }, [favorites]);
 
     function cleaner() {
-        setSearch("");
-        setOpen(false);
-        navigation.openDrawer()
+        if (setSearch) setSearch("");
+        if (setOpen) setOpen(false);
+        navigation.openDrawer();
     }
 
     function HandleAddOrRemove() {
@@ -35,20 +36,20 @@ export default function DocumentListItem({ item, setSelected, setSearch="", setO
                 "Üyelik Gerekli", 
                 "Sisteme giriş yapmalısınız!", 
                 [
-                {text: 'İptal', style: 'cancel'},
-                {text: 'Giriş Yap', onPress: () => cleaner()},            
+                    {text: 'İptal', style: 'cancel'},
+                    {text: 'Giriş Yap', onPress: () => cleaner()},            
                 ],
                 {cancelable: false}
             );
             return;
         }
-        if(check) {
-            dispatch(removeFromFav(item))        
-        } else {
-            dispatch(addToFav(item))        
-        } 
 
-        console.log(item)
+        Alert.alert(
+            "",
+            !check ? "Favori listesinize eklendi." : "Favori listenizden çıkarıldı"
+        );
+        setCheck(!check)
+        dispatch(check ? removeFromFav(item) : addToFav(item))        
     }
 
     return (
