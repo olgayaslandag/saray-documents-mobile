@@ -46,7 +46,7 @@ export default function FavoritesView() {
     return (
         <View style={{flex: 1, backgroundColor: 'white', paddingTop: Device.osName === "iOS" ? 30 : 0}}>
             <StaticHeader />
-            <View style={{flex: 1, marginTop: -20, justifyContent: 'center', paddingLeft: 20}}>                
+            <View style={{flex: 1, marginTop: 30, justifyContent: 'center', paddingLeft: 20}}>                
                 <Text style={{fontSize: 30, fontWeight: 700}}>Favoriler</Text>
             </View>
             

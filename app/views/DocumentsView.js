@@ -1,4 +1,3 @@
-import { Text, Box, FlatList } from "native-base";
 import { useSelector } from "react-redux";
 
 import DocumentHeader from "../components/header/DocumentHeader";
@@ -6,6 +5,7 @@ import ButtonIcon from "../components/document/ButtonIcon";
 import DocumentList from "../components/document/DocumentList";
 import * as Device from "expo-device";
 import { useIsFocused } from "@react-navigation/native";
+import { Text, View, FlatList } from "react-native"
 
 export default function DocumentsView() {
   const items = useSelector((state) => state.data.value ?? []);
@@ -20,7 +20,6 @@ export default function DocumentsView() {
         <DocumentList
           dir={item.dir}
           dirs={item.dirs}
-          display="block"
         />
       )
     );
@@ -28,14 +27,14 @@ export default function DocumentsView() {
 
 
   return (
-    <Box style={{ backgroundColor: "white", paddingTop: Device.osName === "iOS" ? 30 : 0 }}>
-      <Box px="5">
+    <View style={{ backgroundColor: "white", paddingTop: Device.osName === "iOS" ? 30 : 0 }}>
+      <View style={{paddingHorizontal: 20}}>
         <DocumentHeader />
-        <Text fontWeight="600" mt="4" fontSize="26">Döküman Merkezi</Text>
-      </Box>
-      <Box>
+        <Text style={{fontWeight: 600, marginTop: 8, marginBottom: 8, fontSize: 26}}>Döküman Merkezi</Text>
+      </View>
+      <View>
         <ButtonIcon items={items} />
-      </Box>
+      </View>
       <FlatList
         data={items}
         keyExtractor={(item, index) => index}
@@ -47,6 +46,6 @@ export default function DocumentsView() {
         }}
         extraData={isFocused}
       />
-    </Box>
+    </View>
   );
 }

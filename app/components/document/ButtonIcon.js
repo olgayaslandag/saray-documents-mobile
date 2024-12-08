@@ -1,5 +1,4 @@
-import { Text, Box, Button, FlatList } from "native-base";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { docSelect } from "../../store/docSelectSlice";
 import titleReplace from "../../libs/titleReplace";
@@ -8,9 +7,9 @@ import GetDocIcon from "../GetDocIcon";
 
 function FolderIcon({ title, selected }) {  
     return (
-      <Box style={{...styles.iconBox, backgroundColor: selected ? '#F1F1F1' : 'transparent'}}>
+      <View style={{...styles.iconBox, backgroundColor: selected ? '#F1F1F1' : 'transparent'}}>
         <GetDocIcon title={title} selected={selected} />      
-      </Box>
+      </View>
     );    
 }
   
@@ -24,18 +23,18 @@ function Item({ item }) {
   }
 
     return (
-      <Box style={{justifyContent: 'center', alignItems: 'center', marginLeft: 5}}>
+      <View style={{justifyContent: 'center', alignItems: 'center', marginLeft: 5}}>
         {item.dir &&             
-          <Button variant="transparent" style={styles.iconButton} p={0} onPress={() => HandleSelect(item.dir.title)}>
-            <Box>
+          <TouchableOpacity style={styles.iconButton} p={0} onPress={() => HandleSelect(item.dir.title)}>
+            <View>
               <FolderIcon title={item.dir.title} selected={docSelected === item.dir.title} />         
                
               <Text style={styles.iconTitle}>{titleReplace(item.dir.title)}</Text>          
-            </Box>  
-          </Button>
+            </View>  
+          </TouchableOpacity>
         }
-        <Box style={{...styles.pyramid, borderBottomColor: docSelected === item.dir.title ? '#F1F1F1' : 'transparent'}}></Box>
-      </Box>
+        <View style={{...styles.pyramid, borderBottomColor: docSelected === item.dir.title ? '#F1F1F1' : 'transparent'}}></View>
+      </View>
     );
 }
   
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
   iconTitle: {
     width: 80,
     fontSize: 12,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   pyramid: {
     width: 0,

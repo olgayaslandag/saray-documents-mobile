@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { Box, Text, View } from "native-base";
-import { FlatList } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import PdfViewer from "../PdfViewer";
 import DocumentListItem from "./DocumentListItem";
 
 
-export default function DocumentList({ dirs, display, search = false }) {
+export default function DocumentList({ dirs, search = false }) {
   const [selected, setSelected] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,9 +19,9 @@ export default function DocumentList({ dirs, display, search = false }) {
     return null;
   
   const renderDirectory = ({ item: dir }) => (
-    <Box mb={search ? 0 : 4}>
+    <View style={{marginBottom: search ? 0 : 16}}>
       {!search && (
-        <Text mb={2} fontWeight="bold" fontSize="18">
+        <Text style={{marginBottom: 8, fontWeight: 'bold', fontSize: 18}}>
           {dir.title.split(" | ")[1]}
         </Text>
       )}
@@ -33,7 +32,7 @@ export default function DocumentList({ dirs, display, search = false }) {
         numColumns={3}
         columnWrapperStyle={{ justifyContent: "space-between", marginBottom: 16 }}
       />
-    </Box>
+    </View>
   );  
 
   return (

@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Box, Button, HStack } from "native-base";
-import { StyleSheet, Modal, TouchableOpacity } from "react-native";
+import { StyleSheet, Modal, TouchableOpacity, View } from "react-native";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 import SearchFormInput from "./SearchFormInput";
@@ -17,36 +16,35 @@ export default function SearchForm({ pt }) {
     }
     
     return (
-        <Box alignItems="center" w="100%" mt="5">
+        <View style={{alignItems: 'center', width: '100%', marginTop: 20}}>
             {!search && !open && (
-                <Box style={{position: 'relative', width: '100%'}}>                
-                    <Box style={{width: '100%', position: 'relative', zIndex: 8}}>
+                <View style={{position: 'relative', width: '100%'}}>                
+                    <View style={{width: '100%', position: 'relative', zIndex: 8}}>
                         <SearchFormInput pt={pt} search={search} setSearch={setSearch} order={1} setOpen={setOpen} />
-                    </Box>
+                    </View>
 
                     <TouchableOpacity 
                         activeOpacity={1} 
                         onPress={() => setOpen(true)} 
                         style={{minHeight: 40, position: 'absolute', top: 0, width: '100%', zIndex: 9}}
                     ></TouchableOpacity>
-                </Box>
+                </View>
             )}            
             
             <Modal animationType="slide" visible={search || open ? true : false} transparent={false}>
-                <Box style={styles.modal.container}>
-                    <HStack width="100%" px="5" pt="5" pb="0">                            
+                <View style={styles.modal.container}>
+                    <View style={{width: '100%', paddingHorizontal: 20, paddingTop: 20, paddingbottom: 0, flexDirection: 'row'}}>
                         <SearchFormInput search={search} setSearch={setSearch} order={2} width="90%" />
-                        <Box style={styles.modal.close}>
-                            <Button size="md" variant="ghost" onPress={HandleClose} p="0" style={{width: '100%', minHeight: 40}}>                                
-                                <FontAwesome5 name="times" size={20} color="black" />
-                            </Button>
-                        </Box>
-                    </HStack>
+                        
+                        <TouchableOpacity onPress={HandleClose} style={styles.modal.close}>
+                            <FontAwesome5 name="times" size={20} color="black" />
+                        </TouchableOpacity>
+                    </View>
                     
                     <SearchResult search={search} setSearch={setSearch} setOpen={setOpen} />
-                </Box>
+                </View>
             </Modal>
-        </Box>
+        </View>
     );
 }
 
@@ -61,7 +59,17 @@ const styles = StyleSheet.create({
         close: {
             flex: 1, 
             alignItems: 'flex-end', 
+            justifyContent: 'center',    
+            width: '10%'        
+        },
+        closeButton: {
+            flex: 1,
+            width: 30,
+            minHeight: 30, 
+            padding: 0,
+            borderWidth: 1,
             justifyContent: 'center',
+            alignItems: 'center',
         }
     } 
 });

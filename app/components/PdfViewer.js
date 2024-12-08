@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, StyleSheet, View } from 'react-native';
+import { Modal, StyleSheet, View, Button } from 'react-native';
 import { WebView } from 'react-native-webview';
-import { Button } from 'native-base';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import * as Device from 'expo-device';
 

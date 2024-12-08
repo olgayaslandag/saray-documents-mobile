@@ -1,10 +1,9 @@
 import React, { useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { NativeBaseProvider, StatusBar, extendTheme } from "native-base";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import store from './app/store'
 import { Provider } from 'react-redux'
-
+import { StatusBar, Text } from "react-native";
 
 
 import { useFonts } from 'expo-font';
@@ -16,57 +15,41 @@ import DrawerCustomContent from "./app/navigators/DrawerCustomContent";
 import routes from "./app/navigators/Routes";
 import AuthNavigator from "./app/navigators/AuthNavigator";
 
-
-const theme = extendTheme({
-  fontConfig: {
-    'SarayFont': {
-      600: {
-        normal: 'SarayFontBold'
-      },
-      700: {
-        normal: 'SarayFontBold'
-      },
-      800: {
-        normal: 'SarayFontBold'
-      },
-      900: {
-        normal: 'SarayFontBold'
-      },
-    }
-  },
-  fonts: {
-    heading: "SarayFont",
-    body: "SarayFont",
-    mono: "SarayFont",    
-  },
-});
-
 SplashScreen.preventAutoHideAsync();
-
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    'SarayFont': require('./assets/fonts/SF-Pro-Rounded-Regular.otf'),
-    'SarayFontBold': require('./assets/fonts/SF-Pro-Rounded-Bold.otf'),
-    'Roboto': require('./assets/fonts/SF-Pro-Rounded-Regular.otf'),
+    'Thin': require('./assets/fonts/SF-Pro-Rounded-Thin.otf'),
+    'Medium': require('./assets/fonts/SF-Pro-Rounded-Medium.otf'),
+    'Regular': require('./assets/fonts/SF-Pro-Rounded-Regular.otf'),
+    'Bold': require('./assets/fonts/SF-Pro-Rounded-Bold.otf'),
+    'Black': require('./assets/fonts/SF-Pro-Rounded-Black.otf'),
+    'Oswald': require('./assets/fonts/Oswald-Regular.ttf')
   });
 
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
-      await SplashScreen.hideAsync();
+      await SplashScreen.hideAsync();  
     }
   }, [fontsLoaded]);
 
   if (!fontsLoaded) {
     return null; 
+  }  
+
+  if (fontsLoaded) {
+    Text.defaultProps = {
+      ...(Text.defaultProps || {}),
+      style: { fontFamily: 'Oswald' },
+    };
   }
+  
 
 
   const Drawer = createDrawerNavigator();
   return (
     <Provider store={store}>    
-    <SafeAreaProvider>
-      <NativeBaseProvider theme={theme}>
+      <SafeAreaProvider>
         <Synchronize />
         <StatusBar style="auto" hidden={true} />
         <NavigationContainer onReady={onLayoutRootView}>
@@ -78,7 +61,6 @@ export default function App() {
             <Drawer.Screen name="Auth" component={AuthNavigator} />          
           </Drawer.Navigator>
         </NavigationContainer>
-      </NativeBaseProvider>
       </SafeAreaProvider>
     </Provider>
   );

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Box } from "native-base"
 import { useSelector } from "react-redux";
-import { FlatList } from "react-native";
+import { FlatList, View } from "react-native";
 import PdfViewer from "../PdfViewer";
 import DocumentListItem from "../document/DocumentListItem";
 
@@ -21,7 +20,7 @@ export default function SearchResult({ search, setSearch, setOpen }) {
     }, [search, items]);
 
     return (
-      <Box p="5">
+      <View style={{padding: 20}}>
         <PdfViewer uri={selected} />
         <FlatList 
           data={filtered}
@@ -30,6 +29,6 @@ export default function SearchResult({ search, setSearch, setOpen }) {
           numColumns={3}
           columnWrapperStyle={{ justifyContent: "space-between", marginBottom: 16 }}
         />
-      </Box>
+      </View>
     );    
 }

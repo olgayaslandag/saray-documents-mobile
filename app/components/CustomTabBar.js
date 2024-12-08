@@ -1,5 +1,4 @@
-import { View } from "native-base";
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import * as Device from 'expo-device';
 
 import HomeIcon from "./icons/HomeIcon"

@@ -1,6 +1,5 @@
 import { useRef } from "react";
-import { Box, Image, Text } from "native-base";
-import { StyleSheet, FlatList, Dimensions } from "react-native";
+import { StyleSheet, FlatList, Dimensions, Image, Text, View } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 
 const DATA = [
@@ -57,13 +56,13 @@ const ITEM_WIDTH = width * 0.7;
 
 function Item({ title, index, img }) {
     return (
-        <Box style={{...styles.item, marginRight: index === DATA.length-1 ? 20 : 15, marginLeft: index===0 ? 20 : 0}}>
-            <Image source={img} alt={title} width={ITEM_WIDTH} height="100%" style={styles.image} resizeMode="cover"></Image>
+        <View style={{...styles.item, marginRight: index === DATA.length-1 ? 20 : 15, marginLeft: index===0 ? 20 : 0}}>
+            <Image source={img} alt={title} style={styles.image} resizeMode="cover"></Image>
             
             <LinearGradient colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.4)']} style={{...styles.overlayTitle, width: ITEM_WIDTH}}>
                 <Text style={styles.title}>{title}</Text>
             </LinearGradient>            
-        </Box>
+        </View>
     );
 }
 export default function HomeSlider({ setActive }) {
@@ -80,7 +79,7 @@ export default function HomeSlider({ setActive }) {
 
 
     return (
-        <Box flex="1">
+        <View style={{flex: 1}}>
             <FlatList
                 data={DATA}
                 renderItem={({item, index}) => <Item index={index} title={item.title} img={item.img} />}
@@ -94,7 +93,7 @@ export default function HomeSlider({ setActive }) {
                 viewabilityConfig={viewabilityConfig}
                 
             />  
-        </Box>      
+        </View>      
     );
 }
 
@@ -114,7 +113,9 @@ const styles = StyleSheet.create({
     },
     image: {
         borderRadius: 30,
-        marginLeft: 0
+        marginLeft: 0,
+        width: ITEM_WIDTH,
+        height: "100%"
     },
     overlayTitle: {
         flex: 1,

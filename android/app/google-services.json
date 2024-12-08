@@ -1,29 +1,29 @@
 {
-    "project_info": {
-      "project_number": "843496467444",
-      "project_id": "saray-push-notifications",
-      "storage_bucket": "saray-push-notifications.firebasestorage.app"
-    },
-    "client": [
-      {
-        "client_info": {
-          "mobilesdk_app_id": "1:843496467444:android:775f6a7766034f2bcba7a1",
-          "android_client_info": {
-            "package_name": "com.olgayaslandag.saraymobile"
-          }
-        },
-        "oauth_client": [],
-        "api_key": [
-          {
-            "current_key": "AIzaSyARPNBOgSZWdFZkyQ7QCkeFWZGPzjFSLH8"
-          }
-        ],
-        "services": {
-          "appinvite_service": {
-            "other_platform_oauth_client": []
-          }
+  "project_info": {
+    "project_number": "843496467444",
+    "project_id": "saray-push-notifications",
+    "storage_bucket": "saray-push-notifications.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843496467444:android:775f6a7766034f2bcba7a1",
+        "android_client_info": {
+          "package_name": "com.olgayaslandag.saraymobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARPNBOgSZWdFZkyQ7QCkeFWZGPzjFSLH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
         }
       }
-    ],
-    "configuration_version": "1"
-  }
+    }
+  ],
+  "configuration_version": "1"
+}

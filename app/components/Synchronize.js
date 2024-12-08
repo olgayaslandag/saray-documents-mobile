@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { fileListApi } from "../api/fileListApi";
 import { useDispatch } from "react-redux";
 import { synchronize } from "../store/dataSlice";
-import { Modal, View } from "native-base";
-import LogoIcon from "./icons/LogoIcon";
 import { searchlist } from "../store/searchItemsSlice";
 
 

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Text } from "native-base";
-import { ImageBackground, Dimensions } from "react-native";
+import { ImageBackground, Dimensions, View, Text, StyleSheet } from "react-native";
 import HeaderUser from "../components/header/HeaderUser";
 import SearchForm from "../components/header/SearchForm";
 import HomeSlider from "../components/HomeSlider";
@@ -26,18 +25,38 @@ export default function HomeScreen() {
       source={active.bgimage}
       style={{ width: "100%", height: "100%" }} 
       resizeMode="cover">
-      <Box px="5" flex="3" style={{paddingTop: Device.osName === "iOS" ? 30 : 0}}>
+      <View style={styles.header.container}>
         <HeaderUser />
         <SearchForm />
-      </Box>
+      </View>
 
-      <Box flex="5" style={{marginBottom: 80}}>
-        <Text fontSize="24" fontWeight="700" mt={WIDTH < 650 ? 5 : 0} px="5">Yenilikler</Text>
+      <View style={styles.content.container}>
+        <Text style={styles.content.title} >Yenilikler</Text>
         <HomeSlider setActive={setActive} />
-      </Box>
+      </View>
       <PushNotification />
     </ImageBackground>
   );
 }
 
-
+const styles = StyleSheet.create({
+  header: {
+    container: {
+      flex: 3,
+      paddingHorizontal: 20,
+      paddingTop: Device.osName === "iOS" ? 30 : 0
+    }
+  },
+  content: {
+    container: {
+      flex: 5,
+      marginBottom: 80
+    },
+    title: {
+      marginTop: WIDTH < 650 ? 5 : 0,
+      fontSize: 24,
+      fontWeight: '700',
+      paddingHorizontal: 20,      
+    }
+  }
+});

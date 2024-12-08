@@ -1,5 +1,4 @@
 import { useRef, useEffect } from "react";
-import { Box, Input } from "native-base";
 import SearchIcon from "../icons/SearchIcon";
 import { StyleSheet, TextInput, View } from "react-native";
 
