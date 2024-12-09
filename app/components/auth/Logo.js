@@ -11,11 +11,11 @@ export default function Logo() {
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
-        justifyContent: 'center', 
-        alignItems: 'center',
+        justifyContent: 'flex-start', 
+        alignItems: 'flex-start',        
     },
     image: {
         width: 145,
-        height: 30
+        height: 30,        
     },
 });

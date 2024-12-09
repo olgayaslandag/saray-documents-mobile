@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import SearchIcon from "../icons/SearchIcon";
 import { StyleSheet, TextInput, View } from "react-native";
 
-export default function SearchFormInput({ pt, search, setSearch, order, setOpen, width="100%" }) {        
+export default function SearchFormInput({ search, setSearch, order, setOpen, width="100%" }) {        
     const ref = useRef(null);
 
     useEffect(() => {
@@ -20,28 +20,21 @@ export default function SearchFormInput({ pt, search, setSearch, order, setOpen,
         <View style={{position: 'relative', width}}>
             <TextInput 
                 placeholder="Ne Aramıştınız?" 
-                style={{...styles.searchInput, paddingTop: pt ? 10 : 10, width: '100%'}} 
+                style={{...styles.searchInput}} 
                 onFocus={HandleFocus}
                 autoFocus={true}
                 ref={ref}
-                editable={order === 2 ? true : false}
-            
+                editable={order === 2 ? true : false}            
                 onChangeText={setSearch}
                 value={search}
             />
             <View                 
-                style={{ 
-                    position: 'absolute', 
-                    right: 0, 
-                    height: '100%', 
-                    justifyContent: 'center' ,
-                    width: 30
-                }}>
+                style={styles.searchIconContainer}>
                 <SearchIcon                            
-                        fill="gray"
-                        width={20}
-                        height={20}
-                    />
+                    fill="gray"
+                    width={20}
+                    height={20}
+                />
             </View>
         </View>
     );
@@ -50,13 +43,22 @@ export default function SearchFormInput({ pt, search, setSearch, order, setOpen,
 
 const styles = StyleSheet.create({
     searchInput: {
+        width: '100%',
         backgroundColor: 'white' ,
-        minHeight: 40,
+        minHeight: 50,
         paddingLeft: 15,
         borderWidth: 1,
         borderRadius: 30,
         borderColor: '#C1C1C1',
-        paddingTop: 0,
-        paddingBottom: 10
+        paddingTop: 15,
+        paddingBottom: 15,        
       },
+    searchIconContainer: {
+        position: 'absolute', 
+        right: 5, 
+        height: '100%', 
+        justifyContent: 'center' ,
+        width: 30,
+        top: -1,
+    }
 });

@@ -30,19 +30,21 @@ export default function DocumentsView() {
     <View style={{ backgroundColor: "white", paddingTop: Device.osName === "iOS" ? 30 : 0 }}>
       <View style={{paddingHorizontal: 20}}>
         <DocumentHeader />
-        <Text style={{fontWeight: 600, marginTop: 8, marginBottom: 8, fontSize: 26}}>Döküman Merkezi</Text>
+        <Text style={{fontWeight: 600, marginTop: 18, marginBottom: 8, fontSize: 24}}>Döküman Merkezi</Text>
       </View>
-      <View>
+
+      <View style={{borderBottomWidth: 5, borderColor: '#F1F1F1'}}>
         <ButtonIcon items={items} />
       </View>
+      
       <FlatList
         data={items}
         keyExtractor={(item, index) => index}
         renderItem={renderDocumentList}
-        contentContainerStyle={{
+        contentContainerStyle={{          
           backgroundColor: "#F1F1F1",
           padding: 20,
-          paddingBottom: 100,
+          paddingBottom: 400,          
         }}
         extraData={isFocused}
       />

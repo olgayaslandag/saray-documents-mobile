@@ -13,7 +13,7 @@ function FolderIcon({ title, selected }) {
     );    
 }
   
-function Item({ item }) {
+function Item({ item, index, items }) {
   const docSelected = useSelector(state => state.docSelect.value || "ALU | CATALOG - ALU | KATALOG");
 
   const dispatch = useDispatch();
@@ -23,14 +23,15 @@ function Item({ item }) {
   }
 
     return (
-      <View style={{justifyContent: 'center', alignItems: 'center', marginLeft: 5}}>
+      <View style={{
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        marginLeft: index === 0 ? 20 : 5, 
+        marginRight: index === items.length - 2 ? 20 : 5}}>
         {item.dir &&             
-          <TouchableOpacity style={styles.iconButton} p={0} onPress={() => HandleSelect(item.dir.title)}>
-            <View>
+          <TouchableOpacity style={styles.iconButton} onPress={() => HandleSelect(item.dir.title)}>
               <FolderIcon title={item.dir.title} selected={docSelected === item.dir.title} />         
-               
               <Text style={styles.iconTitle}>{titleReplace(item.dir.title)}</Text>          
-            </View>  
           </TouchableOpacity>
         }
         <View style={{...styles.pyramid, borderBottomColor: docSelected === item.dir.title ? '#F1F1F1' : 'transparent'}}></View>
@@ -43,7 +44,7 @@ export default function ButtonIcon({ items }) {
   return (        
     <FlatList 
       data={items.filter(c => c.dir.title !== "icons")}
-      renderItem={({item}) => <Item item={item} />}
+      renderItem={({item, index}) => <Item item={item} items={items} index={index} />}
       keyExtractor={(item, index) => index}
       horizontal
       showsHorizontalScrollIndicator={false}
@@ -55,8 +56,6 @@ export default function ButtonIcon({ items }) {
 
 const styles = StyleSheet.create({
   iconButton: {
-    marginRight: 5,
-    marginLeft: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },

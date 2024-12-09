@@ -28,6 +28,8 @@ const styles = StyleSheet.create({
     marginLeft: '3%',  
     alignItems: 'flex-end', 
     height: 30, 
-    marginTop: 40
+    marginTop: 40,
+    justifyContent: 'center',
+    position: 'relative',
   }
 });

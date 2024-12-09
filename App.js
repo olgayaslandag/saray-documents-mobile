@@ -37,12 +37,10 @@ export default function App() {
     return null; 
   }  
 
-  if (fontsLoaded) {
-    Text.defaultProps = {
-      ...(Text.defaultProps || {}),
-      style: { fontFamily: 'Oswald' },
-    };
-  }
+
+  // Varsayılan özellikleri ayarla
+  Text.defaultProps = Text.defaultProps || {};
+  Text.defaultProps.style = { fontFamily: 'Regular' };
   
 
 

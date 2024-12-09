@@ -44,13 +44,13 @@ const styles = StyleSheet.create({
     container: {
       flex: 3,
       paddingHorizontal: 20,
-      paddingTop: Device.osName === "iOS" ? 30 : 0
+      justifyContent : 'space-between',
     }
   },
   content: {
     container: {
       flex: 5,
-      marginBottom: 80
+      marginBottom: 80,
     },
     title: {
       marginTop: WIDTH < 650 ? 5 : 0,

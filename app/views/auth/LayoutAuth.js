@@ -19,14 +19,16 @@ export default function LayoutAuth({ children }) {
     }
     return (
         <SafeAreaView style={{flex: 1, padding: 10, backgroundColor: '#FFF'}}>  
-        <View style={styles.ios_container}>
-            <TouchableOpacity onPress={HandleClose} style={{marginBottom: -30}}>
-                <FontAwesome5 name="times" size={20} color="black" style={{textAlign: 'right'}} />
-            </TouchableOpacity>
-            <Logo />
-            <View style={{flex: 8, justifyContent: 'center'}}>
-                {children}
-            </View>            
+            <View style={styles.ios_container}>
+                <View style={{flex: 1, justifyContent: 'center', flexDirection: 'row'}}>                    
+                    <Logo />
+                    <TouchableOpacity onPress={HandleClose} style={{marginRight: 10}}>
+                        <FontAwesome5 name="times" size={26} color="black" style={{textAlign: 'right'}} />
+                    </TouchableOpacity>
+                </View>
+                <View style={{flex: 8, justifyContent: 'center'}}>
+                    {children}
+                </View>            
             </View>
         </SafeAreaView>
     );
@@ -35,6 +37,6 @@ export default function LayoutAuth({ children }) {
 const styles = StyleSheet.create({
     ios_container: {
         flex: 1,
-        padding: Device.osName === "iOS" ? 10 : 0
+        padding: Device.osName === "iOS" ? 10 : 0,
     }
 });

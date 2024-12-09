@@ -4,9 +4,10 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 import SearchFormInput from "./SearchFormInput";
 import SearchResult from "../search/SearchResult";
+import * as Device from "expo-device"
 
 
-export default function SearchForm({ pt }) {
+export default function SearchForm() {
     const [search, setSearch] = useState("");
     const [open, setOpen] = useState(false);
 
@@ -16,17 +17,17 @@ export default function SearchForm({ pt }) {
     }
     
     return (
-        <View style={{alignItems: 'center', width: '100%', marginTop: 20}}>
+        <View style={styles. container}>
             {!search && !open && (
                 <View style={{position: 'relative', width: '100%'}}>                
                     <View style={{width: '100%', position: 'relative', zIndex: 8}}>
-                        <SearchFormInput pt={pt} search={search} setSearch={setSearch} order={1} setOpen={setOpen} />
+                        <SearchFormInput search={search} setSearch={setSearch} order={1} setOpen={setOpen} />
                     </View>
 
                     <TouchableOpacity 
                         activeOpacity={1} 
                         onPress={() => setOpen(true)} 
-                        style={{minHeight: 40, position: 'absolute', top: 0, width: '100%', zIndex: 9}}
+                        style={{minHeight: 50, position: 'absolute', top: 0, width: '100%', zIndex: 9}}
                     ></TouchableOpacity>
                 </View>
             )}            
@@ -49,12 +50,21 @@ export default function SearchForm({ pt }) {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center', 
+        width: '100%', 
+        paddingBottom: 0, 
+        flex: 1, 
+        justifyContent: 'center', 
+        paddingTop: 30,
+    },
     modal: {
         container: {
             flex: 1,
             backgroundColor: '#fff', 
             borderTopLeftRadius: 30, 
             borderTopRightRadius: 30,
+            paddingTop: Device.osName === "iOS" ? 40 : 10,   
         },
         close: {
             flex: 1, 

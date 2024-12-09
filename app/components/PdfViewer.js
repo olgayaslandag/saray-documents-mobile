@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, StyleSheet, View, Button } from 'react-native';
+import { Modal, StyleSheet, View, Button, TouchableOpacity } from 'react-native';
 import { WebView } from 'react-native-webview';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import * as Device from 'expo-device';
@@ -28,11 +28,10 @@ export default function PdfViewer({ uri }) {
       >
         <View style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
           <View style={{ flex: 1, marginTop: 0, backgroundColor: 'white', position: 'relative' }}>
-            <View style={styles.button}>
-              <Button size="sm" variant="ghost" onPress={() => setModalVisible(false)}>
-                <FontAwesome5 name="times" size={20} color="black" />               
-              </Button>
-            </View>
+            <TouchableOpacity style={styles.button} onPress={() => setModalVisible(false)}>
+              <FontAwesome5 name="times" size={20} color="black" />               
+            </TouchableOpacity>
+            
             <WebView 
               source={{ uri: DocsUrl }}
               style={{ flex: 1 }}

@@ -2,13 +2,14 @@ import MenuButton from "../icons/MenuButton";
 import UserAvatar from "./UserAvatar";
 import { TouchableOpacity, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import * as Device from "expo-device"
 
 
 export default function HeaderUser() {
     const navigation = useNavigation();
 
     return (
-        <View style={{marginTop: 40, flexDirection: 'row'}}>
+        <View style={{marginTop: 40, flexDirection: 'row', paddingTop: Device.osName === "iOS" ? 30 : 0}}>
             <View style={{width: '70%'}}>
                 <UserAvatar />
             </View>

@@ -1,6 +1,7 @@
 import MenuButton from "../icons/MenuButton";
 import { TouchableOpacity, View, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import * as Device from "expo-device"
 
 export default function StaticHeader() {
     const navigation = useNavigation();
@@ -8,12 +9,6 @@ export default function StaticHeader() {
     return (
         <View 
             borderRadius={30} 
-            p="4"            
-            width="60"
-            height="60"
-            alignItems="center"  
-            alignSelf="flex-end"          
-            mr="2"
             position="absolute"
             style={styles.container}>
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
@@ -25,9 +20,9 @@ export default function StaticHeader() {
 
 const styles = StyleSheet.create({
     container: {
+        position: 'absolute',
         backgroundColor: 'white', 
         right: -3, 
-        top: 24, 
         zIndex: 10,
         borderRadius: 30,
         padding: 16,
@@ -35,7 +30,7 @@ const styles = StyleSheet.create({
         height: 60,
         alignItems: 'center',
         alignSelf: 'flex-end',
-        marginRight: 8,
-        position: 'absolute'
+        marginRight: 8,   
+        top: Device.osName === "iOS" ? 54 : 24,     
     }
 });
