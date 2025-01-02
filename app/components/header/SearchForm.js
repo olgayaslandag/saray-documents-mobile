@@ -32,7 +32,7 @@ export default function SearchForm() {
                 </View>
             )}            
             
-            <Modal animationType="slide" visible={search || open ? true : false} transparent={false}>
+            <Modal animationType="none" visible={search || open ? true : false} transparent={false}>
                 <View style={styles.modal.container}>
                     <View style={{width: '100%', paddingHorizontal: 20, paddingTop: 20, paddingbottom: 0, flexDirection: 'row'}}>
                         <SearchFormInput search={search} setSearch={setSearch} order={2} width="90%" />

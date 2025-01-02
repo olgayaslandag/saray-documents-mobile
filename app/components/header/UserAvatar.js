@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, Image } from "react-native";
+import { useSelector } from "react-redux";
 
 export default function UserAvatar() {
     const [message, setMessage] = useState("");
+    const auth = useSelector(state => state.auth.value);
     useEffect(() => {
         const currentHour = new Date().getHours();
 
@@ -22,7 +24,7 @@ export default function UserAvatar() {
         <>
             <Image source={require('../../../assets/user-icon.jpg')} alt="" size={70} style={styles.image} borderRadius={100} />
             <Text style={{fontSize: 20, marginBottom: 4}}>{message},</Text>
-            <Text style={{fontSize: 20, fontWeight: 600}}>Saray Alüminyum</Text>
+            <Text style={{fontSize: 20, fontWeight: 600}}>{auth?.name ?? 'Saray Alüminyum'}</Text>
         </>
     );
 }
