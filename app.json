@@ -2,7 +2,7 @@
   "expo": {
     "name": "Saray",
     "slug": "saray-mobile",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,14 +15,15 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.olgayaslandag.saraymobile",
-      "buildNumber": "5"
+      "buildNumber": "6"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.olgayaslandag.saraymobile"
+      "package": "com.olgayaslandag.saraymobile",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -11,17 +11,21 @@ import styleAuth from "../../styles/styleAuth";
 
 export default function LoginView() {
     const [form, setForm] = useState({email: '', password: ''});
+    const [process, setProcess] = useState(false);
     const dispatch = useDispatch();
     const navigation = useNavigation();
 
     async function HandleLogin() {
+        setProcess(true);
         const result = await LoginApi(form);
         
         if(result.status)
             dispatch(login(result.data));
 
         if(!result.status)
-            Alert.alert("bulunamadı!");
+            Alert.alert("Hata", result.message);
+
+        setProcess(false);
     }
 
     return (
@@ -51,7 +55,7 @@ export default function LoginView() {
                     />
                 </View>
 
-                <TouchableOpacity onPress={HandleLogin} activeOpacity={0.8} style={{marginBottom: 10}}>
+                <TouchableOpacity onPress={HandleLogin} activeOpacity={0.8} style={{marginBottom: 10}} disabled={process}>
                     <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>Giriş Yap</Text>
                 </TouchableOpacity>        
 

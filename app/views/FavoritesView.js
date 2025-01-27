@@ -15,6 +15,10 @@ export default function FavoritesView() {
     
     const navigation = useNavigation();
 
+    const formattedData = [...items];
+    while (formattedData.length % 3 !== 0) {
+        formattedData.push({ id: `empty-${formattedData.length}`, empty: true }); // Eksik sütunlar için boş eleman ekleniyor
+    }
 
     function ErrorMessage() {
         if (!auth) {
@@ -56,7 +60,7 @@ export default function FavoritesView() {
                 <View>
                     <PdfViewer uri={selected} />
                     <FlatList
-                        data={items}
+                        data={formattedData}
                         renderItem={({item}) => <DocumentListItem item={item} setSelected={setSelected} />}
                         keyExtractor={(item, index) => index}
                         numColumns={3}

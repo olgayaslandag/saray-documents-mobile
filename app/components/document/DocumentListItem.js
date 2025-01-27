@@ -54,16 +54,24 @@ export default function DocumentListItem({ item, setSelected, setSearch, setOpen
 
     return (
         <View style={{position: 'relative', overflow: 'hidden', maxWidth: imageSize}}>
-            <TouchableOpacity 
-                style={styles.item.container} 
-                onPress={() => setSelected("https://saray.com/drive/" + item.path)}>
-                <Image source={{uri: item.thumbnail}} alt="" style={styles.item.image} />
-                <Text style={styles.item.text}>{item.title}</Text>
-            </TouchableOpacity>
+            {item.thumbnail && (
+                <View>
+                    <TouchableOpacity 
+                        style={styles.item.container} 
+                        onPress={() => setSelected("https://saray.com/drive/" + item.path)}>
+                        <Image source={{uri: item.thumbnail}} alt="" style={styles.item.image} />
+                        <Text style={styles.item.text}>{item.title}</Text>
+                    </TouchableOpacity>
 
-            <TouchableOpacity style={styles.item.favIcon.container} onPress={HandleAddOrRemove}>
-                <FontAwesome name={check && auth ? "star" : "star-o"} color="#EA0029" size={18} />
-            </TouchableOpacity>
+                    <TouchableOpacity style={styles.item.favIcon.container} onPress={HandleAddOrRemove}>
+                        <FontAwesome name={check && auth ? "star" : "star-o"} color="#EA0029" size={18} />
+                    </TouchableOpacity>
+                </View>
+            )}
+
+            {!item.thumbnail && 
+                <View style={{width: imageSize}}></View>
+            }
         </View>
     );
 }
