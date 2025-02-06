@@ -51,7 +51,7 @@ const DATA = [
 
 
 const { width } = Dimensions.get('window');
-const ITEM_WIDTH = width * 0.7;
+const ITEM_WIDTH = width * 0.8;
 
 
 function Item({ title, index, img }) {
@@ -77,7 +77,6 @@ export default function HomeSlider({ setActive }) {
         }
     }).current;
 
-
     return (
         <View style={{flex: 1}}>
             <FlatList
@@ -90,8 +89,7 @@ export default function HomeSlider({ setActive }) {
                 snapToAlignment="center"
                 pagingEnabled
                 onViewableItemsChanged={onViewableItemsChanged}
-                viewabilityConfig={viewabilityConfig}
-                
+                viewabilityConfig={viewabilityConfig}                
             />  
         </View>      
     );
@@ -106,7 +104,7 @@ const styles = StyleSheet.create({
       marginHorizontal: 0,    
       width: ITEM_WIDTH,
       marginRight: 15,
-      position: 'relative',
+      position: 'relative',            
     },
     title: {
       fontSize: 32,

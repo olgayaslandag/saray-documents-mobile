@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         paddingBottom: 0, 
         flex: 1, 
         justifyContent: 'center', 
-        paddingTop: 30,
+        paddingTop: 30,        
     },
     modal: {
         container: {

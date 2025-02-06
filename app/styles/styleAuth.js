@@ -9,16 +9,17 @@ const styleAuth = StyleSheet.create({
         title: {
             fontSize: 20,
             marginBottom: 20,      
-            textAlign: 'center'      
+            textAlign: 'center',
+            fontWeight: 'bold'    
         },
 
         item: {
             container: {
-                marginBottom: 20
+                marginBottom: 10
             },
     
             input: {
-                height: 40,
+                height: 50,
                 borderWidth: 1,
                 padding: 10,
                 borderColor: '#C1C1C1',

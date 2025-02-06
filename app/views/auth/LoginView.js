@@ -31,7 +31,7 @@ export default function LoginView() {
     return (
         <LayoutAuth>
             <View style={styleAuth.form.container}>
-                <Text style={styleAuth.form.title}>Giriş Yapın</Text>
+                <Text style={{...styleAuth.form.title}}>Giriş Yapın</Text>
                 <View style={styleAuth.form.item.container}>
                     <TextInput
                         style={styleAuth.form.item.input}

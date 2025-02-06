@@ -7,7 +7,6 @@ import PushNotification from "../components/PushNotification";
 import { useDispatch } from "react-redux";
 import { initializeAuth } from "../store/authSlice";
 import { initializeFavs } from "../store/favSlice";
-import * as Device from 'expo-device';
 
 const WIDTH = Dimensions.get('window').height;
 
@@ -42,15 +41,16 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   header: {
     container: {
-      flex: 3,
-      paddingHorizontal: 20,
+      flex: 4,
+      paddingHorizontal: 15,
       justifyContent : 'space-between',
     }
   },
   content: {
     container: {
-      flex: 5,
-      marginBottom: 80,
+      flex: 12,
+      marginBottom: 110,      
+      paddingTop: 30    
     },
     title: {
       marginTop: WIDTH < 650 ? 5 : 0,
