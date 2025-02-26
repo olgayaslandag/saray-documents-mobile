@@ -1,6 +1,9 @@
 import { useRef, useEffect } from "react";
 import SearchIcon from "../icons/SearchIcon";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View, Dimensions, PixelRatio } from "react-native";
+import pixelDp from "../../libs/pixelDp";
+
+const { width } = pixelDp();
 
 export default function SearchFormInput({ search, setSearch, order, setOpen, width="100%" }) {        
     const ref = useRef(null);
@@ -29,7 +32,7 @@ export default function SearchFormInput({ search, setSearch, order, setOpen, wid
                 value={search}
             />
             <View                 
-                style={styles.searchIconContainer}>
+                style={{...styles.searchIconContainer, top: -1}}>
                 <SearchIcon                            
                     fill="gray"
                     width={20}
@@ -58,7 +61,6 @@ const styles = StyleSheet.create({
         right: 5, 
         height: '100%', 
         justifyContent: 'center' ,
-        width: 30,
-        top: -1,
+        width: 30        
     }
 });

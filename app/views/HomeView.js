@@ -7,7 +7,9 @@ import PushNotification from "../components/PushNotification";
 import { useDispatch } from "react-redux";
 import { initializeAuth } from "../store/authSlice";
 import { initializeFavs } from "../store/favSlice";
+import pixelDp from "../libs/pixelDp";
 
+const { width } = pixelDp();
 const WIDTH = Dimensions.get('window').height;
 
 export default function HomeScreen() {
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
   },
   content: {
     container: {
-      flex: 12,
+      flex: width > 1080 ? 12 : 8,
       marginBottom: 110,      
       paddingTop: 30    
     },

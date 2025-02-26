@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { StyleSheet, FlatList, Dimensions, Image, Text, View } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
+import pixelDp from "../libs/pixelDp";
 
 const DATA = [
     {
@@ -9,14 +10,6 @@ const DATA = [
         img: require('../../assets/home/home-ekstruzyon.jpg'),
         bgimage: require('../../assets/home/bg/home-bg-ekstruzyon.jpg')
     },
-    /*
-    {
-        id: 2,
-        title: 'Geri Dönüşüm Merkezi & Biyet Döküm',
-        img: require('../../assets/home/home-ekstruzyon.jpg'),
-        bgimage: require('../../assets/home/bg/home-bg-ekstruzyon.jpg')
-    },
-    */
     {
         id: 3,
         title: 'PVC Sistemleri',
@@ -50,8 +43,10 @@ const DATA = [
 ];
 
 
+//const { width } = pixelDp();
 const { width } = Dimensions.get('window');
-const ITEM_WIDTH = width * 0.8;
+const ITEM_WIDTH =  width * 0.8;
+console.log(width)
 
 
 function Item({ title, index, img }) {
