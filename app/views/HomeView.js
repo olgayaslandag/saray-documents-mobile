@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
   content: {
     container: {
-      flex: width > 1080 ? 12 : 8,
+      flex: width > 1080 ? 8 : 8,
       marginBottom: 110,      
       paddingTop: 30    
     },

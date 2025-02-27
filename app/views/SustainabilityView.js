@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
         width: '100%', 
         height: '45%', 
         flex: 1,        
-        paddingTop: Device.osName === "iOS" ? 30 : 0
+        paddingTop: 0
     },
     contentBox: {
         backgroundColor: 'white', 
         borderTopLeftRadius: 30, 
         borderTopRightRadius: 30, 
-        marginTop: '70%',
+        marginTop: Device.osName === "Android" ? '60%' :  '67%',
         padding: 30
     },
     pageTitle: {
