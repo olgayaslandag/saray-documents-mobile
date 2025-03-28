@@ -3,6 +3,7 @@ import { fileListApi } from "../api/fileListApi";
 import { useDispatch } from "react-redux";
 import { synchronize } from "../store/dataSlice";
 import { searchlist } from "../store/searchItemsSlice";
+import { initializeAuth } from "../store/authSlice";
 
 
 export default function Synchronize({ dir }) {
@@ -12,6 +13,7 @@ export default function Synchronize({ dir }) {
     useEffect(() => {
         setProcess(true);
         (async () => {
+            dispatch(initializeAuth());
             const result = await fileListApi({dir});            
             if(result.status) {
                 const items = result.data.map(item => {

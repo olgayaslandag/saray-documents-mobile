@@ -12,11 +12,12 @@ import FavoritesIcon from "./icons/FavoritesIcon";
 function GetIcon({ name, isFocused, callback }) {
   const icons = {
     Home: HomeIcon,
-    Documents: DocumentIcon,
+    Documents: HomeIcon || DocumentIcon,
     Sustainability: SustainabilityIcon,
     Company: CompanyIcon,
     Notification: NotificationIcon,
     Favorites: FavoritesIcon,
+    Offers: DocumentIcon,
   };
 
   const IconComponent = icons[name] || HomeIcon;
@@ -34,7 +35,8 @@ export default function CustomTabBar({ state, descriptors, navigation }) {
 
   return (
       <View style={styles.tabContainer}>
-        {state.routes.map((route, index) => {          
+        {state.routes.filter(route => !['Sustainability', 'Company', 'Documents', 'OfferForm'].includes(route.name)).map((route, index) => {
+
 
           const isFocused = state.index === index;
   

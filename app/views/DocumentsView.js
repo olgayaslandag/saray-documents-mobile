@@ -30,7 +30,8 @@ export default function DocumentsView() {
     <View style={{ backgroundColor: "white", paddingTop: Device.osName === "iOS" ? 30 : 0 }}>
       <View style={{paddingHorizontal: 20}}>
         <DocumentHeader />
-        <Text style={{fontWeight: 600, marginTop: 25, marginBottom: 8, fontSize: 24}}>Döküman Merkezi</Text>
+        {/*<Text style={{fontWeight: 600, marginTop: 25, marginBottom: 8, fontSize: 24}}>Döküman Merkezi</Text>*/}
+        <View style={{marginTop: 25}}></View>
       </View>
 
       <View style={{borderBottomWidth: 5, borderColor: '#F1F1F1'}}>
