@@ -161,3 +161,36 @@ export const UpdateApi = async (data) => {
         }
     }
 }
+
+export const DeleteAuthApi = async (token, id) => {
+    axios.defaults.headers.Authorization = prefix + token;
+    try {
+        const result = await axios.get('auth/delete/' + id);
+
+        return {
+            status: true,
+            data: result.data,
+            message: "Tebrikler, hesabınız başarıyla silindi.",
+        };
+    } catch(error){
+        if(error.response){
+            return {
+                status: false,
+                data: error.response.data.errors ?? null,
+                message: typeof error.response.data === "string" ? error.response.data : "Silme işlemi yapılamadı!"
+            }
+        }else if(error.request){
+            return {
+                status: false,
+                data: null,
+                message: error.message
+            }
+        }else{
+            return {
+                status: false,
+                data: null,
+                message: "Bir sorun oluştu!"
+            }
+        }
+    }
+}

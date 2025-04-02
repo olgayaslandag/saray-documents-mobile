@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, View, Dimensions } from "react-native";
 import PdfViewer from "../PdfViewer";
 import DocumentListItem from "./DocumentListItem";
 
+const WIDTH = Dimensions.get('window').width;
 
 export default function DocumentList({ dirs, search = false }) {
   const [selected, setSelected] = useState("");
@@ -27,9 +28,9 @@ export default function DocumentList({ dirs, search = false }) {
       )}
       <FlatList
         data={dir.files}
-        keyExtractor={(file, index) => index}
+        keyExtractor={(file, index) => index.toString()}
         renderItem={({item}) => <DocumentListItem item={item} setSelected={setSelected} />}
-        numColumns={3}
+        numColumns={WIDTH > 1250 ? 4 : 3}
         columnWrapperStyle={{ justifyContent: "space-between", marginBottom: 16 }}
       />
     </View>

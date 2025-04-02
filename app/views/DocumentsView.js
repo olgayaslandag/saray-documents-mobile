@@ -5,7 +5,9 @@ import ButtonIcon from "../components/document/ButtonIcon";
 import DocumentList from "../components/document/DocumentList";
 import * as Device from "expo-device";
 import { useIsFocused } from "@react-navigation/native";
-import { Text, View, FlatList } from "react-native"
+import { Text, View, FlatList,Dimensions } from "react-native"
+
+const WIDTH = Dimensions.get('window').width;
 
 export default function DocumentsView() {
   const items = useSelector((state) => state.data.value ?? []);
@@ -34,7 +36,7 @@ export default function DocumentsView() {
         <View style={{marginTop: 25}}></View>
       </View>
 
-      <View style={{borderBottomWidth: 5, borderColor: '#F1F1F1'}}>
+      <View style={{borderBottomWidth: 5, borderColor: '#F1F1F1', alignItems: WIDTH > 1250 ? 'center' : ''}}>
         <ButtonIcon items={items} />
       </View>
       

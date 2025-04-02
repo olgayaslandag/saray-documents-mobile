@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, StyleSheet, Text, TouchableOpacity, View, Dimensions } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import DocumentListItem from "../components/document/DocumentListItem";
 import PdfViewer from "../components/PdfViewer";
 import StaticHeader from "../components/header/StaticHeader";
 import * as Device from "expo-device"
+
+const WIDTH = Dimensions.get('window').width;
 
 export default function FavoritesView() {
     const [selected, setSelected] = useState("");
@@ -16,6 +18,7 @@ export default function FavoritesView() {
     const navigation = useNavigation();
 
     const formattedData = [...items];
+    const lengthSize = WIDTH > 1250 ? formattedData.length % 4  : formattedData.length % 3;
     while (formattedData.length % 3 !== 0) {
         formattedData.push({ id: `empty-${formattedData.length}`, empty: true }); // Eksik sütunlar için boş eleman ekleniyor
     }
@@ -62,8 +65,8 @@ export default function FavoritesView() {
                     <FlatList
                         data={formattedData}
                         renderItem={({item}) => <DocumentListItem item={item} setSelected={setSelected} />}
-                        keyExtractor={(item, index) => index}
-                        numColumns={3}
+                        keyExtractor={(item, index) => index.toString()}
+                        numColumns={WIDTH > 1250 ? 4 : 3}
                         columnWrapperStyle={{ justifyContent: "space-between", marginBottom: 16 }}
                     />
                 </View>}

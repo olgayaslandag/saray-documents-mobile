@@ -6,8 +6,8 @@ import { addToFav, removeFromFav } from "../../store/favSlice";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 
-
-const imageSize = Dimensions.get("window").width / 3 - 20;
+const WIDTH = Dimensions.get('window').width;
+const imageSize = WIDTH > 1250 ? WIDTH / 4 - 20 : WIDTH / 3 - 20;
 
 
 export default function DocumentListItem({ item, setSelected, setSearch, setOpen }) {
