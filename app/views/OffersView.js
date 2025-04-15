@@ -8,10 +8,11 @@ import { useEffect, useState } from "react";
 import { offerListApi } from "../api/offerApi";
 import { FontAwesome } from '@expo/vector-icons';
 import { WebView } from 'react-native-webview';
+import LayoutLock from "./LayoutLock";
 
 
 
-function OfferContent(){
+export default function OffersView(){
     const [items, setItems] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
     const auth = useSelector(state => state.auth.value);
@@ -62,7 +63,7 @@ function OfferContent(){
     }    
 
     return (
-        <View>
+        <LayoutLock title="Tekliflerim">
             <TouchableOpacity onPress={() => navigation.navigate('OfferForm')} style={{...styles.buttons.login.container, alignSelf: 'flex-end'}}>
                 <Text style={styles.buttons.login.text}>Yeni Teklif</Text>
             </TouchableOpacity>
@@ -87,25 +88,7 @@ function OfferContent(){
                         <FileViewer fileUrl={"https://drive.saray.com/api/offer/show/" + selectedId} />
                     </SafeAreaView>                    
             </Modal>
-        </View>
-    );
-}
-
-
-export default function OffersView() {
-    const auth = useSelector(state => state.auth.value);
-
-    return (
-        <View style={{flex: 1, backgroundColor: 'white', paddingTop: Device.osName === "iOS" ? 30 : 0}}>
-            <StaticHeader />
-            <View style={{flex: 1, marginTop: 30, justifyContent: 'center', paddingLeft: 20}}>                
-                <Text style={{fontSize: 30, fontWeight: 700}}>Teklifler</Text>
-            </View>
-            <View style={{flex: 15, padding: 20, justifyContent: 'flex-start'}}>
-                <ErrorMessage />
-                {auth && <OfferContent />}            
-            </View>
-        </View>
+        </LayoutLock>
     );
 }
 

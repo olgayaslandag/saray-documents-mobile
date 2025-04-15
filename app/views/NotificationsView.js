@@ -14,6 +14,8 @@ export default function NotificationsView() {
                 setItems(result.data);
         })();
     }, []);
+
+    
     return (
         <View>
             <StaticHeader />        

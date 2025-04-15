@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { FlatList, Text, View, Dimensions } from "react-native";
 import PdfViewer from "../PdfViewer";
 import DocumentListItem from "./DocumentListItem";
+import Comments from "../Comments";
 
 const WIDTH = Dimensions.get('window').width;
 
 export default function DocumentList({ dirs, search = false }) {
   const [selected, setSelected] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [comOpen, setComOpen] = useState(false);
 
 
   useEffect(() => {

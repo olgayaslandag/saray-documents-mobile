@@ -18,14 +18,15 @@ export default function LoginView() {
     async function HandleLogin() {
         setProcess(true);
         const result = await LoginApi(form);
+        setProcess(false);
         
-        if(result.status)
+        if(result.status){
             dispatch(login(result.data));
+            navigation.navigate('Main', {screen: 'Home'});
+        }            
 
         if(!result.status)
-            Alert.alert("Hata", result.message);
-
-        setProcess(false);
+            Alert.alert("Hata", result.message);        
     }
 
     return (

@@ -9,7 +9,7 @@ import styleAuth from "../../styles/styleAuth";
 
 
 export default function RegisterView() {
-    const [form, setForm] = useState({name: '', email: '', password: ''});
+    const [form, setForm] = useState({name: '', email: '', password: '', company_name: ''});
     const dispatch = useDispatch();
     const navigation = useNavigation();
 
@@ -27,6 +27,7 @@ export default function RegisterView() {
         <LayoutAuth>
             <View style={styleAuth.form.container}>
                 <Text style={styleAuth.form.title}>Kayıt Olun</Text>
+                {/* Adsoyad */}
                 <View style={styleAuth.form.item.container}>
                     <TextInput
                         style={styleAuth.form.item.input}
@@ -39,6 +40,7 @@ export default function RegisterView() {
                     />
                 </View>
                 
+                {/* Eposta */}
                 <View style={styleAuth.form.item.container}>
                     <TextInput
                         style={styleAuth.form.item.input}
@@ -50,6 +52,19 @@ export default function RegisterView() {
                         inputMode="email"
                     />
                 </View>
+
+                {/* Şirket Adı */}
+                <View style={styleAuth.form.item.container}>
+                    <TextInput
+                        style={styleAuth.form.item.input}
+                        onChangeText={val => setForm({...form, company_name: val})}
+                        value={form.password_confirmation}
+                        placeholder="Çalıştığınız Firma"
+                        placeholderTextColor="black"
+                    />
+                </View>
+
+                {/* Şifre */}
                 <View style={styleAuth.form.item.container}>
                     <TextInput
                         style={styleAuth.form.item.input}
@@ -60,7 +75,7 @@ export default function RegisterView() {
                         secureTextEntry={true}
                         placeholderTextColor="black"
                     />
-                </View>
+                </View>                
 
                 <TouchableOpacity onPress={HandleLogin} activeOpacity={0.8} style={{marginBottom: 10}}>
                     <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>Kayıt</Text>

@@ -2,14 +2,24 @@ import { View, Text, TouchableOpacity,StyleSheet } from "react-native";
 import LayoutAuth from "./auth/LayoutAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import { clearAuth } from "../store/authSlice";
+import { LogoutApi } from "../api/authApi";
+import { Alert } from "react-native";
 
 export default function MenuView() {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const auth = useSelector(state => state.auth.value);
 
-    function HandleLogout() {
-        dispatch(clearAuth())
+
+    async function HandleLogout() {
+        const result = await LogoutApi(auth.token);
+        if(result.status) {
+            dispatch(clearAuth());            
+        }
+
+        Alert.alert(result.status ? "Tebrikler" : "Hata Oluştu!", result.message)
+        navigation.navigate('Main');
     }
 
     return (
@@ -27,6 +37,15 @@ export default function MenuView() {
                     <Text style={styles.button.text}>Teklifler</Text>
                 </TouchableOpacity>
 
+                
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'MeetRequest'})}>
+                    <Text style={styles.button.text}>Toplantı Talebi</Text>
+                </TouchableOpacity>
+                
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'MeetShowroomRequest'})}>
+                    <Text style={styles.button.text}>Showroom Randevu Talebi</Text>
+                </TouchableOpacity>
+
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Documents'})}>
                     <Text style={styles.button.text}>Dökümanlar</Text>
                 </TouchableOpacity>
@@ -41,7 +60,11 @@ export default function MenuView() {
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Auth')}>
                     <Text style={styles.button.text}>{auth ? 'Hesabım' : 'Giriş Yap'}</Text>
                 </TouchableOpacity> 
-                               
+                {auth && (
+                    <TouchableOpacity style={styles.button} onPress={HandleLogout}>
+                        <Text style={styles.button.text}>Çıkış Yap</Text>
+                    </TouchableOpacity>
+                )}                
             </View>
         </LayoutAuth>
     );

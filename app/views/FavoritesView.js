@@ -1,77 +1,35 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { FlatList, StyleSheet, Text, TouchableOpacity, View, Dimensions } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import DocumentListItem from "../components/document/DocumentListItem";
 import PdfViewer from "../components/PdfViewer";
-import StaticHeader from "../components/header/StaticHeader";
-import * as Device from "expo-device"
+import LayoutLock from "./LayoutLock";
 
 const WIDTH = Dimensions.get('window').width;
 
 export default function FavoritesView() {
     const [selected, setSelected] = useState("");
 
-    const items = useSelector(state => state.favorites.value);
-    const auth = useSelector(state => state.auth.value);    
-    
-    const navigation = useNavigation();
+    const items = useSelector(state => state.favorites.value);    
 
-    const formattedData = [...items];
-    const lengthSize = WIDTH > 1250 ? formattedData.length % 4  : formattedData.length % 3;
+    const formattedData = [...items];    
     while (formattedData.length % 3 !== 0) {
         formattedData.push({ id: `empty-${formattedData.length}`, empty: true }); // Eksik sütunlar için boş eleman ekleniyor
     }
-
-    function ErrorMessage() {
-        if (!auth) {
-            return (
-                <View>
-                    <Text style={{ fontSize: 16 }}>Kullanıcı girişi yapmalısınız!</Text>
-                    <TouchableOpacity onPress={() => navigation.openDrawer()} style={styles.buttons.login.container}>
-                        <Text style={styles.buttons.login.text}>Giriş Yap</Text>
-                    </TouchableOpacity>
-                </View>
-            );
-        }
-    
-        if (!items.length) {
-            return (
-                <View>
-                    <Text style={{ fontSize: 16 }}>Henüz favorinize eklediğiniz döküman yok.</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('Documents')} style={styles.buttons.login.container}>
-                        <Text style={styles.buttons.login.text}>Dökümanlar</Text>
-                    </TouchableOpacity>
-                </View>
-            );
-        }
-    
-        return null;
-    }
-    
-    
     return (
-        <View style={{flex: 1, backgroundColor: 'white', paddingTop: Device.osName === "iOS" ? 30 : 0}}>
-            <StaticHeader />
-            <View style={{flex: 1, marginTop: 30, justifyContent: 'center', paddingLeft: 20}}>                
-                <Text style={{fontSize: 30, fontWeight: 700}}>Favoriler</Text>
+        <LayoutLock title="Favorilerim">
+            <View>
+                <PdfViewer uri={selected} />
+                {formattedData.length <= 0 && <Text style={{fontSize: 18, marginTop: 20, textAlign: 'center'}}>Henüz favorilerinize döküman eklemediniz!</Text>}
+                <FlatList
+                    data={formattedData}
+                    renderItem={({item}) => <DocumentListItem item={item} setSelected={setSelected} />}
+                    keyExtractor={(item, index) => index.toString()}
+                    numColumns={WIDTH > 1250 ? 4 : 3}
+                    columnWrapperStyle={{ justifyContent: "space-between", marginBottom: 16 }}
+                />
             </View>
-            
-            <View style={{flex: 15, padding: 20, justifyContent: 'flex-start'}}>            
-                <ErrorMessage />
-                {auth &&
-                <View>
-                    <PdfViewer uri={selected} />
-                    <FlatList
-                        data={formattedData}
-                        renderItem={({item}) => <DocumentListItem item={item} setSelected={setSelected} />}
-                        keyExtractor={(item, index) => index.toString()}
-                        numColumns={WIDTH > 1250 ? 4 : 3}
-                        columnWrapperStyle={{ justifyContent: "space-between", marginBottom: 16 }}
-                    />
-                </View>}
-            </View>
-        </View>
+        </LayoutLock>
     );
 }
 

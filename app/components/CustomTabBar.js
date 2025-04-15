@@ -35,7 +35,7 @@ export default function CustomTabBar({ state, descriptors, navigation }) {
 
   return (
       <View style={styles.tabContainer}>
-        {state.routes.filter(route => !['Sustainability', 'Company', 'Documents', 'OfferForm'].includes(route.name)).map((route, index) => {
+        {state.routes.filter(route => !['Sustainability', 'Company', 'Documents', 'OfferForm', 'MeetRequest', 'MeetShowroomRequest'].includes(route.name)).map((route, index) => {
 
 
           const isFocused = state.index === index;

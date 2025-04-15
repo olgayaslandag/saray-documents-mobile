@@ -37,7 +37,7 @@ export default function DocumentListItem({ item, setSelected, setSearch, setOpen
                 "Sisteme giriş yapmalısınız!", 
                 [
                     {text: 'İptal', style: 'cancel'},
-                    {text: 'Giriş Yap', onPress: () => cleaner()},            
+                    {text: 'Giriş Yap', onPress: () => navigation.navigate('Auth')}
                 ],
                 {cancelable: false}
             );
@@ -64,14 +64,14 @@ export default function DocumentListItem({ item, setSelected, setSearch, setOpen
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.item.favIcon.container} onPress={HandleAddOrRemove}>
-                        <FontAwesome name={check && auth ? "star" : "star-o"} color="#EA0029" size={18} />
+                        <FontAwesome name={check && auth ? "bookmark" : "bookmark-o"} color="#EA0029" size={18} />
                     </TouchableOpacity>
                 </View>
             )}
 
             {!item.thumbnail && 
                 <View style={{width: imageSize}}></View>
-            }
+            }            
         </View>
     );
 }
@@ -99,6 +99,16 @@ const styles = StyleSheet.create({
         container: {
             position: 'absolute', 
             right: 0, 
+            top: 0, 
+            padding: 5, 
+            zIndex: 2
+        }
+      },
+
+      comIcon: {
+        container: {
+            position: 'absolute', 
+            left: 0, 
             top: 0, 
             padding: 5, 
             zIndex: 2
