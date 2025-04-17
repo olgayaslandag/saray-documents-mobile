@@ -4,8 +4,10 @@ import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { useEffect, useState } from "react";
 import LayoutLock from "./LayoutLock";
 import { Picker } from '@react-native-picker/picker';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { FontAwesome } from '@expo/vector-icons';
+import { MeetStoreApi } from "../api/MeetApi";
 
 
 
@@ -13,6 +15,8 @@ export default function MeetRequest() {
     const [form, setForm] = useState({name: '', email: '', phone: '', company_name: '', date: new Date()});
     const auth = useSelector(state => state.auth.value);    
     const [showDatePicker, setShowDatePicker] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const dispatch = useDispatch();
 
 
     useEffect(() => {
@@ -23,8 +27,31 @@ export default function MeetRequest() {
             phone: auth.phone || '',
             company_name: auth.company_name || '',
             date: new Date()
-        });        
+        });     
+        setSuccess(false)   
     }, [auth]);
+
+
+    async function HandleSubmit() {
+        const result = await MeetStoreApi({token: auth.token, data: form});
+        if(result.status)
+            setSuccess(true);
+
+        console.log(result)
+    }
+    
+    if(success) {
+        return (
+            <LayoutLock title="Toplantı Talebi">
+                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                    <View style={{marginBottom: 30}}>
+                        <FontAwesome name="check" size={100} color="#222" />
+                    </View>
+                    <Text style={{fontSize: 16, color: 'dark'}}>Talebiniz başarılı bir şekilde gönderildi!</Text>
+                </View>
+            </LayoutLock>
+        )
+    };
 
     return (
         <LayoutLock title="Toplantı Talebi">
@@ -34,7 +61,7 @@ export default function MeetRequest() {
                     <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Ad Soyad</Text>
                     <TextInput
                         style={styleAuth.form.item.input}
-                        onChange={val => setForm({...form, name: val})}
+                        onChangeText={val => setForm({...form, name: val})}
                         value={form.name}
                         placeholder="Adınızı soyadınızı girin"
                         autoComplete="name"
@@ -49,7 +76,7 @@ export default function MeetRequest() {
                     <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Eposta</Text>
                     <TextInput
                         style={styleAuth.form.item.input}
-                        onChange={val => setForm({...form, email: val})}
+                        onChangeText={val => setForm({...form, email: val})}
                         value={form.email}
                         placeholder="Eposta adresinizi girin"
                         autoComplete="email"
@@ -63,7 +90,7 @@ export default function MeetRequest() {
                     <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Telefon</Text>
                     <TextInput
                         style={styleAuth.form.item.input}
-                        onChange={val => setForm({...form, phone: val})}
+                        onChangeText={val => setForm({...form, phone: val})}
                         value={form.phone}
                         placeholder="Telefon numaranızı girin"
                         autoComplete="tel"
@@ -77,26 +104,12 @@ export default function MeetRequest() {
                     <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Şirket Adı</Text>
                     <TextInput
                         style={styleAuth.form.item.input}
-                        onChange={val => setForm({...form, company_name: val})}
+                        onChangeText={val => setForm({...form, company_name: val})}
                         value={form.company_name}
                         placeholder="Çalıştığınız Firma"
                         placeholderTextColor="black"
+                        inputMode="text"
                     />
-                </View>
-
-                {/* Showroom */}
-                <View style={{marginBottom: 20}}>
-                    <Text style={{ fontWeight: 700, fontSize: 16, marginBottom: 3 }}>Showroom</Text>
-                    <View style={{width: '100%', height: 50, borderWidth: 1, borderColor: '#C1C1C1', borderRadius: 10, padding: 0}}>
-                        <Picker
-                            selectedValue={form.showroom}
-                            onValueChange={(val, index) =>
-                                setForm({...form, showroom: val})
-                            }>
-                            <Picker.Item label="İstanbul Showroom" value="İstanbul Showroom" />
-                            <Picker.Item label="Tekirdağ Showroom" value="Tekirdağ Showroom" />                    
-                        </Picker>
-                    </View>
                 </View>
 
                 {/* Tarih */}
@@ -137,20 +150,18 @@ export default function MeetRequest() {
                 <View style={{marginBottom: 20}}>
                     <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Kişi Sayısı</Text>
                     <View style={{width: '100%', height: 50, borderWidth: 1, borderColor: '#C1C1C1', borderRadius: 10, padding: 0}}>
-                        <Picker
-                            selectedValue={form.people}
-                            onValueChange={(val, index) =>
-                                setForm({...form, people: val})
-                            }>
-                            <Picker.Item label="0-3 Kişi" value="0-3" />
-                            <Picker.Item label="4-6 Kişi" value="4-6" />
-                            <Picker.Item label="7-9 Kişi" value="7-9" />
-                            <Picker.Item label="10+ Kişi" value="10+" />
-                        </Picker>
+                        <TextInput
+                            style={styleAuth.form.item.input}
+                            onChangeText={val => setForm({...form, people: val})}
+                            value={form.people}
+                            placeholder="Kişi sayısı girin."
+                            placeholderTextColor="black"
+                            inputMode="numeric"
+                        />
                     </View>                
                 </View>
 
-                <TouchableOpacity style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', borderRadius: 10, padding: 10}}>
+                <TouchableOpacity onPress={HandleSubmit} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', borderRadius: 10, padding: 10}}>
                     <Text style={{fontSize: 16, color: 'white'}}>Toplantı Talebi Formu</Text>
                 </TouchableOpacity>
             </ScrollView>            

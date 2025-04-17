@@ -34,16 +34,19 @@ export default function MenuView() {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Offers'})}>
-                    <Text style={styles.button.text}>Teklifler</Text>
+                    <Text style={styles.button.text}>Tekliflerim</Text>
                 </TouchableOpacity>
-
-                
+            
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'MeetRequest'})}>
-                    <Text style={styles.button.text}>Toplantı Talebi</Text>
+                    <Text style={styles.button.text}>Toplantı Taleplerim</Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'MeetShowroomRequest'})}>
-                    <Text style={styles.button.text}>Showroom Randevu Talebi</Text>
+                    <Text style={styles.button.text}>Showroom Randevu Taleplerim</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Ticket'})}>
+                    <Text style={styles.button.text}>Destek Taleplerim</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Documents'})}>

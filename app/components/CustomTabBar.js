@@ -6,7 +6,9 @@ import DocumentIcon from "./icons/DocumentIcon";
 import SustainabilityIcon from "./icons/SustainabilityIcon";
 import CompanyIcon from "./icons/CompanyIcon";
 import NotificationIcon from "./icons/NotificationIcon";
-import FavoritesIcon from "./icons/FavoritesIcon";
+import BookmarkIcon from "./icons/BookmarkIcon";
+import OfferIcon from './icons/OfferIcon';
+import EnvelopeIcon from './icons/EnvelopeIcon';
 
 
 function GetIcon({ name, isFocused, callback }) {
@@ -16,8 +18,9 @@ function GetIcon({ name, isFocused, callback }) {
     Sustainability: SustainabilityIcon,
     Company: CompanyIcon,
     Notification: NotificationIcon,
-    Favorites: FavoritesIcon,
-    Offers: DocumentIcon,
+    Favorites: BookmarkIcon,
+    Offers: OfferIcon,
+    Ticket: EnvelopeIcon,
   };
 
   const IconComponent = icons[name] || HomeIcon;
@@ -35,7 +38,7 @@ export default function CustomTabBar({ state, descriptors, navigation }) {
 
   return (
       <View style={styles.tabContainer}>
-        {state.routes.filter(route => !['Sustainability', 'Company', 'Documents', 'OfferForm', 'MeetRequest', 'MeetShowroomRequest'].includes(route.name)).map((route, index) => {
+        {state.routes.filter(route => !['Sustainability', 'Company', 'Documents', 'OfferForm', 'OfferDetail', 'MeetRequest', 'MeetShowroomRequest', 'TicketDetail', 'TicketForm'].includes(route.name)).map((route, index) => {
 
 
           const isFocused = state.index === index;

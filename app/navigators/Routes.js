@@ -4,9 +4,13 @@ import FavoritesView from "../views/FavoritesView";
 import HomeView from "../views/HomeView";
 import MeetRequest from "../views/MeetRequest";
 import MeetShowroomRequest from "../views/MeetShowroomRequest";
+import OfferDetail from "../views/OfferDetail";
 import OfferFormView from "../views/OfferFormView";
 import OffersView from "../views/OffersView";
 import SustainabilityView from "../views/SustainabilityView";
+import TicketDetailView from "../views/TicketDetailView";
+import TicketFormView from "../views/TicketFormView";
+import TicketView from "../views/TicketView";
 
 const routes = [
     {
@@ -46,6 +50,11 @@ const routes = [
         component: OfferFormView
     },
     {
+        name: "OfferDetail",
+        label: "Teklif Detayı",
+        component: OfferDetail
+    },
+    {
         name: "MeetRequest",
         label: "Toplantı Talebi",
         component: MeetRequest
@@ -54,6 +63,21 @@ const routes = [
         name: "MeetShowroomRequest",
         label: "Showroom Randevu Talebi",
         component: MeetShowroomRequest
+    },
+    {
+        name: "Ticket",
+        label: "Bilet",
+        component: TicketView        
+    },   
+    {
+        name: "TicketDetail",
+        label: "Bilet Detayı",
+        component: TicketDetailView
+    },
+    {
+        name: "TicketForm",
+        label: "Bilet Formu",
+        component: TicketFormView
     }
 ];
 

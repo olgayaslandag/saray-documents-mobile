@@ -27,86 +27,34 @@ export default function OffersView(){
         })();
     }, [navigation]);
 
-    function FileViewer({ fileUrl }) {
-        const isImage = fileUrl.match(/\.(jpeg|jpg|png|gif)$/i); 
-        if (isImage) {
-            return (
-                <Image
-                    source={{ uri: fileUrl }}
-                    style={{ width: '100%', height: 'auto' }}
-                />
-            );
-        } else {
-            return (
-                <WebView
-                    source={{ uri: fileUrl }}
-                    style={{ width: '100%', height: 'auto' }}
-                />
-            );
-        }
-    }
+    
     
     function ListContent({ item }) {
         return (
-            <TouchableOpacity 
-                style={{flex: 1, justifyContent: 'space-between', flexDirection: 'row', paddingVertical: 10, borderBottomWidth: 1, borderColor: '#ccc'}}
-                onPress={() => setSelectedId(item.id)}>
-                <Text style={{fontSize: 18, fontWeight: 700, flex: 1, flexDirection: 'row'}}>#{item.id}</Text>
-                <View style={{flex: 3, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center'}}>
-                    <Text style={{fontSize: 18, marginRight: 5}}>
-                        {item.created_at_formatted}
-                    </Text>
-                    <FontAwesome name="eye" size={20} color="#666" />
+            <View style={{flex: 1, justifyContent: 'space-between', flexDirection: 'row', paddingVertical: 10, borderBottomWidth: 1, borderColor: '#ccc'}}>
+                <Text>{item.created_at_formatted}</Text>
+                <View style={{backgroundColor: 'black', borderRadius: 10, paddingVertical: 5, paddingHorizontal: 10, alignItems: 'center'}}>
+                    <TouchableOpacity style={{justifyContent: 'center'}} onPress={() => navigation.navigate('OfferDetail', {offerId: item.id})}>
+                        <Text style={{ marginBottom: 2, color: 'white', }}>
+                                Detay
+                        </Text>
+                    </TouchableOpacity>
                 </View>                    
-            </TouchableOpacity>                                
+            </View>                                
         )
     }    
 
     return (
         <LayoutLock title="Tekliflerim">
-            <TouchableOpacity onPress={() => navigation.navigate('OfferForm')} style={{...styles.buttons.login.container, alignSelf: 'flex-end'}}>
-                <Text style={styles.buttons.login.text}>Yeni Teklif</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('OfferForm')} style={{borderWidth: 1, borderColor: 'black', padding: 10, borderRadius: 10, marginBottom: 10, alignItems: 'center'}}>
+                <Text style={{fontSize: 16, fontWeight: 600}}>Yeni Teklif</Text>
             </TouchableOpacity>
             <FlatList
                 data={items}
                 renderItem={({item}) => <ListContent item={item} />}
                 keyExtractor={(item, index) => index}
                 style={{marginTop: 20}}
-            />
-
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={!!selectedId}
-                onRequestClose={() => {
-                    setSelectedId(null);
-                }}>
-                    <SafeAreaView style={{flex: 1}}>
-                        <TouchableOpacity onPress={() => setSelectedId(null)} style={{position: 'absolute', top: 0, right: 0, padding: 20, zIndex: 2}}>
-                            <FontAwesome name="times" size={30} color="black" />
-                        </TouchableOpacity>
-                        <FileViewer fileUrl={"https://drive.saray.com/api/offer/show/" + selectedId} />
-                    </SafeAreaView>                    
-            </Modal>
+            />            
         </LayoutLock>
     );
 }
-
-const styles = StyleSheet.create({
-    buttons: {
-        login: {
-            container: {
-                width: 120,
-                backgroundColor: 'black', 
-                borderRadius: 10, 
-                marginTop: 10,
-            },
-            text: {                
-                padding: 10,                 
-                fontSize: 16,
-                color: 'white',     
-                textAlign: 'center'  ,     
-            }            
-        }
-    }
-});

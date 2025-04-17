@@ -1,49 +1,32 @@
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, KeyboardAvoidingView, Platform } from "react-native";
 import * as Device from "expo-device"
 import StaticHeader from "../components/header/StaticHeader";
 import { useSelector } from "react-redux";
-import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
 import ErrorMessage from "../components/ErrorMessage";
 
 export default function LayoutLock({ children, title }) {
     const auth = useSelector(state => state.auth.value);
-    const navigation = useNavigation();
-    const [meet, setMeet] = useState(null)
 
     return (
         <View style={{flex: 1, backgroundColor: 'white', paddingTop: Device.osName === "iOS" ? 30 : 0}}>
             <StaticHeader />
             <View style={{flex: 1, marginTop: 30, justifyContent: 'center', paddingLeft: 20}}>                
-                <Text style={{fontSize: 30, fontWeight: 700}}>{title}</Text>
+                <Text style={{fontSize: 24, fontWeight: 700}}>{title}</Text>
             </View>
             <View style={{flex: 15, padding: 20, justifyContent: 'flex-start'}}>
                 <ErrorMessage />
                 {auth && (
                     <View style={{flex: 1}}>
-                        {children}
+                        <KeyboardAvoidingView
+                            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                            style={{ flex: 1 }}
+                            keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}>
+                            {children}
+                        </KeyboardAvoidingView>
                     </View>                
-                )}                
+                )}
+                <View style={{height: 100, width: '100%'}}></View>
             </View>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    buttons: {
-        login: {
-            container: {
-                width: 120,
-                backgroundColor: 'black', 
-                borderRadius: 10, 
-                marginTop: 10,
-            },
-            text: {                
-                padding: 10,                 
-                fontSize: 16,
-                color: 'white',     
-                textAlign: 'center'  ,     
-            }            
-        }
-    }
-});
