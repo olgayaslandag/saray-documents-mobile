@@ -2,7 +2,7 @@
   "expo": {
     "name": "Saray",
     "slug": "saray-mobile",
-    "version": "1.1.1",
+    "version": "1.1.3",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,7 +15,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.olgayaslandag.saraymobile",
-      "buildNumber": "10",
+      "buildNumber": "12",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -26,7 +26,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.saray.document",
-      "versionCode": 6
+      "versionCode": 7
     },
     "web": {
       "favicon": "./assets/favicon.png"

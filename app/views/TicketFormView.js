@@ -6,22 +6,27 @@ import styleAuth from "../styles/styleAuth";
 import { useSelector } from "react-redux";
 import { useNavigation, CommonActions } from "@react-navigation/native";
 import { FontAwesome } from '@expo/vector-icons';
+import { TicketStoreApi } from "../api/TicketApi";
 
 export default function TicketFormView() {
-    const [form, setForm] = useState({title: ''});
+    const [form, setForm] = useState({title: '', message: '', user_id: 0});
     const [success, setSuccess] = useState(false);
     const auth = useSelector(state => state.auth.value);
     const navigation = useNavigation();
 
     useEffect(() => {
+        setForm({title: '', message: '', user_id: auth.id});
         return () => {
             setSuccess(false)
         }        
-    }, []);
+    }, [auth]);
     
-    function HandleSubmit() {
-        console.log(form)
-        setSuccess(true);
+    async function HandleSubmit() {
+        const result = await TicketStoreApi({token: auth.token, data: form});
+        if(result.status) {
+            setSuccess(true);
+        }
+        console.log(result)
     }
 
     if(success) {
@@ -30,16 +35,16 @@ export default function TicketFormView() {
                 <View style={{marginBottom: 30}}>
                     <FontAwesome name="check" size={100} color="#222" />
                 </View>
-                <Text style={{fontSize: 18, fontWeight: 700}}>Teklif Başarıyla Gönderildi!</Text>
+                <Text style={{fontSize: 18, fontWeight: 700}}>Mesajınız Başarıyla Gönderildi!</Text>
                 <TouchableOpacity 
                     onPress={() => navigation.dispatch(
                         CommonActions.reset({
                             index: 0,
-                            routes: [{ name: 'Ticket' }],
+                            routes: [{ name: 'Home' }],
                         })
                     )} 
                     style={{backgroundColor: '#222', paddingVertical: 10, paddingHorizontal: 20, borderRadius: 10, marginTop: 10}}>
-                    <Text style={{fontSize: 16, color: 'white'}}>Destek Talepleri Görüntüle</Text>
+                    <Text style={{fontSize: 16, color: 'white'}}>Ana Ekrana Git</Text>
                 </TouchableOpacity>                
             </View>
         );

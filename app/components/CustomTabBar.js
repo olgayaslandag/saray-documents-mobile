@@ -20,7 +20,7 @@ function GetIcon({ name, isFocused, callback }) {
     Notification: NotificationIcon,
     Favorites: BookmarkIcon,
     Offers: OfferIcon,
-    Ticket: EnvelopeIcon,
+    TicketForm: EnvelopeIcon,
   };
 
   const IconComponent = icons[name] || HomeIcon;
@@ -38,7 +38,7 @@ export default function CustomTabBar({ state, descriptors, navigation }) {
 
   return (
       <View style={styles.tabContainer}>
-        {state.routes.filter(route => !['Sustainability', 'Company', 'Documents', 'OfferForm', 'OfferDetail', 'MeetRequest', 'MeetShowroomRequest', 'TicketDetail', 'TicketForm'].includes(route.name)).map((route, index) => {
+        {state.routes.filter(route => !['Sustainability', 'Company', 'Documents', 'OfferForm', 'OfferDetail', 'MeetRequest', 'MeetShowroomRequest', 'TicketDetail', 'Ticket', 'TicketForm'].includes(route.name)).map((route, index) => {
 
 
           const isFocused = state.index === index;

@@ -32,7 +32,9 @@ export default function OffersView(){
     function ListContent({ item }) {
         return (
             <View style={{flex: 1, justifyContent: 'space-between', flexDirection: 'row', paddingVertical: 10, borderBottomWidth: 1, borderColor: '#ccc'}}>
-                <Text>{item.created_at_formatted}</Text>
+                <View>
+                    <Text>{item.created_at_formatted}</Text>
+                </View>                
                 <View style={{backgroundColor: 'black', borderRadius: 10, paddingVertical: 5, paddingHorizontal: 10, alignItems: 'center'}}>
                     <TouchableOpacity style={{justifyContent: 'center'}} onPress={() => navigation.navigate('OfferDetail', {offerId: item.id})}>
                         <Text style={{ marginBottom: 2, color: 'white', }}>
