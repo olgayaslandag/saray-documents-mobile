@@ -14,7 +14,9 @@ export default function TicketFormView() {
     const auth = useSelector(state => state.auth.value);
     const navigation = useNavigation();
 
+    
     useEffect(() => {
+        if (!auth) return;
         setForm({title: '', message: '', user_id: auth.id});
         return () => {
             setSuccess(false)
@@ -31,7 +33,7 @@ export default function TicketFormView() {
 
     if(success) {
         return (
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <LayoutLock style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                 <View style={{marginBottom: 30}}>
                     <FontAwesome name="check" size={100} color="#222" />
                 </View>
@@ -46,7 +48,7 @@ export default function TicketFormView() {
                     style={{backgroundColor: '#222', paddingVertical: 10, paddingHorizontal: 20, borderRadius: 10, marginTop: 10}}>
                     <Text style={{fontSize: 16, color: 'white'}}>Ana Ekrana Git</Text>
                 </TouchableOpacity>                
-            </View>
+            </LayoutLock>
         );
     }
 

@@ -1,4 +1,4 @@
-package com.olgayaslandag.saraymobile
+package com.saray.aluminium
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

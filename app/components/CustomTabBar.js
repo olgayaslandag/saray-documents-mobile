@@ -20,7 +20,7 @@ function GetIcon({ name, isFocused, callback }) {
     Notification: NotificationIcon,
     Favorites: BookmarkIcon,
     Offers: OfferIcon,
-    TicketForm: EnvelopeIcon,
+    TicketForm: EnvelopeIcon,    
   };
 
   const IconComponent = icons[name] || HomeIcon;
@@ -34,49 +34,60 @@ function GetIcon({ name, isFocused, callback }) {
 
 
 export default function CustomTabBar({ state, descriptors, navigation }) {
-  
+  const visibleRoutes = state.routes.filter(
+    route =>
+      ![
+        "Sustainability",
+        "Company",
+        "Documents",
+        "OfferForm",
+        "OfferDetail",
+        "MeetRequest",
+        "MeetShowroomRequest",
+        "TicketDetail",
+        "Ticket",
+      ].includes(route.name)
+  );
 
   return (
-      <View style={styles.tabContainer}>
-        {state.routes.filter(route => !['Sustainability', 'Company', 'Documents', 'OfferForm', 'OfferDetail', 'MeetRequest', 'MeetShowroomRequest', 'TicketDetail', 'Ticket', 'TicketForm'].includes(route.name)).map((route, index) => {
+    <View style={styles.tabContainer}>
+      {visibleRoutes.map((route, visibleIndex) => {
+        const isFocused = state.routes[state.index].key === route.key;
 
+        const onPress = () => {
+          const event = navigation.emit({
+            type: "tabPress",
+            target: route.key,
+            canPreventDefault: true,
+          });
 
-          const isFocused = state.index === index;
-  
-          const onPress = () => {
-            const event = navigation.emit({
-              type: "tabPress",
-              target: route.key,
-              canPreventDefault: true,
-            });
-  
-            if (!isFocused && !event.defaultPrevented) {
-              navigation.navigate(route.name);
-            }
-          };
-                      
-          return (
-            <View key={index} style={styles.tab}>
-                <View
-                style={{
-                    backgroundColor: isFocused ? "red" : "transparent",
-                    borderRadius: 30,
-                    padding: 10,
-                    borderWidth: 2, 
-                    borderColor: isFocused ? "red" : "transparent",
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}
-                >    
-                    <GetIcon isFocused={isFocused} name={route.name} callback={onPress} />
-                              
-                </View>
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name);
+          }
+        };
+
+        return (
+          <View key={route.key} style={styles.tab}>
+            <View
+              style={{
+                backgroundColor: isFocused ? "red" : "transparent",
+                borderRadius: 30,
+                padding: 10,
+                borderWidth: 2,
+                borderColor: isFocused ? "red" : "transparent",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <GetIcon isFocused={isFocused} name={route.name} callback={onPress} />
             </View>
-          );
-        })}
-      </View>
-    );
-  }
+          </View>
+        );
+      })}
+    </View>
+  );
+}
+
 
 const styles = {
     tabContainer: {

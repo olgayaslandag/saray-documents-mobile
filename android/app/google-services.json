@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:843496467444:android:775f6a7766034f2bcba7a1",
+        "mobilesdk_app_id": "1:843496467444:android:4d235e3c3ea0ddfdcba7a1",
         "android_client_info": {
-          "package_name": "com.olgayaslandag.saraymobile"
+          "package_name": "com.saray.aluminium"
         }
       },
       "oauth_client": [],
