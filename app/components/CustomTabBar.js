@@ -14,7 +14,7 @@ import EnvelopeIcon from './icons/EnvelopeIcon';
 function GetIcon({ name, isFocused, callback }) {
   const icons = {
     Home: HomeIcon,
-    Documents: HomeIcon || DocumentIcon,
+    Documents: DocumentIcon,
     Sustainability: SustainabilityIcon,
     Company: CompanyIcon,
     Notification: NotificationIcon,
@@ -39,7 +39,7 @@ export default function CustomTabBar({ state, descriptors, navigation }) {
       ![
         "Sustainability",
         "Company",
-        "Documents",
+        //"Documents",
         "OfferForm",
         "OfferDetail",
         "MeetRequest",

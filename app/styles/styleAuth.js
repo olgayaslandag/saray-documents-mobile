@@ -25,6 +25,15 @@ const styleAuth = StyleSheet.create({
                 borderColor: '#C1C1C1',
                 borderRadius: 10,
                 color: 'black',                
+            },
+            
+            inputError: {
+                height: 50,
+                borderWidth: 1,
+                padding: 10,
+                borderColor: 'red',
+                borderRadius: 10,
+                color: 'red',                
             }
         },
 

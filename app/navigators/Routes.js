@@ -16,7 +16,7 @@ const routes = [
     {
         name: "Home",
         label: "Ana Ekran",
-        component: DocumentsView || HomeView,
+        component: HomeView,
         options: {headerShown: false}
     },
     {

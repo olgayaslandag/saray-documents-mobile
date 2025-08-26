@@ -10,18 +10,27 @@ import styleAuth from "../../styles/styleAuth";
 
 export default function RegisterView() {
     const [form, setForm] = useState({name: '', email: '', password: '', company_name: '', phone: ''});
+    const [errors, setErrors] = useState([]);
+    const [process, setProcess] = useState(false);
     const [showConsentModal, setShowConsentModal] = useState(false);
     const dispatch = useDispatch();
     const navigation = useNavigation();
 
     async function HandleLogin() {
+        if(!form.name || !form.email || !form.password || !form.company_name || !form.phone) {
+            Alert.alert("Hata!", "Lütfen tüm alanları doldurunuz.");
+            return;
+        }
+        setProcess(true);
         const result = await RegisterApi(form);
-        console.log(result)
+        setProcess(false);
         if(result.status)
             dispatch(login(result.data));
-
-        if(!result.status)
-            Alert.alert("bulunamadı!");
+        
+        if(!result.status) {
+            setErrors(result.result);
+            Alert.alert("Hata!", result.message);
+        }            
     }
 
     return (
@@ -31,27 +40,39 @@ export default function RegisterView() {
                 {/* Adsoyad */}
                 <View style={styleAuth.form.item.container}>
                     <TextInput
-                        style={styleAuth.form.item.input}
-                        onChangeText={val => setForm({...form, name: val})}
+                        style={errors.name ? styleAuth.form.item.inputError : styleAuth.form.item.input}
+                        onChangeText={val => {
+                            setForm({...form, name: val})
+                            if (errors.name) {
+                                setErrors({...errors, name: null});
+                            }
+                        }}
                         value={form.name}
                         placeholder="Adınızı soyadınızı girin"
                         autoComplete="name"
                         placeholderTextColor="black"
                         inputMode="text"
                     />
+                    {errors.name && <Text style={styles.errorMessage}>{errors.name ?? null}</Text>}
                 </View>
                 
                 {/* Eposta */}
                 <View style={styleAuth.form.item.container}>
                     <TextInput
-                        style={styleAuth.form.item.input}
-                        onChangeText={val => setForm({...form, email: val})}
+                        style={errors.email ? styleAuth.form.item.inputError : styleAuth.form.item.input}
+                        onChangeText={val => {
+                            setForm({...form, email: val})
+                            if (errors.email) {
+                                setErrors({...errors, email: null});
+                            }
+                        }}
                         value={form.email}
                         placeholder="Eposta adresinizi girin"
                         autoComplete="email"
                         placeholderTextColor="black"
                         inputMode="email"
                     />
+                    {errors.email && <Text style={styles.errorMessage}>{errors.email ?? null}</Text>}
                 </View>
 
                 {/* Telefon */}
@@ -81,14 +102,20 @@ export default function RegisterView() {
                 {/* Şifre */}
                 <View style={styleAuth.form.item.container}>
                     <TextInput
-                        style={styleAuth.form.item.input}
-                        onChangeText={val => setForm({...form, password: val})}
+                        style={errors.passsword ? styleAuth.form.item.inputError : styleAuth.form.item.input}
+                        onChangeText={val => {
+                            setForm({...form, password: val})
+                            if (errors.passsword) {
+                                setErrors({...errors, passsword: null});
+                            }
+                        }}
                         value={form.password}
                         placeholder="Şifrenizi girin"
                         autoComplete="current-password"
                         secureTextEntry={true}
                         placeholderTextColor="black"
                     />
+                    {errors.password && <Text style={styles.errorMessage}>{errors.passsword ?? null}</Text>}
                 </View>                
 
                 <Text style={{ fontSize: 14, marginTop: 10, marginBottom: 20 }}>
@@ -99,7 +126,7 @@ export default function RegisterView() {
                     belirtilen Rıza Metni ile onay veriyorum.
                 </Text>
 
-                <TouchableOpacity onPress={HandleLogin} activeOpacity={0.8} style={{marginBottom: 10}}>
+                <TouchableOpacity onPress={HandleLogin} activeOpacity={0.8} style={{marginBottom: 10}} disabled={process}>
                     <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>Kayıt</Text>
                 </TouchableOpacity>        
 
@@ -163,3 +190,12 @@ export default function RegisterView() {
         </LayoutAuth>
     );
 }
+
+const styles = StyleSheet.create({
+    errorMessage: {
+        color: 'red',
+        fontSize: 14,
+        marginTop: 10,
+        marginBottom: 10,
+    }
+});
