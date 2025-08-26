@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearCode } from "../../../store/authSlice";
 
 
-export default function EnterCode() {
+export default function EnterCode({ route }) {
   const [values, setValues] = useState(["", "", "", ""]);
   const [btnShow, setBtnShow] = useState(false);
   const [enteredCode, setEnteredCode] = useState(null)
   const inputRefs = [useRef(), useRef(), useRef(), useRef()];  
   const code = useSelector(state => state.auth.code);
+  const { email } = route.params || '';
 
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ export default function EnterCode() {
 
   function HandleConfirm() {
     if(Number(enteredCode) === Number(code)) {
-        navigation.navigate('Forget', {screen: 'EnterPass'})
+        navigation.navigate('Forget', {screen: 'EnterPass', params: {email}})
         dispatch(clearCode())
     } else {
         Alert.alert("", "Doğru kodu girmediniz! ")

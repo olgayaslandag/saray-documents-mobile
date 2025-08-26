@@ -110,7 +110,7 @@ export const ForgetApi = async (data) => {
             return {
                 status: false,
                 result: error.response.data.errors ? error.response.data.errors : null,
-                message: typeof error.response.data === "string" ? error.response.data : "Gönderim işlemi başarısız!"
+                message: typeof error.response.data === "string" ? error.response.data : "Sıfırlama işlemi başarısız!"
             }
         }else if(error.request){
             return {
@@ -189,6 +189,36 @@ export const DeleteAuthApi = async (token, id) => {
             return {
                 status: false,
                 data: null,
+                message: "Bir sorun oluştu!"
+            }
+        }
+    }
+}
+
+export const ChangePasswordApi = async (data) => {
+    try {
+        const result = await axios.post('auth/changePass', JSON.stringify(data));
+        return {
+            status: true,            
+            message: result.data,
+        };
+    } catch(error){
+        if(error.response){
+            return {
+                status: false,
+                result: error.response.data.errors ? error.response.data.errors : null,
+                message: typeof error.response.data === "string" ? error.response.data : "Sıfırlama işlemi başarısız!"
+            }
+        }else if(error.request){
+            return {
+                status: false,
+                result: null,
+                message: error.message
+            }
+        }else{
+            return {
+                status: false,
+                result: null,
                 message: "Bir sorun oluştu!"
             }
         }

@@ -34,6 +34,13 @@ const styleAuth = StyleSheet.create({
                 borderColor: 'red',
                 borderRadius: 10,
                 color: 'red',                
+            },
+
+            errorMessage: {
+                color: 'red',
+                fontSize: 14,
+                marginTop: 10,
+                marginBottom: 10,
             }
         },
 

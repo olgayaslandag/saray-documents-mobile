@@ -11,6 +11,8 @@ import { setCode } from "../../../store/authSlice";
 export default function EnterEmail() {
     const [form, setForm] = useState({email: '', password: '', code: ''});
     const [systemCode, setSystemCode] = useState("");
+    const [process, setProcess] = useState(false);
+    const [errors, setErrors] = useState({});
     const navigation = useNavigation();
     const dispatch = useDispatch();
 
@@ -22,37 +24,53 @@ export default function EnterEmail() {
     }, []);
 
     async function HandleForget() {
-        const result = await ForgetApi(form);
-        
-        if(result.status)
-            dispatch(setCode(systemCode));
-        
-        if(!result.status)
-            Alert.alert(result.message);
+        if(!form.email) {
+            Alert.alert("Hata!", "Lütfen tüm alanları doldurunuz!");
+            return;
+        }
 
-        Alert.alert("tebrikler", result.message);
-        if(result.status)
-            navigation.navigate('Forget', {screen: 'EnterCode'})
+        setProcess(true);
+        const result = await ForgetApi(form);
+        setProcess(false);
+        
+        if(!result.status) {
+            setErrors(result.result);
+            Alert.alert("Hata!", result.message);
+            return;
+        }            
+         
+        dispatch(setCode(systemCode));
+        Alert.alert("Tebrikler", result.message);
+        navigation.navigate('Forget', {
+            screen: 'EnterCode', 
+            params: {email: form.email || 'deneme'}
+        });
     }
 
 
     return (
         <LayoutForget>
-            <Text style={styleAuth.form.title}>Giriş Yapın</Text>
+            <Text style={styleAuth.form.title}>Şifremi Sıfırla</Text>
             <View style={styleAuth.form.item.container}>
                 <TextInput
-                    style={styleAuth.form.item.input}
-                    onChangeText={val => setForm({...form, email: val})}
+                    style={errors.email ? styleAuth.form.item.inputError : styleAuth.form.item.input}
+                    onChangeText={val => {
+                        setForm({...form, email: val})
+                        if (errors.email) {
+                            setErrors({...errors, email: null});
+                        }
+                    }}
                     value={form.email}
                     placeholder="Eposta adresinizi girin"
                     autoComplete="email"
                     placeholderTextColor="black"
                     inputMode="email"
                 />
+                {errors.email && <Text style={styleAuth.form.item.errorMessage}>{errors.email ?? null}</Text>}
             </View>
             
 
-            <TouchableOpacity onPress={HandleForget} activeOpacity={0.8} style={{marginBottom: 10}}>
+            <TouchableOpacity onPress={HandleForget} activeOpacity={0.8} style={{marginBottom: 10}} disabled={process}>
                 <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>Şifremi Sıfırla</Text>
             </TouchableOpacity>        
 
