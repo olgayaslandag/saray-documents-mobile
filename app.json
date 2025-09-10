@@ -2,7 +2,7 @@
   "expo": {
     "name": "Saray",
     "slug": "saray-mobile",
-    "version": "1.2.3",
+    "version": "1.2.6",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,12 +18,12 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.saray.aluminium",
-      "versionCode": 3
+      "versionCode": 6
     },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.olgayaslandag.saraymobile",
-      "buildNumber": "19",
+      "buildNumber": "22",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       },
@@ -40,6 +40,13 @@
         "expo-document-picker",
         {
           "iCloudContainerEnvironment": "Production"
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#ffffff"
         }
       ]
     ],

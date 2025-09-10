@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import store from './app/store'
 import { Provider } from 'react-redux'
-import { StatusBar, Text } from "react-native";
+import { StatusBar, Text, SafeAreaView } from "react-native";
 
 
 import { useFonts } from 'expo-font';
@@ -49,17 +49,19 @@ export default function App() {
   return (
     <Provider store={store}>    
       <SafeAreaProvider>
-        <Synchronize />
-        <StatusBar style="auto" hidden={true} />
-        <NavigationContainer onReady={onLayoutRootView}>
-          <Drawer.Navigator screenOptions={{ headerShown: false }} drawerContent={(props) => <DrawerCustomContent {...props} />}>
-            <Drawer.Screen name="Main" component={TabNavigator} />
-            {routes.map((route, index) => (
-                <Drawer.Screen key={index} name={route.name} component={route.component} />
-            ))}
-            <Drawer.Screen name="Auth" component={AuthNavigator} />          
-          </Drawer.Navigator>
-        </NavigationContainer>
+        <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+          <Synchronize />
+          <StatusBar style="auto" hidden={true} />
+          <NavigationContainer onReady={onLayoutRootView}>
+            <Drawer.Navigator screenOptions={{ headerShown: false }} drawerContent={(props) => <DrawerCustomContent {...props} />}>
+              <Drawer.Screen name="Main" component={TabNavigator} />
+              {routes.map((route, index) => (
+                  <Drawer.Screen key={index} name={route.name} component={route.component} />
+              ))}
+              <Drawer.Screen name="Auth" component={AuthNavigator} />          
+            </Drawer.Navigator>
+          </NavigationContainer>
+        </SafeAreaView>
       </SafeAreaProvider>
     </Provider>
   );
