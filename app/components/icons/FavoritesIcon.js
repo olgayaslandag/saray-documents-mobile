@@ -1,6 +1,6 @@
 import Svg, { Path, G } from "react-native-svg";
 
-export default function FavoritesIcon({ fill, width, height }) {
+export default function FavoritesIcon({ fill, width, height }) {    
     return (        
         <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width={width} height={height}>            
             <G>

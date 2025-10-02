@@ -1,4 +1,4 @@
-import { View, Text, KeyboardAvoidingView, Platform } from "react-native";
+import { View, Text, KeyboardAvoidingView, Platform, SafeAreaView } from "react-native";
 import * as Device from "expo-device"
 import StaticHeader from "../components/header/StaticHeader";
 import { useSelector } from "react-redux";
@@ -8,9 +8,9 @@ export default function LayoutLock({ children, title }) {
     const auth = useSelector(state => state.auth.value);
 
     return (
-        <View style={{flex: 1, backgroundColor: 'white', paddingTop: Device.osName === "iOS" ? 30 : 0}}>
+        <SafeAreaView style={{flex: 1, backgroundColor: 'white', paddingTop: Device.osName === "iOS" ? 30 : 0}}>
             <StaticHeader />
-            <View style={{flex: 1, marginTop: 30, justifyContent: 'center', paddingLeft: 20}}>                
+            <View style={{flex: 1, marginTop: 5, justifyContent: 'center', paddingLeft: 20}}>                
                 <Text style={{fontSize: 24, fontWeight: 700}}>{title}</Text>
             </View>
             <View style={{flex: 15, padding: 20, justifyContent: 'flex-start'}}>
@@ -27,6 +27,6 @@ export default function LayoutLock({ children, title }) {
                 )}
                 <View style={{height: 100, width: '100%'}}></View>
             </View>
-        </View>
+        </SafeAreaView>
     );
 }

@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, Image } from "react-native";
+import { StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
+import MenuButton from "../icons/MenuButton";
+import { useNavigation } from "@react-navigation/native";
 
 export default function UserAvatar() {
     const [message, setMessage] = useState("");
     const auth = useSelector(state => state.auth.value);
+    const navigation = useNavigation();
     useEffect(() => {
         const currentHour = new Date().getHours();
 
@@ -20,6 +23,16 @@ export default function UserAvatar() {
     }, []);
     
 
+    return (
+        <>
+            <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginBottom: 15}}>
+                <MenuButton />
+            </TouchableOpacity>              
+            <Text style={{fontSize: 20, marginBottom: 4}}>{message},</Text>
+            <Text style={{fontSize: 20, fontWeight: 600}}>{auth?.name ?? 'Saray Alüminyum'}</Text>
+        </>
+    );
+    
     return (
         <>
             <Image source={require('../../../assets/user-icon.jpg')} alt="" size={70} style={styles.image} borderRadius={100} />

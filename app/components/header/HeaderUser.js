@@ -13,11 +13,7 @@ export default function HeaderUser() {
             <View style={{width: '70%'}}>
                 <UserAvatar />
             </View>
-            <View style={{width: '30%', alignItems: 'flex-end'}}>
-                <TouchableOpacity onPress={() => navigation.openDrawer()}>
-                    <MenuButton />
-                </TouchableOpacity>              
-            </View>
+            
         </View>
     );
 }

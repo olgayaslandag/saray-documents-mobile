@@ -1,11 +1,18 @@
 import MenuButton from "../icons/MenuButton";
-import { TouchableOpacity, View, StyleSheet } from "react-native";
+import { TouchableOpacity, View, StyleSheet, SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import * as Device from "expo-device"
 
 export default function StaticHeader() {
     const navigation = useNavigation();
     
+    return (
+        <SafeAreaView style={{marginTop: 40, flexDirection: 'row', paddingHorizontal: 18, paddingTop: Device.osName === "iOS" ? 30 : 0}}>
+            <TouchableOpacity onPress={() => navigation.openDrawer()}>
+                <MenuButton />
+            </TouchableOpacity> 
+        </SafeAreaView>
+    );
     return (
         <View 
             borderRadius={30} 

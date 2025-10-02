@@ -40,12 +40,14 @@ export default function CustomTabBar({ state, descriptors, navigation }) {
         "Sustainability",
         "Company",
         //"Documents",
+        "Offers",
         "OfferForm",
         "OfferDetail",
         "MeetRequest",
         "MeetShowroomRequest",
         "TicketDetail",
         "Ticket",
+        //"TicketForm"
       ].includes(route.name)
   );
 

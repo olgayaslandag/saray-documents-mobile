@@ -1,44 +1,51 @@
 import { useRef } from "react";
-import { StyleSheet, FlatList, Dimensions, Image, Text, View } from "react-native";
+import { StyleSheet, FlatList, Dimensions, Image, Text, View, TouchableOpacity, Linking } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import pixelDp from "../libs/pixelDp";
+import useInAppBrowser from "../libs/useInAppBrowser";
 
 const DATA = [
     {
         id: 1,
         title: 'Alüminyum Ekstrüzyon',
         img: require('../../assets/home/home-ekstruzyon.jpg'),
-        bgimage: require('../../assets/home/bg/home-bg-ekstruzyon.jpg')
+        bgimage: require('../../assets/home/bg/home-bg-ekstruzyon.jpg'),
+        permalink: "https://saray.com/anasayfa/aluminyum-ekstruzyon/"
     },
     {
         id: 3,
         title: 'PVC Sistemleri',
         img: require('../../assets/home/home-pvc.jpg'),
-        bgimage: require('../../assets/home/bg/home-bg-pvc.jpg')
+        bgimage: require('../../assets/home/bg/home-bg-pvc.jpg'),
+        permalink: "https://saray.com/anasayfa/pvc-sistemleri/"
     },
     {
         id: 4,
         title: 'Kompozit Panel',
         img: require('../../assets/home/home-kompozit.jpg'),
-        bgimage: require('../../assets/home/bg/home-bg-kompozit.jpg')
+        bgimage: require('../../assets/home/bg/home-bg-kompozit.jpg'),
+        permalink: "https://saray.com/anasayfa/kompozit-panel/"
     },
     {
         id: 5,
         title: 'Panjur ve Kepenk Sistemleri',
         img: require('../../assets/home/home-panjur.jpg'),
-        bgimage: require('../../assets/home/bg/home-bg-panjur.jpg')
+        bgimage: require('../../assets/home/bg/home-bg-panjur.jpg'),
+        permalink: "https://saray.com/anasayfa/panjur-sistemleri/"
     },
     {
         id: 6,
         title: 'Turizm',
         img: require('../../assets/home/home-turizm.jpg'),
-        bgimage: require('../../assets/home/bg/home-bg-turizm.jpg')
+        bgimage: require('../../assets/home/bg/home-bg-turizm.jpg'),
+        permalink: "https://saray.com/anasayfa/turizm/"
     },
     {
         id: 7,
         title: 'Enerji',
         img: require('../../assets/home/home-enerji.jpg'),
-        bgimage: require('../../assets/home/bg/home-bg-enerji.jpg')
+        bgimage: require('../../assets/home/bg/home-bg-enerji.jpg'),
+        permalink: "https://saray.com/anasayfa/enerji/"
     },
 ];
 
@@ -49,15 +56,17 @@ const ITEM_WIDTH =  width * 0.8;
 console.log(width)
 
 
-function Item({ title, index, img }) {
+function Item({ title, index, img, permalink }) {
+    const openLink = useInAppBrowser();    
+
     return (
-        <View style={{...styles.item, marginRight: index === DATA.length-1 ? 20 : 15, marginLeft: index===0 ? 20 : 0}}>
+        <TouchableOpacity onPress={() => openLink(permalink)} style={{...styles.item, marginRight: index === DATA.length-1 ? 20 : 15, marginLeft: index===0 ? 20 : 0}}>
             <Image source={img} alt={title} style={styles.image} resizeMode="cover"></Image>
             
             <LinearGradient colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.4)']} style={{...styles.overlayTitle, width: ITEM_WIDTH}}>
                 <Text style={styles.title}>{title}</Text>
             </LinearGradient>            
-        </View>
+        </TouchableOpacity>
     );
 }
 export default function HomeSlider({ setActive }) {
@@ -76,7 +85,7 @@ export default function HomeSlider({ setActive }) {
         <View style={{flex: 1}}>
             <FlatList
                 data={DATA}
-                renderItem={({item, index}) => <Item index={index} title={item.title} img={item.img} />}
+                renderItem={({item, index}) => <Item index={index} title={item.title} img={item.img} permalink={item.permalink} />}
                 keyExtractor={(item, index) => index}
                 horizontal
                 showsHorizontalScrollIndicator={false}

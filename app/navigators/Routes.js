@@ -20,6 +20,11 @@ const routes = [
         options: {headerShown: false}
     },
     {
+        name: "Documents",
+        label: "Dökümanlar",
+        component: DocumentsView
+    },
+    {
         name: "Favorites",
         label: "Favoriler",
         component: FavoritesView
@@ -28,12 +33,7 @@ const routes = [
         name: "Offers",
         label: "Teklifler",
         component: OffersView
-    },
-    {
-        name: "Documents",
-        label: "Dökümanlar",
-        component: DocumentsView
-    },
+    },    
     {
         name: "Sustainability",
         label: "Sürdürülebilirlik",

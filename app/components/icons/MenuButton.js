@@ -4,7 +4,7 @@ export default function MenuButton({ fill="black", width=30, height=30 }) {
 
     return (
         <Svg width={width} height={height} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.74 22.28">        
-            <G>
+            <G transform="scale(-1,1) translate(-31.74,0)">
                 <G>
                 <Path fill={fill} d="M30.23,12.92c.98-.16,1.65-1.09,1.49-2.07-.12-.76-.72-1.36-1.49-1.49h-.02l-28.8.02h-.06c-.97.26-1.54,1.25-1.29,2.21.18.68.74,1.2,1.44,1.32h28.74Z"/>
                 <Path fill={fill} d="M9.34,3.56h20.89c.88-.14,1.52-.9,1.5-1.78.02-.88-.63-1.64-1.5-1.77h-.02L9.25.02h-.06c-.84.21-1.43.98-1.38,1.85.03.86.68,1.57,1.53,1.69"/>

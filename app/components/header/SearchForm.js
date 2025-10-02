@@ -20,7 +20,7 @@ export default function SearchForm() {
         <View style={styles. container}>
             {!search && !open && (
                 <View style={{position: 'relative', width: '100%'}}>                
-                    <View style={{width: '100%', position: 'relative', zIndex: 8}}>
+                    <View style={{width: '100%', position: 'relative', zIndex: 8, marginLeft: 5}}>
                         <SearchFormInput search={search} setSearch={setSearch} order={1} setOpen={setOpen} />
                     </View>
 
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         paddingBottom: 0, 
         flex: 1, 
         justifyContent: 'center', 
-        paddingTop: 30,        
+        paddingTop: 0,        
     },
     modal: {
         container: {
