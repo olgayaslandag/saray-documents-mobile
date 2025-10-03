@@ -3,7 +3,7 @@ import { ImageBackground, Dimensions, View, Text, StyleSheet } from "react-nativ
 import HeaderUser from "../components/header/HeaderUser";
 import SearchForm from "../components/header/SearchForm";
 import HomeSlider from "../components/HomeSlider";
-//import PushNotification from "../components/PushNotification";
+import PushNotification from "../components/PushNotification";
 import { useDispatch } from "react-redux";
 import { initializeAuth } from "../store/authSlice";
 import { initializeFavs } from "../store/favSlice";
@@ -35,7 +35,7 @@ export default function HomeScreen() {
         <Text style={styles.content.title} >Yenilikler</Text>
         <HomeSlider setActive={setActive} />
       </View>
-      {/* <PushNotification /> */}
+      <PushNotification />
     </ImageBackground>
   );
 }

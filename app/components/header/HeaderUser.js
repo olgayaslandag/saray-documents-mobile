@@ -12,8 +12,7 @@ export default function HeaderUser() {
         <View style={{marginTop: 40, flexDirection: 'row', paddingHorizontal: 3, paddingTop: Device.osName === "iOS" ? 30 : 0}}>
             <View style={{width: '70%'}}>
                 <UserAvatar />
-            </View>
-            
+            </View>            
         </View>
     );
 }

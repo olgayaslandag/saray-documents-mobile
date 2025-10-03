@@ -27,39 +27,58 @@ export default function MenuView() {
             <View style={{flex: 1, justifyContent: 'flex-start'}}>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Home'})}>
                     <Text style={styles.button.text}>Ana Ekran</Text>
-                </TouchableOpacity>                
-
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Favorites'})}>
-                    <Text style={styles.button.text}>Favorilerim</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Offers'})}>
-                    <Text style={styles.button.text}>Tekliflerim</Text>
-                </TouchableOpacity>
-            
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'MeetRequest'})}>
-                    <Text style={styles.button.text}>Toplantı Taleplerim</Text>
-                </TouchableOpacity>
-                
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'MeetShowroomRequest'})}>
-                    <Text style={styles.button.text}>Showroom Randevu Taleplerim</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Ticket'})}>
-                    <Text style={styles.button.text}>Destek Taleplerim</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Documents'})}>
-                    <Text style={styles.button.text}>Dökümanlar</Text>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Company'})}>
+                    <Text style={styles.button.text}>Kurumsal</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Sustainability'})}>
                     <Text style={styles.button.text}>Sürdürülebilirlik</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Company'})}>
-                    <Text style={styles.button.text}>Kurumsal</Text>
+
+                <View style={{marginTop: 10, marginBottom: 10, borderTopWidth: 1, borderColor: '#ccc'}}></View>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'MeetRequest'})}>
+                    <Text style={styles.button.text}>Toplantı Taleplerim</Text>
                 </TouchableOpacity>
+
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'MeetShowroomRequest'})}>
+                    <Text style={styles.button.text}>Showroom Randevu Taleplerim</Text>
+                </TouchableOpacity>                
+
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Offers'})}>
+                    <Text style={styles.button.text}>Tekliflerim</Text>
+                </TouchableOpacity>
+
+
+
+                <View style={{marginTop: 10, marginBottom: 10, borderTopWidth: 1, borderColor: '#ccc'}}></View>
+
+                
+            
+                
+                
+                
+
+                
+
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Documents'})}>
+                    <Text style={styles.button.text}>Dökümanlar</Text>
+                </TouchableOpacity>  
+
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Favorites'})}>
+                    <Text style={styles.button.text}>Favorilerim</Text>
+                </TouchableOpacity> 
+
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Ticket'})}>
+                    <Text style={styles.button.text}>Destek Taleplerim</Text>
+                </TouchableOpacity>             
+
+                <View style={{marginTop: 10, marginBottom: 10, borderTopWidth: 1, borderColor: '#ccc'}}></View>
+
+
+                
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Auth')}>
                     <Text style={styles.button.text}>{auth ? 'Hesabım' : 'Giriş Yap'}</Text>
                 </TouchableOpacity> 
@@ -79,11 +98,12 @@ const styles = StyleSheet.create({
         width: '100%',
         text: {
             borderRadius: 0,
-            padding: 10,
+            paddingHorizontal: 10,
+            paddingVertical: 8,
             fontSize: 16, 
             fontWeight: 500,   
-            borderBottomWidth: 1,  
-            borderBottomColor: '#ccc'
+            //borderBottomWidth: 1,  
+            //borderBottomColor: '#ccc'
             //backgroundColor: '#000',
             //color: 'white'
         }

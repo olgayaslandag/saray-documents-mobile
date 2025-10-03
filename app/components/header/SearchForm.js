@@ -34,12 +34,12 @@ export default function SearchForm() {
             
             <Modal animationType="none" visible={search || open ? true : false} transparent={false}>
                 <View style={styles.modal.container}>
-                    <View style={{width: '100%', paddingHorizontal: 20, paddingTop: 20, paddingbottom: 0, flexDirection: 'row'}}>
-                        <SearchFormInput search={search} setSearch={setSearch} order={2} width="90%" />
-                        
+                    <View style={{width: '100%', paddingHorizontal: 15, paddingTop: 20, paddingbottom: 0, flexDirection: 'row'}}>
                         <TouchableOpacity onPress={HandleClose} style={styles.modal.close}>
                             <FontAwesome5 name="times" size={20} color="black" />
                         </TouchableOpacity>
+                        
+                        <SearchFormInput search={search} setSearch={setSearch} order={2} width="90%" />                                            
                     </View>
                     
                     <SearchResult search={search} setSearch={setSearch} setOpen={setOpen} />
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         },
         close: {
             flex: 1, 
-            alignItems: 'flex-end', 
+            alignItems: 'flex-start', 
             justifyContent: 'center',    
             width: '10%'        
         },

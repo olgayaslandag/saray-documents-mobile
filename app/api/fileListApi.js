@@ -3,14 +3,15 @@ import axios from "./axios";
 export const fileListApi = async ({ dir }) => {  
     const param = dir ? "/" + dir : "";
     try {
-        const result = await axios.get("list" + param);
+        const result = await axios.get("list" + param);        
         return {
             status: true,
             data: result.data,
             message: null,
         };
-    } catch(error){
-        if(error.response){
+    } catch(error){        
+        console.error(error);
+        if(error.response){            
             return {
                 status: false,
                 result: null,

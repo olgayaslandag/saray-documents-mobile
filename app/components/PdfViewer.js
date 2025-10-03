@@ -13,7 +13,8 @@ export default function PdfViewer({ uri }) {
     setModalVisible(uri ? true : false);    
   }, [uri]);
 
-  const DocsUrl = Device.osName === 'Android' ? `https://docs.google.com/viewer?url=${encodeURIComponent(uri)}` : encodeURI(uri); 
+  //const DocsUrl = Device.osName === 'Android' ? `https://docs.google.com/viewer?url=${encodeURIComponent(uri)}` : encodeURI(uri); 
+  const DocsUrl = `https://saray.com/drive/pdf_viewer.html?file=${encodeURIComponent(uri)}`; 
 
   if(!uri)
     return null;
@@ -42,6 +43,8 @@ export default function PdfViewer({ uri }) {
       </Modal>
     </View>
   );
+
+  
 }
 
 
