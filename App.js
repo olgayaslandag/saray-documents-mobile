@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import store from './app/store'
 import { Provider } from 'react-redux'
-import { StatusBar, Text, SafeAreaView } from "react-native";
+import { StatusBar, Text, SafeAreaView, View } from "react-native";
 
 
 import { useFonts } from 'expo-font';
@@ -49,7 +49,7 @@ export default function App() {
   return (
     <Provider store={store}>    
       <SafeAreaProvider>
-        <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+        <View style={{ flex: 1, backgroundColor: "#fff" }}>
           <Synchronize />
           <StatusBar style="auto" hidden={true} />
           <NavigationContainer onReady={onLayoutRootView}>
@@ -61,7 +61,7 @@ export default function App() {
               <Drawer.Screen name="Auth" component={AuthNavigator} />          
             </Drawer.Navigator>
           </NavigationContainer>
-        </SafeAreaView>
+        </View>
       </SafeAreaProvider>
     </Provider>
   );
