@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { initializeAuth } from "../store/authSlice";
 import { initializeFavs } from "../store/favSlice";
 import pixelDp from "../libs/pixelDp";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const { width } = pixelDp();
 const WIDTH = Dimensions.get('window').height;
@@ -26,6 +27,7 @@ export default function HomeScreen() {
       source={active.bgimage}
       style={{ width: "100%", height: "100%" }} 
       resizeMode="cover">
+        <SafeAreaView style={{flex: 1}}>
       <View style={styles.header.container}>
         <HeaderUser />
         <SearchForm />
@@ -35,6 +37,7 @@ export default function HomeScreen() {
         <Text style={styles.content.title} >Yenilikler</Text>
         <HomeSlider setActive={setActive} />
       </View>
+      </SafeAreaView>
       <PushNotification />
     </ImageBackground>
   );

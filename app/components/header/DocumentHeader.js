@@ -8,14 +8,14 @@ export default function DocumentHeader() {
   const navigation = useNavigation();
 
   return (
-        <SafeAreaView style={{marginTop: 40, flexDirection: 'row', paddingHorizontal: 0, marginLeft: -2,  paddingTop: Device.osName === "iOS" ? 30 : 0, paddingBottom: 0}}>
-            <TouchableOpacity onPress={() => navigation.openDrawer()}>
-                <MenuButton />
-            </TouchableOpacity> 
-            <View  style={{ flex: 1}}>
-              <SearchForm />
-            </View>
-        </SafeAreaView>
+        <View style={{flexDirection: 'row'}}>
+              <TouchableOpacity onPress={() => navigation.openDrawer()}>
+                  <MenuButton />
+              </TouchableOpacity> 
+              <View  style={{ flex: 1}}>
+                <SearchForm />
+              </View>
+        </View>
     );
     return (
           <View style={{flexDirection: 'row'}}>  

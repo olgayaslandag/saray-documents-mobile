@@ -7,17 +7,17 @@ export default function StaticHeader() {
     const navigation = useNavigation();
     
     return (
-        <SafeAreaView style={{marginTop: 40, flexDirection: 'row', paddingHorizontal: 18, paddingTop: Device.osName === "iOS" ? 30 : 0}}>
+        <View style={styles.container}>
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
                 <MenuButton />
             </TouchableOpacity> 
-        </SafeAreaView>
+        </View>
     );
     return (
         <View 
             borderRadius={30} 
             position="absolute"
-            style={styles.container}>
+            style={styles.containerr}>
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
                 <MenuButton />
             </TouchableOpacity>            
@@ -27,6 +27,9 @@ export default function StaticHeader() {
 
 const styles = StyleSheet.create({
     container: {
+        paddingHorizontal: 15,              
+    },
+    containerr: {
         position: 'absolute',
         backgroundColor: 'white', 
         right: 5, 

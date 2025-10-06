@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import DocumentHeader from "../components/header/DocumentHeader";
 import ButtonIcon from "../components/document/ButtonIcon";
 import DocumentList from "../components/document/DocumentList";
-import * as Device from "expo-device";
 import { useIsFocused } from "@react-navigation/native";
 import { Text, View, FlatList,Dimensions } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const WIDTH = Dimensions.get('window').width;
 
@@ -29,8 +29,8 @@ export default function DocumentsView() {
 
 
   return (
-    <View style={{ backgroundColor: "white", paddingTop: Device.osName === "iOS" ? 30 : 0 }}>
-      <View style={{paddingHorizontal: 20}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white"}}>
+      <View style={{paddingHorizontal: 15}}>
         <DocumentHeader />
         {/*<Text style={{fontWeight: 600, marginTop: 25, marginBottom: 8, fontSize: 24}}>Döküman Merkezi</Text>*/}
         <View style={{marginTop: 25}}></View>
@@ -51,6 +51,6 @@ export default function DocumentsView() {
         }}
         extraData={isFocused}
       />
-    </View>
+    </SafeAreaView>
   );
 }
