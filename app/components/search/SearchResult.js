@@ -20,7 +20,7 @@ export default function SearchResult({ search, setSearch, setOpen }) {
     }, [search, items]);
 
     return (
-      <View style={{padding: 20}}>
+      <View style={{padding: 10}}>
         <PdfViewer uri={selected} />
         <FlatList 
           data={filtered}

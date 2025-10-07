@@ -8,8 +8,8 @@ export default function DocumentHeader() {
   const navigation = useNavigation();
 
   return (
-        <View style={{flexDirection: 'row'}}>
-              <TouchableOpacity onPress={() => navigation.openDrawer()}>
+        <View style={{flexDirection: 'row', paddingHorizontal: 5}}>
+              <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginTop: 10, marginRight: 10}}>
                   <MenuButton />
               </TouchableOpacity> 
               <View  style={{ flex: 1}}>

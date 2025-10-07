@@ -3,6 +3,7 @@ import { Modal, StyleSheet, View, Button, TouchableOpacity } from 'react-native'
 import { WebView } from 'react-native-webview';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import * as Device from 'expo-device';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 
@@ -14,7 +15,7 @@ export default function PdfViewer({ uri }) {
   }, [uri]);
 
   //const DocsUrl = Device.osName === 'Android' ? `https://docs.google.com/viewer?url=${encodeURIComponent(uri)}` : encodeURI(uri); 
-  const DocsUrl = `https://saray.com/drive/pdf_viewer.html?file=${encodeURIComponent(uri)}`; 
+  const DocsUrl = Device.osName === 'Android' ? `https://saray.com/drive/pdf_viewer.html?file=${encodeURIComponent(uri)}` : encodeURI(uri); 
 
   if(!uri)
     return null;
@@ -27,7 +28,7 @@ export default function PdfViewer({ uri }) {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
-        <View style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
           <View style={{ flex: 1, marginTop: 0, backgroundColor: 'white', position: 'relative' }}>
             <TouchableOpacity style={styles.button} onPress={() => setModalVisible(false)}>
               <FontAwesome5 name="times" size={20} color="black" />               
@@ -39,7 +40,7 @@ export default function PdfViewer({ uri }) {
               startInLoadingState
             />
           </View>
-        </View>
+        </SafeAreaView>
       </Modal>
     </View>
   );

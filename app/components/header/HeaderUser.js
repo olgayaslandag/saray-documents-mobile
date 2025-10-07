@@ -9,7 +9,7 @@ export default function HeaderUser() {
     const navigation = useNavigation();
 
     return (
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row', paddingHorizontal: 5}}>
             <View style={{width: '70%'}}>
                 <UserAvatar />
             </View>            

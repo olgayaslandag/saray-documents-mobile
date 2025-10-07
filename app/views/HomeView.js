@@ -47,8 +47,9 @@ const styles = StyleSheet.create({
   header: {
     container: {
       flex: 4,
-      paddingHorizontal: 15,
+      paddingHorizontal: 10,
       justifyContent : 'space-between',
+      paddingTop: 10
     }
   },
   content: {
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
       marginTop: WIDTH < 650 ? 5 : 0,
       fontSize: 24,
       fontWeight: '700',
-      paddingHorizontal: 20,      
+      paddingHorizontal: 15,      
     }
   }
 });

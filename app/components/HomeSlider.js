@@ -53,14 +53,14 @@ const DATA = [
 //const { width } = pixelDp();
 const { width } = Dimensions.get('window');
 const ITEM_WIDTH =  width * 0.8;
-console.log(width)
+
 
 
 function Item({ title, index, img, permalink }) {
     const openLink = useInAppBrowser();    
 
     return (
-        <TouchableOpacity onPress={() => openLink(permalink)} style={{...styles.item, marginRight: index === DATA.length-1 ? 20 : 15, marginLeft: index===0 ? 20 : 0}}>
+        <TouchableOpacity onPress={() => openLink(permalink)} style={{...styles.item, marginRight: index === DATA.length-1 ? 15 : 15, marginLeft: index=== 0 ? 15 : 0}}>
             <Image source={img} alt={title} style={styles.image} resizeMode="cover"></Image>
             
             <LinearGradient colors={['rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 0.4)']} style={{...styles.overlayTitle, width: ITEM_WIDTH}}>

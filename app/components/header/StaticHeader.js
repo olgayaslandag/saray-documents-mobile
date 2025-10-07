@@ -27,7 +27,8 @@ export default function StaticHeader() {
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal: 15,              
+        paddingHorizontal: 15,   
+        marginTop: 10           
     },
     containerr: {
         position: 'absolute',

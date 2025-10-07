@@ -26,8 +26,8 @@ function Item({ item, index, items }) {
       <View style={{
         justifyContent: 'center', 
         alignItems: 'center', 
-        marginLeft: index === 0 ? 20 : 5, 
-        marginRight: index === items.length - 2 ? 20 : 5}}>
+        marginLeft: index === 0 ? 15 : 5, 
+        marginRight: index === items.length - 2 ? 15 : 5}}>
         {item.dir &&             
           <TouchableOpacity style={styles.iconButton} onPress={() => HandleSelect(item.dir.title)}>
               <FolderIcon title={item.dir.title} selected={docSelected === item.dir.title} />         

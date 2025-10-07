@@ -30,9 +30,8 @@ export default function DocumentsView() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white"}}>
-      <View style={{paddingHorizontal: 15}}>
+      <View style={{paddingHorizontal: 10}}>
         <DocumentHeader />
-        {/*<Text style={{fontWeight: 600, marginTop: 25, marginBottom: 8, fontSize: 24}}>Döküman Merkezi</Text>*/}
         <View style={{marginTop: 25}}></View>
       </View>
 
@@ -46,7 +45,7 @@ export default function DocumentsView() {
         renderItem={renderDocumentList}
         contentContainerStyle={{          
           backgroundColor: "#F1F1F1",
-          padding: 20,
+          padding: 15,
           paddingBottom: 400,          
         }}
         extraData={isFocused}
