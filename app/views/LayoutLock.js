@@ -1,5 +1,4 @@
 import { View, Text, KeyboardAvoidingView, Platform } from "react-native";
-import * as Device from "expo-device"
 import StaticHeader from "../components/header/StaticHeader";
 import { useSelector } from "react-redux";
 import ErrorMessage from "../components/ErrorMessage";
@@ -11,10 +10,10 @@ export default function LayoutLock({ children, title }) {
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
             <StaticHeader />
-            <View style={{flex: 1, marginTop: 5, justifyContent: 'center', paddingLeft: 20}}>                
+            <View style={{flex: 1, marginTop: 5, justifyContent: 'center', paddingLeft:15}}>                
                 <Text style={{fontSize: 24, fontWeight: 700}}>{title}</Text>
             </View>
-            <View style={{flex: 15, padding: 20, justifyContent: 'flex-start'}}>
+            <View style={{flex: 15, padding: 15, justifyContent: 'flex-start'}}>
                 <ErrorMessage />
                 {auth && (
                     <View style={{flex: 1}}>
