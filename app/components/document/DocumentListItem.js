@@ -4,6 +4,7 @@ import { Alert, StyleSheet, TouchableOpacity, View, Image, Text, Dimensions } fr
 import { useDispatch, useSelector } from "react-redux";
 import { addToFav, removeFromFav } from "../../store/favSlice";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import BookmarkIcon from "../icons/BookmarkIcon";
 
 
 const WIDTH = Dimensions.get('window').width;
@@ -64,7 +65,8 @@ export default function DocumentListItem({ item, setSelected, setSearch, setOpen
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.item.favIcon.container} onPress={HandleAddOrRemove}>
-                        <FontAwesome name={check && auth ? "bookmark" : "bookmark-o"} color="#EA0029" size={18} />
+                        {/*<FontAwesome name={check && auth ? "bookmark" : "bookmark-o"} color="#EA0029" size={18} />*/}
+                        <BookmarkIcon width="18" height="18" fill= "#EA0029" />
                     </TouchableOpacity>
                 </View>
             )}
