@@ -9,7 +9,6 @@ const WIDTH = Dimensions.get('window').width;
 export default function DocumentList({ dirs, search = false }) {
   const [selected, setSelected] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [comOpen, setComOpen] = useState(false);
 
 
   useEffect(() => {

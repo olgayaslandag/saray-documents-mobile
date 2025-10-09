@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { StyleSheet, FlatList, Dimensions, Image, Text, View, TouchableOpacity, Linking } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-import pixelDp from "../libs/pixelDp";
 import useInAppBrowser from "../libs/useInAppBrowser";
 
 const DATA = [

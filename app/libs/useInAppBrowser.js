@@ -8,15 +8,15 @@ export default function useInAppBrowser() {
     try {
       const result = await WebBrowser.openBrowserAsync(url, {
         // Android
-        toolbarColor: '#6200EE',
-        controlsColor: 'white',
+        //toolbarColor: '#6200EE',
+        //controlsColor: 'white',
         showTitle: true,
         enableDefaultShare: true,
 
         // iOS
         dismissButtonStyle: 'close',
-        preferredBarTintColor: '#6200EE',
-        preferredControlTintColor: 'white',
+        //preferredBarTintColor: '#6200EE',
+        //preferredControlTintColor: 'white',
         presentationStyle: 'automatic',
       });
 
