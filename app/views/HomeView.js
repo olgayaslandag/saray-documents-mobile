@@ -9,6 +9,7 @@ import { initializeAuth } from "../store/authSlice";
 import { initializeFavs } from "../store/favSlice";
 import pixelDp from "../libs/pixelDp";
 import { SafeAreaView } from "react-native-safe-area-context";
+import useAppTranslation from "../libs/useAppTranslation";
 
 const { width } = pixelDp();
 const WIDTH = Dimensions.get('window').height;
@@ -16,6 +17,8 @@ const WIDTH = Dimensions.get('window').height;
 export default function HomeScreen() {
   const [active, setActive] = useState({});
   const dispatch = useDispatch();
+
+  const { t } = useAppTranslation();
 
   useEffect(() => {
     dispatch(initializeAuth())
@@ -34,7 +37,7 @@ export default function HomeScreen() {
       </View>
 
       <View style={styles.content.container}>
-        <Text style={styles.content.title} >Yenilikler</Text>
+        <Text style={styles.content.title} >{t("home.news")}</Text>
         <HomeSlider setActive={setActive} />
       </View>
       </SafeAreaView>

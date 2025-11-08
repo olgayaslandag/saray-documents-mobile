@@ -1,15 +1,14 @@
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, TextInput } from "react-native";
 import { useSelector } from "react-redux";
-import * as DocumentPicker from 'expo-document-picker';
 import { UploadApi } from "../api/offerApi";
-import UploadIcon from "../components/icons/UploadIcon";
 import { useNavigation, CommonActions  } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { FontAwesome } from '@expo/vector-icons';
 import styleAuth from "../styles/styleAuth";
 import LayoutLock from "./LayoutLock";
-
-
+import * as DocumentPicker from 'expo-document-picker';
+import UploadIcon from "../components/icons/UploadIcon";
+import useAppTranslation from "../libs/useAppTranslation";
 
 
 export default function OfferFormView() {
@@ -19,6 +18,7 @@ export default function OfferFormView() {
     const [form, setForm] = useState({name: '', email: '', phone: '', company_name: ''});
     const [doc, setDoc] = useState({name: '', size: '', uri: ''});
     const [success, setSuccess] = useState(false);
+    const { t } = useAppTranslation();
 
     async function pick() {
         const result = await DocumentPicker.getDocumentAsync();  
@@ -64,7 +64,7 @@ export default function OfferFormView() {
                 <View style={{marginBottom: 30}}>
                     <FontAwesome name="check" size={100} color="#222" />
                 </View>
-                <Text style={{fontSize: 18, fontWeight: 700}}>Teklif Başarıyla Gönderildi!</Text>
+                <Text style={{fontSize: 18, fontWeight: 700}}>{t("offer.form.success")}</Text>
                 <TouchableOpacity 
                     onPress={() => navigation.dispatch(
                         CommonActions.reset({
@@ -73,24 +73,26 @@ export default function OfferFormView() {
                         })
                     )} 
                     style={{backgroundColor: '#222', paddingVertical: 10, paddingHorizontal: 20, borderRadius: 10, marginTop: 10}}>
-                    <Text style={{fontSize: 16, color: 'white'}}>Teklifleri Görüntüle</Text>
+                    <Text style={{fontSize: 16, color: 'white'}}>{t("offer.form.all_offers")}</Text>
                 </TouchableOpacity>                
             </View>
         );
     }
     
     return (
-        <LayoutLock title="Teklif Formu">
+        <LayoutLock title={t("offer.form.title")}>
             <ScrollView style={{flex: 1}}>                    
                 <View>
                     {/* Adsoyad */}
                     <View style={{marginBottom: 20}}>
-                        <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Ad Soyad</Text>
+                        <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>
+                            {t("offer.form.name")}
+                        </Text>
                         <TextInput
                             style={styleAuth.form.item.input}
                             onChangeText={val => setForm({...form, name: val})}
                             value={form.name}
-                            placeholder="Adınızı soyadınızı girin"
+                            placeholder={t("offer.form.place_name")}
                             autoComplete="name"
                             placeholderTextColor="black"
                             inputMode="text"
@@ -100,12 +102,14 @@ export default function OfferFormView() {
 
                     {/* Eposta */}
                     <View style={{marginBottom: 20}}>
-                        <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Eposta</Text>
+                        <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>
+                            {t("offer.form.email")}
+                        </Text>
                         <TextInput
                             style={styleAuth.form.item.input}
                             onChangeText={val => setForm({...form, email: val})}
                             value={form.email}
-                            placeholder="Eposta adresinizi girin"
+                            placeholder={t("offer.form.place_email")}
                             autoComplete="email"
                             placeholderTextColor="black"
                             inputMode="email"
@@ -114,12 +118,14 @@ export default function OfferFormView() {
 
                     {/* Telefon */}
                     <View style={{marginBottom: 20}}>
-                        <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Telefon</Text>
+                        <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>
+                            {t("offer.form.phone")}
+                        </Text>
                         <TextInput
                             style={styleAuth.form.item.input}
                             onChangeText={val => setForm({...form, phone: val})}
                             value={form.phone}
-                            placeholder="Telefon numaranızı girin"
+                            placeholder={t("offer.form.place_phone")}
                             autoComplete="tel"
                             placeholderTextColor="black"
                             inputMode="tel"
@@ -128,12 +134,14 @@ export default function OfferFormView() {
 
                     {/* Şirket Adı */}
                     <View style={{marginBottom: 20}}>
-                        <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Şirket Adı</Text>
+                        <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>
+                            {t("offer.form.company_name")}
+                        </Text>
                         <TextInput
                             style={styleAuth.form.item.input}
                             onChangeText={val => setForm({...form, company_name: val})}
                             value={form.company_name}
-                            placeholder="Çalıştığınız Firma"
+                            placeholder={t("offer.form.place_company_name")}
                             placeholderTextColor="black"
                             inputMode="text"
                         />
@@ -141,17 +149,21 @@ export default function OfferFormView() {
                 </View>
                 <TouchableOpacity onPress={pick} style={{flex: 2, justifyContent: 'flex-start', alignItems: 'center'}}>                          
                     <UploadIcon fill="#ccc" width={100} height={100} />
-                    <Text style={{fontSize: 18, fontWeight: 600}}>Döküman Seç</Text>
+                    <Text style={{fontSize: 18, fontWeight: 600}}>
+                        {t("offer.form.file")}
+                    </Text>
                 </TouchableOpacity>  
 
                 <TouchableOpacity onPress={HandleSubmit} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', borderRadius: 10, padding: 10, marginTop: 20}}>
-                    <Text style={{fontSize: 16, color: 'white'}}>Teklif Gönder</Text>
+                    <Text style={{fontSize: 16, color: 'white'}}>
+                        {t("offer.form.submit")}
+                    </Text>
                 </TouchableOpacity>   
                 <TouchableOpacity 
                     style={{paddingVertical: 10, paddingHorizontal: 20, alignItems: 'center'}}
                     onPress={() => navigation.navigate('Main', {screen: 'Offers'})}>
                     <Text style={{fontSize: 16}}>
-                        Geri
+                        {t("offer.form.back")}
                     </Text>
                 </TouchableOpacity>               
             </ScrollView>

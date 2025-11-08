@@ -5,11 +5,15 @@ import { useNavigation } from "@react-navigation/native";
 import { clearAuth } from "../store/authSlice";
 import { LogoutApi } from "../api/authApi";
 import { Alert } from "react-native";
+import useAppTranslation from "../libs/useAppTranslation";
+
 
 export default function MenuView() {
     const dispatch = useDispatch();
     const navigation = useNavigation();
     const auth = useSelector(state => state.auth.value);
+
+    const { t, i18n, lang } = useAppTranslation();
 
 
     async function HandleLogout() {
@@ -22,33 +26,34 @@ export default function MenuView() {
         navigation.navigate('Main');
     }
 
+
     return (
         <LayoutAuth>
             <View style={{flex: 1, justifyContent: 'flex-start'}}>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Home'})}>
-                    <Text style={styles.button.text}>Ana Ekran</Text>
+                    <Text style={styles.button.text}>{t("navigation.home")}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Company'})}>
-                    <Text style={styles.button.text}>Kurumsal</Text>
+                    <Text style={styles.button.text}>{t("navigation.corporate")}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Sustainability'})}>
-                    <Text style={styles.button.text}>Sürdürülebilirlik</Text>
+                    <Text style={styles.button.text}>{t("navigation.sustainability")}</Text>
                 </TouchableOpacity>
 
 
                 <View style={{marginTop: 10, marginBottom: 10, borderTopWidth: 1, borderColor: '#ccc'}}></View>
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'MeetRequest'})}>
-                    <Text style={styles.button.text}>Toplantı Taleplerim</Text>
+                    <Text style={styles.button.text}>{t("navigation.meeting_requests")}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'MeetShowroomRequest'})}>
-                    <Text style={styles.button.text}>Showroom Randevu Taleplerim</Text>
+                    <Text style={styles.button.text}>{t("navigation.showroom_requests")}</Text>
                 </TouchableOpacity>                
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Offers'})}>
-                    <Text style={styles.button.text}>Tekliflerim</Text>
+                    <Text style={styles.button.text}>{t("navigation.offers")}</Text>
                 </TouchableOpacity>
 
 
@@ -64,27 +69,31 @@ export default function MenuView() {
                 
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Documents'})}>
-                    <Text style={styles.button.text}>Dökümanlar</Text>
+                    <Text style={styles.button.text}>{t("navigation.documents")}</Text>
                 </TouchableOpacity>  
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Favorites'})}>
-                    <Text style={styles.button.text}>Favorilerim</Text>
+                    <Text style={styles.button.text}>{t("navigation.favorites")}</Text>
                 </TouchableOpacity> 
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Ticket'})}>
-                    <Text style={styles.button.text}>Destek Taleplerim</Text>
+                    <Text style={styles.button.text}>{t("navigation.support_requests")}</Text>
                 </TouchableOpacity>             
 
                 <View style={{marginTop: 10, marginBottom: 10, borderTopWidth: 1, borderColor: '#ccc'}}></View>
 
 
+                <TouchableOpacity style={styles.button} onPress={() => i18n.changeLanguage(lang == "tr" ? "en" : "tr")}>
+                    <Text style={styles.button.text}>{ lang === "tr" ? "English Version" : "Türkçe Versiyon"}</Text>
+                </TouchableOpacity> 
+
                 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Auth')}>
-                    <Text style={styles.button.text}>{auth ? 'Hesabım' : 'Giriş Yap'}</Text>
+                    <Text style={styles.button.text}>{auth ? t("navigation.account") : t("navigation.login")}</Text>
                 </TouchableOpacity> 
                 {auth && (
                     <TouchableOpacity style={styles.button} onPress={HandleLogout}>
-                        <Text style={styles.button.text}>Çıkış Yap</Text>
+                        <Text style={styles.button.text}>{t("navigation.logout")}</Text>
                     </TouchableOpacity>
                 )}                
             </View>

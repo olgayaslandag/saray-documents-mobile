@@ -67,7 +67,7 @@ export default function Contact() {
                             {info.address}
                         </Text>
                         <TouchableOpacity onPress={() => Linking.openURL('mailto:' + info.email)}>
-                            <Text style={{marginBottom: -5, marginTop: 10}}>{info.email}</Text>
+                            <Text style={{marginBottom: 0, marginTop: 10}}>{info.email}</Text>
                         </TouchableOpacity>                        
                         <TouchableOpacity onPress={() => Linking.openURL('tel:' + info.phone)}>
                             <Text>{info.phone}</Text>
@@ -106,8 +106,9 @@ const styles = StyleSheet.create({
     },
     content: {
         title: {
-            fontSize: 16,
+            fontSize: 15,
             fontWeight: 'bold',
+            marginBottom: 10
         }
     },
     iconContainer: {

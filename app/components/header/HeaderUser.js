@@ -1,8 +1,6 @@
-import MenuButton from "../icons/MenuButton";
 import UserAvatar from "./UserAvatar";
-import { TouchableOpacity, View } from "react-native";
+import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import * as Device from "expo-device"
 
 
 export default function HeaderUser() {

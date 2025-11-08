@@ -1,0 +1,82 @@
+{
+    "navigation": {
+      "home": "Home",
+      "corporate": "Corporate",
+      "sustainability": "Sustainability",
+      "meeting_requests": "My Meeting Requests",
+      "showroom_requests": "My Showroom Appointment Requests",
+      "offers": "My Offers",
+      "documents": "Documents",
+      "favorites": "My Favorites",
+      "support_requests": "My Support Requests",
+      "account": "My Account",
+      "login": "Log In",
+      "logout": "Log Out",
+      "current_lang": "English Version"
+    },
+    "forms": {
+      "support_form": "Support Request Form",
+      "enter_subject": "Enter subject…",
+      "enter_message": "Enter message…",
+      "send_request": "Submit Request"
+    },
+    "categories": {
+      "aluminium_extrusion": "Aluminium Extrusion",
+      "composite_panel": "Composite Panel",
+      "foil_rolling": "Aluminium Foil Rolling Mill",
+      "pvc_systems": "PVC Systems",
+      "roller_systems": "Roller Shutter Systems",
+      "recycling_center": "Recycling Center & Billet Casting",
+      "tourism": "Tourism",
+      "energy": "Energy"
+    },
+    "sustainability": {
+      "title_1": "SARAY’s Commitment to a Sustainable Future",
+      "desc_1": "Sustainability and environmental stewardship are at the heart of SARAY’s corporate mission, driving substantial investments in renewable energy sources. These initiatives are not only advancing eco-friendly production processes but also significantly lowering the company’s carbon footprint.",
+      
+      "title_2": "SARAY: Investing in a Sustainable Future with Renewable Energy",
+      "desc_2_1": "SARAY is making strategic investments in renewable energy, reinforcing its dedication to sustainability. By harnessing clean energy from its own power plants, SARAY is leading by example in the industry.",
+      "desc_2_2": "With 6 MW of electricity generated through wind turbine energy and 5 MW from solar energy, the company is reducing its reliance on conventional energy sources and committing to a responsible production model.",
+      
+      "title_3": "Şanlıurfa Solar Power Plant: Advancing Sustainable Energy",
+      "desc_3": "SARAY’s solar power plant investment in Şanlıurfa is set to generate an additional 12 MW of electricity annually. This forward-thinking project will not only fulfill energy needs but also enhance regional sustainability and reduce dependence on non-renewable energy.",
+      
+      "title_4": "Achieving Significant Carbon Footprint Reductions",
+      "desc_4": "Through its renewable energy investments, SARAY is preventing 7,900 tons of carbon emissions annually, marking a significant improvement in production-related greenhouse gas emissions. This is a testament to SARAY’s pioneering steps and commitment to environmental responsibility."
+    },
+    "about": {
+      "title": "Since 1980",
+      "company_name": "Saray Aluminium",
+      "desc_1": "Since 1980, Saray Aluminum has played a major role in building the architectural structures of the future with its pioneering and innovative interior and exterior solutions. Saray Aluminum door, window, facade and handrail systems, aluminum composite panel, PVC door and window systems, shutter systems, machinery, lighting, elevator etc. produces industrial and standard cross-section profiles that the sectors need.",
+      "desc_2": "We are among the top 500 industrial companies in Turkey with export to more than 60 countries worldwide and receives the Metallic Stars of Export award every year with its high export figures.",
+      "desc_3": "Saray Aluminium, which has CE, ISO 9001, Qualanod, Qualicolat, TS EN 755, TS EN 12020, IATF 16949, SEPRO and GOST-R quality certificates, produces in a closed area of 175.000 m² in Istanbul Güneşli and Tekirdağ Çerkezköy. Saray Aluminium is a fully integrated company with aluminium anodizing, aluminium electrostatic powder coating, aluminium extrusion, aluminium billet casting, aluminium composite panel, roller shutter and PVC extrusion production facilities.",
+      "desc_4": "With Project and R&D units, Saray Aluminium provides architectural offices and building investors with special solutions for multi-storey and qualified buildings, providing technical support at all stages from facade design to application. Saray Aluminum plays an important role in the architectural structures of the future and raising the quality of life with its high-performance innovative products."
+    },
+    "home": {
+      "news": "News"
+    },
+    "header": {
+      "good_morning": "Good Morning",
+      "good_afternoon": "Good Afternoon",
+      "good_evening": "Good Evening"
+    },
+    "search": {
+      "search": "What are you looking for?",
+      "no_result": "No result found for your search"
+    },
+    "favorites": {
+      "title": "My Favorites",
+      "empty": "You haven't added any documents to your favorites yet!"
+    },
+    "global": {
+      "login_required": "You must log in!"
+    },
+    "ticket": {
+      "title": "Support Request Form",
+      "submit": "Submit Request",
+      "success": "Your message has been successfully sent!",
+      "go_home": "Go to Home",
+      "enter_subject": "Enter subject…",
+      "enter_message": "Enter message…"
+    }
+  }

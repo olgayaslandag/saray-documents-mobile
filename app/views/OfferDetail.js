@@ -3,6 +3,7 @@ import { WebView } from 'react-native-webview';
 import { FontAwesome } from '@expo/vector-icons';
 import { useState } from "react";
 import LayoutLock from "./LayoutLock";
+import useAppTranslation from "../libs/useAppTranslation";
 
 const info = {
     "Ad Soyad": "Olgay Aslandağ",
@@ -15,6 +16,7 @@ const info = {
 export default function OfferDetail({ route, navigation }) {
     const [selectedId, setSelectedId] = useState(null);
     const { offerId } = route.params;
+    const { t } = useAppTranslation();
 
     function FileViewer({ fileUrl }) {
         const isImage = fileUrl.match(/\.(jpeg|jpg|png|gif)$/i); 
@@ -36,7 +38,7 @@ export default function OfferDetail({ route, navigation }) {
     }
 
     return (
-        <LayoutLock  title="Teklif Detayı">
+        <LayoutLock  title={t("offer.detail.title")}>
             {Object.entries(info).map(([key, value], index) => (
                 <View key={index} style={{ flexDirection: 'row', marginBottom: 10, borderBottomWidth: 1, borderColor: '#ccc', paddingBottom: 5 }}>
                     <Text style={{ fontWeight: 'bold', width: 80 }}>{key}:</Text>
@@ -45,11 +47,13 @@ export default function OfferDetail({ route, navigation }) {
             ))}
 
             <TouchableOpacity onPress={() => setSelectedId(offerId)} style={{backgroundColor: 'black', borderRadius: 20, padding: 10, marginTop: 10, alignItems: 'center'}}>
-                <Text style={{color: 'white'}}>Teklif Dökümanı</Text>
+                <Text style={{color: 'white'}}>
+                    {t("offer.detail.file")}
+                </Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Offers')} style={{ marginTop: 10, alignItems: 'center'}}>
-                <Text>Teklif Listesi</Text>
+                <Text>{t("offer.detail.all_offers")}</Text>
             </TouchableOpacity>
 
             <Modal

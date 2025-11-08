@@ -1,0 +1,115 @@
+{
+    "navigation": {
+      "home": "Ana Ekran",
+      "corporate": "Kurumsal",
+      "sustainability": "Sürdürülebilirlik",
+      "meeting_requests": "Toplantı Taleplerim",
+      "showroom_requests": "Showroom Randevu Taleplerim",
+      "offers": "Tekliflerim",
+      "documents": "Dökümanlar",
+      "favorites": "Favorilerim",
+      "support_requests": "Destek Taleplerim",
+      "account": "Hesabım",
+      "login": "Giriş Yap",
+      "logout": "Çıkış Yap",
+      "current_lang": "Türkçe Versiyon"
+    },
+    "forms": {
+      "support_form": "Destek Talebi Formu",
+      "enter_subject": "Konu girin…",
+      "enter_message": "Mesaj girin…",
+      "send_request": "Talebi Gönder"
+    },
+    "categories": {
+      "aluminium_extrusion": "Alüminyum Ekstrüzyon",
+      "composite_panel": "Alüminyum Kompozit Panel",
+      "foil_rolling": "Alüminyum Folyo Haddehane",
+      "pvc_systems": "PVC Kapı ve Pencere Sistemleri",
+      "roller_systems": "Panjur ve Kepenk Sistemleri",
+      "recycling_center": "Geri Dönüşüm Merkezi & Biyet Döküm",
+      "tourism": "Turizm",
+      "energy": "Enerji"
+    },
+    "sustainability": {
+      "title_1": "SARAY Sürdürülebilir Bir Geleceğe Yatırım Yapıyor",
+      "desc_1": "SARAY, sürdürülebilirlik ve çevre bilincini kurumsal misyonunun merkezine yerleştirerek, yenilenebilir enerji kaynaklarına önemli yatırımlar yapıyor. Bu yatırımlar, çevre dostu üretim süreçlerini desteklemekte ve karbon ayak izini belirgin bir şekilde azaltmaktadır.",
+
+      "title_2": "SARAY: Yenilenebilir Enerji ile Sürdürülebilir Bir Geleceğe Yatırım Yapıyor",
+      "desc_2_1": "SARAY, sürdürülebilirlik ve çevre bilincini kurumsal misyonunun merkezine yerleştirerek, yenilenebilir enerji kaynaklarına önemli yatırımlar yapıyor. Bu yatırımlar, çevre dostu üretim süreçlerini desteklemekte ve karbon ayak izini belirgin bir şekilde azaltmaktadır.",
+      "desc_2_2": "Üretim tesislerinde kendi enerji santrallerinden elde ettiği temiz enerjiyle SARAY, sürdürülebilirlik konusunda önemli adımlar atmaktadır. RES ile 6 MW ve GES ile 5 MW elektrik enerjisi üreten SARAY, enerji üretiminde yenilenebilir kaynaklara olan bağımlılığı azaltarak, çevreye duyarlı bir üretim modeli benimsemektedir.",
+
+      "title_3": "Şanlıurfa Güneş Tarlası: Sürdürülebilir Enerji Üretiminde Yeni Dönem",
+      "desc_3": "Şanlıurfa’da gerçekleştirdiği güneş enerjisi yatırımıyla SARAY, yılda 12 MW ek elektrik enerjisi üretmeyi hedeflemektedir. Bu yatırım, sadece enerji ihtiyacını karşılamakla kalmayacak, aynı zamanda bölgesel sürdürülebilirliğe ve yeşil enerjiye olan bağımlılığın azaltılmasına da katkı sağlayacaktır.",
+
+      "title_4": "Karbon Ayak İzinde Önemli İyileşmeler",
+      "desc_4": "Yenilenebilir enerji yatırımlarıyla birlikte SARAY, yılda 7 bin 900 ton karbon salınımının önüne geçerek, üretim kaynaklı sera gazı salınımında önemli bir iyileşme kaydetmektedir. Bu, SARAY’ın çevre duyarlılığı konusunda attığı büyük ve öncü adımların bir göstergesidir."
+    },
+    "about": {
+      "title": "1980 yılından bu yana",
+      "company_name": "Saray Alüminyum",
+      "desc_1": "1980 yılından bu yana Saray Alüminyum, öncü ve yenilikçi iç ve dış mekan çözümleri ile geleceğin mimari yapılarını inşa etmede büyük bir rol oynamaktadır. Saray Alüminyum, sektörlerin ihtiyaç duyduğu endüstriyel ve standart kesitli profiller üreten kapı, pencere, cephe ve küpeşte sistemleri, alüminyum kompozit panel, PVC kapı ve pencere sistemleri, panjur sistemlerinin yanı sıra makine, aydınlatma, asansör vb. sektörlerine de üretim yapmaktadır.",
+      "desc_2": "Türkiye’nin en büyük 500 şirketi arasında yer alan Saray Alüminyum, dünya genelinde 60’tan fazla ülkeye ihracat yapmakta olup yüksek ihracat rakamları ile her yıl İhracatın Metalik Yıldızları ödülünü almaktadır.",
+      "desc_3": "CE, ISO 9001, Qualanod, Qualicolat, TS EN 755, TS EN 12020, IATF 16949 ve SEPRO kalite sertifikalarına sahip olan Saray Alüminyum, İstanbul Güneşli ve Tekirdağ Çerkezköy’deki 175.000 metrekarelik kapalı alanda üretim yapmaktadır. Saray Alüminyum, alüminyum eloksal, alüminyum elektrostatik toz boya, alüminyum ekstrüzyon, alüminyum biyet döküm, alüminyum kompozit panel, alüminyum panjur ve PVC ekstrüzyon üretim tesisleri ile tam entegre bir şirkettir.",
+      "desc_4": "Saray Alüminyum’un proje ve AR-GE birimleri sayesinde, çok katlı ve nitelikli binalar için özel çözümler sunarak, cephe tasarımından uygulamaya kadar her aşamada teknik destek sağlayarak mimari ofislere ve bina yatırımcılarına katkıda bulunur. Saray Alüminyum, yüksek performanslı yenilikçi ürünleri ile geleceğin mimari yapılarını inşa etme ve yaşam kalitesini yükseltme konularında önemli bir rol oynamaktadır."
+    },
+    "home": {
+      "news": "Yenilikler"
+    },
+    "header": {
+      "good_morning": "Günaydın",
+      "good_afternoon": "Merhaba",
+      "good_evening": "İyi Akşamlar"
+    },
+    "search": {
+      "search": "Ne Aramıştınız?",
+      "no_result": "Aradığınız arama terimine uygun sonuç bulunamadı"
+    },
+    "favorites": {
+      "title": "Favorilerim",
+      "empty": "Henüz favorilerinize döküman eklemediniz!"
+    },
+    "global": {
+      "login_required": "Kullanıcı girişi yapmalısınız!"
+    },
+    "ticket": {
+      "title": "Destek Talebi Formu",
+      "submit": "Talebi Gönder",
+      "success": "Mesajınız Başarıyla Gönderildi!",
+      "go_home": "Ana Ekrana Git",
+      "enter_subject": "Konu girin…",
+      "enter_message": "Mesaj girin…"      
+    },
+    "offer": {
+      "title": "Tekliflerim",
+      "new_button": "Yeni Teklif",
+      "detail_button": "Detay",
+      "form": {
+        "title": "Teklif Formu",
+        "submit": "Teklif Gönder",
+        "success": "Teklif Başarıyla Gönderildi!",
+        "name": "Ad Soyad",
+        "place_name": "Adınızı soyadınızı girin",
+        "email": "Eposta",
+        "place_email": "Eposta adresinizi girin",
+        "phone": "Telefon",
+        "place_phone": "Telefon numaranızı girin",
+        "company_name": "Şirket Adı",
+        "place_company_name": "Çalıştığınız Firma",
+        "file": "Döküman Seç",
+        "back": "Geri",
+        "cancel": "İptal",
+        "all_offers": "Teklifleri Görüntüle"
+      },
+      "detail": {
+        "title": "Teklif Detayı",
+        "name": "Ad Soyad",
+        "email": "Eposta",
+        "phone": "Telefon",
+        "company_name": "Şirket Adı",
+        "file": "Teklif Dökümanı",
+        "back": "Geri",
+        "cancel": "İptal",
+        "all_offers": "Teklifleri Görüntüle"
+      }
+    }
+}

@@ -1,22 +1,17 @@
-import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image, Modal, SafeAreaView } from "react-native";
-import * as Device from "expo-device"
-import StaticHeader from "../components/header/StaticHeader";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { useSelector } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import ErrorMessage from "../components/ErrorMessage";
 import { useEffect, useState } from "react";
 import { offerListApi } from "../api/offerApi";
-import { FontAwesome } from '@expo/vector-icons';
-import { WebView } from 'react-native-webview';
 import LayoutLock from "./LayoutLock";
-
+import useAppTranslation from "../libs/useAppTranslation";
 
 
 export default function OffersView(){
-    const [items, setItems] = useState([]);
-    const [selectedId, setSelectedId] = useState(null);
+    const [items, setItems] = useState([]);    
     const auth = useSelector(state => state.auth.value);
     const navigation = useNavigation();
+    const { t } = useAppTranslation();
     
 
     useEffect(() => {
@@ -38,7 +33,7 @@ export default function OffersView(){
                 <View style={{backgroundColor: 'black', borderRadius: 10, paddingVertical: 5, paddingHorizontal: 10, alignItems: 'center'}}>
                     <TouchableOpacity style={{justifyContent: 'center'}} onPress={() => navigation.navigate('OfferDetail', {offerId: item.id})}>
                         <Text style={{ marginBottom: 2, color: 'white', }}>
-                                Detay
+                            {t("offer.detail_button")}
                         </Text>
                     </TouchableOpacity>
                 </View>                    
@@ -47,9 +42,11 @@ export default function OffersView(){
     }    
 
     return (
-        <LayoutLock title="Tekliflerim">
+        <LayoutLock title={t("offer.title")}>
             <TouchableOpacity onPress={() => navigation.navigate('OfferForm')} style={{borderWidth: 1, borderColor: 'black', padding: 10, borderRadius: 10, marginBottom: 10, alignItems: 'center'}}>
-                <Text style={{fontSize: 16, fontWeight: 600}}>Yeni Teklif</Text>
+                <Text style={{fontSize: 16, fontWeight: 600}}>
+                    {t("offer.new_button")}
+                </Text>
             </TouchableOpacity>
             <FlatList
                 data={items}

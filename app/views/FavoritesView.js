@@ -4,11 +4,13 @@ import { FlatList, StyleSheet, Text, TouchableOpacity, View, Dimensions } from "
 import DocumentListItem from "../components/document/DocumentListItem";
 import PdfViewer from "../components/PdfViewer";
 import LayoutLock from "./LayoutLock";
+import useAppTranslation from "../libs/useAppTranslation";
 
 const WIDTH = Dimensions.get('window').width;
 
 export default function FavoritesView() {
     const [selected, setSelected] = useState("");
+    const { t } = useAppTranslation();
 
     const items = useSelector(state => state.favorites.value);    
 
@@ -17,10 +19,10 @@ export default function FavoritesView() {
         formattedData.push({ id: `empty-${formattedData.length}`, empty: true }); // Eksik sütunlar için boş eleman ekleniyor
     }
     return (
-        <LayoutLock title="Favorilerim">
+        <LayoutLock title={t("favorites.title")}>
             <View>
                 <PdfViewer uri={selected} />
-                {formattedData.length <= 0 && <Text style={{fontSize: 18, marginTop: 20, textAlign: 'center'}}>Henüz favorilerinize döküman eklemediniz!</Text>}
+                {formattedData.length <= 0 && <Text style={{fontSize: 18, marginTop: 20, textAlign: 'center'}}>{t("favorites.empty")}</Text>}
                 <FlatList
                     data={formattedData}
                     renderItem={({item}) => <DocumentListItem item={item} setSelected={setSelected} />}

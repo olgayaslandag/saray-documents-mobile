@@ -2,10 +2,14 @@ import { ImageBackground, StyleSheet, Text, View, ScrollView, Image } from "reac
 import StaticHeader from "../components/header/StaticHeader";
 import * as Device from "expo-device";
 import { SafeAreaView } from "react-native-safe-area-context";
+import useAppTranslation from "../libs/useAppTranslation";
 
 const backgroundImage = 'https://saray.com/wp-content/uploads/2024/04/enerji-content.jpg';
 
 export default function SustainabilityView() {
+
+    const { t } = useAppTranslation();
+    
     return (
         <ImageBackground 
             source={{uri: backgroundImage}} 
@@ -15,19 +19,20 @@ export default function SustainabilityView() {
                 <StaticHeader /> 
                 <ScrollView bounces={false} alwaysBounceVertical={false}>                 
                     <View style={styles.contentBox}>
-                        <Text style={styles.pageTitle}>SARAY Sürdürülebilir Bir Geleceğe Yatırım Yapıyor</Text>
-                        <Text style={styles.text.content}>SARAY, sürdürülebilirlik ve çevre bilincini kurumsal misyonunun merkezine yerleştirerek, yenilenebilir enerji kaynaklarına önemli yatırımlar yapıyor. Bu yatırımlar, çevre dostu üretim süreçlerini desteklemekte ve karbon ayak izini belirgin bir şekilde azaltmaktadır.</Text>
+                        <Text style={styles.pageTitle}>{t("sustainability.title_1")}</Text>
+                        <Text style={styles.text.content}>{t("sustainability.desc_1")}</Text>
                         <Image source={{uri: 'https://saray.com/wp-content/uploads/2024/04/enerji-featured.jpg'}} alt="" style={{marginTop: 10, width: 480, height: 320, maxWidth: '100%', marginBottom: 15, borderRadius: 10}} />
 
-                        <Text style={styles.text.title}>SARAY: Yenilenebilir Enerji ile Sürdürülebilir Bir Geleceğe Yatırım Yapıyor</Text>
-                        <Text style={styles.text.content}>SARAY, sürdürülebilirlik ve çevre bilincini kurumsal misyonunun merkezine yerleştirerek, yenilenebilir enerji kaynaklarına önemli yatırımlar yapıyor. Bu yatırımlar, çevre dostu üretim süreçlerini desteklemekte ve karbon ayak izini belirgin bir şekilde azaltmaktadır.</Text>
-                        <Text style={styles.text.content}>Üretim tesislerinde kendi enerji santrallerinden elde ettiği temiz enerjiyle SARAY, sürdürülebilirlik konusunda önemli adımlar atmaktadır. RES ile 6 MW ve GES ile 5 MW elektrik enerjisi üreten SARAY, enerji üretiminde yenilenebilir kaynaklara olan bağımlılığı azaltarak, çevreye duyarlı bir üretim modeli benimsemektedir.</Text>
+                        <Text style={styles.text.title}>{t("sustainability.title_2")}</Text>
+                        <Text style={styles.text.content}>{t("sustainability.desc_2_1")}</Text>
+                        <Text style={styles.text.content}>{t("sustainability.desc_2_2")}</Text>
+                        
 
-                        <Text style={styles.text.title}>Şanlıurfa Güneş Tarlası: Sürdürülebilir Enerji Üretiminde Yeni Dönem</Text>
-                        <Text style={styles.text.content}>Şanlıurfa’da gerçekleştirdiği güneş enerjisi yatırımıyla SARAY, yılda 12 MW ek elektrik enerjisi üretmeyi hedeflemektedir. Bu yatırım, sadece enerji ihtiyacını karşılamakla kalmayacak, aynı zamanda bölgesel sürdürülebilirliğe ve yeşil enerjiye olan bağımlılığın azaltılmasına da katkı sağlayacaktır.</Text>
+                        <Text style={styles.text.title}>{t("sustainability.title_3")}</Text>
+                        <Text style={styles.text.content}>{t("sustainability.desc_3")}</Text>
 
-                        <Text style={styles.text.title}>Karbon Ayak İzinde Önemli İyileşmeler</Text>
-                        <Text style={{...styles.text.content, paddingBottom: 120}}>Yenilenebilir enerji yatırımlarıyla birlikte SARAY, yılda 7 bin 900 ton karbon salınımının önüne geçerek, üretim kaynaklı sera gazı salınımında önemli bir iyileşme kaydetmektedir. Bu, SARAY’ın çevre duyarlılığı konusunda attığı büyük ve öncü adımların bir göstergesidir.</Text>
+                        <Text style={styles.text.title}>{t("sustainability.title_4")}</Text>
+                        <Text style={{...styles.text.content, paddingBottom: 120}}>{t("sustainability.desc_4")}</Text>
                     </View>
                 </ScrollView>
             </SafeAreaView>

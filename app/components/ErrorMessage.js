@@ -1,17 +1,19 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
+import useAppTranslation from "../libs/useAppTranslation";
 
 export default function ErrorMessage() {
     const auth = useSelector(state => state.auth.value);
     const navigation = useNavigation();
+    const { t } = useAppTranslation();
 
     if (!auth) {
         return (
             <View>
-                <Text style={{ fontSize: 16 }}>Kullanıcı girişi yapmalısınız!</Text>
+                <Text style={{ fontSize: 16 }}>{t("global.login_required")}</Text>
                 <TouchableOpacity onPress={() => navigation.navigate('Auth')} style={styles.buttons.login.container}>
-                    <Text style={styles.buttons.login.text}>Giriş Yap</Text>
+                    <Text style={styles.buttons.login.text}>{t("navigation.login")}</Text>
                 </TouchableOpacity>
             </View>
         );

@@ -4,7 +4,6 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
 import SearchFormInput from "./SearchFormInput";
 import SearchResult from "../search/SearchResult";
-import * as Device from "expo-device"
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 
 
