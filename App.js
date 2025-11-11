@@ -45,6 +45,7 @@ export default function App() {
 
 
   const Drawer = createDrawerNavigator();
+  
 
   return (
     <Provider store={store}>    

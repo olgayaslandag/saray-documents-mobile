@@ -4,11 +4,15 @@ import { useDispatch } from "react-redux";
 import { synchronize } from "../store/dataSlice";
 import { searchlist } from "../store/searchItemsSlice";
 import { initializeAuth } from "../store/authSlice";
+import useAppTranslation from "../libs/useAppTranslation";
+import { loadLanguage } from "../store/languageSlice";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 export default function Synchronize({ dir }) {
     const [process, setProcess] = useState(false);
     const dispatch = useDispatch();
+    const { i18n } = useAppTranslation();
 
     useEffect(() => {
         setProcess(true);
@@ -40,6 +44,16 @@ export default function Synchronize({ dir }) {
             setProcess(false)
         })();
     }, [dir]);
+
+    useEffect(() => {
+        (async () => {
+        const savedLang = await AsyncStorage.getItem("appLang");
+        if (savedLang) {
+            dispatch(loadLanguage(savedLang));
+            i18n.changeLanguage(savedLang);
+        }
+        })();
+    }, []);
 
     return null;
 }

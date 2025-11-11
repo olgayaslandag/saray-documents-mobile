@@ -6,6 +6,7 @@ import { clearAuth } from "../store/authSlice";
 import { LogoutApi } from "../api/authApi";
 import { Alert } from "react-native";
 import useAppTranslation from "../libs/useAppTranslation";
+import { setLanguage } from "../store/languageSlice";
 
 
 export default function MenuView() {
@@ -86,7 +87,11 @@ export default function MenuView() {
                 <View style={{marginTop: 10, marginBottom: 10, borderTopWidth: 1, borderColor: '#ccc'}}></View>
 
 
-                <TouchableOpacity style={styles.button} onPress={() => i18n.changeLanguage(lang == "tr" ? "en" : "tr")}>
+                <TouchableOpacity style={styles.button} onPress={() => {
+                    const newLang = lang === "tr" ? "en" : "tr";
+                    i18n.changeLanguage(newLang);
+                    dispatch(setLanguage(newLang));
+                }}>
                     <Text style={styles.button.text}>{ lang === "tr" ? "English" : "Türkçe"}</Text>
                 </TouchableOpacity> 
 

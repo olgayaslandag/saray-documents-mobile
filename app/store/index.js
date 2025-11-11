@@ -4,6 +4,7 @@ import docSelectSlice from "./docSelectSlice"
 import searchItemsSlice from './searchItemsSlice';
 import authSlice from './authSlice';
 import favSlice from './favSlice';
+import languageSlice from './languageSlice';
 
 export default configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export default configureStore({
     docSelect: docSelectSlice,
     searchItems: searchItemsSlice,
     auth: authSlice,
-    favorites: favSlice
+    favorites: favSlice,
+    language: languageSlice
   }
 })

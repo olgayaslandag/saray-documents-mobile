@@ -66,6 +66,17 @@
     "news": "News"
   },
 
+  "slider": {
+    "aluminyum": "Aluminium Extrusion",
+    "kompozit": "Recycling Center & Billet Casting",
+    "folyo": "Aluminium Foil Rolling Mill",
+    "pvc": "PVC Systems",
+    "panjur": "Composite Panel",
+    "geri_donusum": "Roller Shutter Systems",
+    "turizm": "Tourism",
+    "enerji": "Energy"
+  },
+
 
   "header": {
     "good_morning": "Good Morning",

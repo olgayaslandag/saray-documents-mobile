@@ -66,6 +66,17 @@
     "news": "Yenilikler"
   },
 
+  "slider": {
+    "aluminyum": "Alüminyum Ekstrüzyon",
+    "kompozit": "Alüminyum Kompozit Panel",
+    "folyo": "Alüminyum Folyo Haddehane",
+    "pvc": "PVC Kapı ve Pencere Sistemleri",
+    "panjur": "Panjur ve Kepenk Sistemleri",
+    "geri_donusum": "Geri Dönüşüm Merkezi & Biyet Döküm",
+    "turizm": "Turizm",
+    "enerji": "Enerji"
+  },
+
 
   "header": {
     "good_morning": "Günaydın",
