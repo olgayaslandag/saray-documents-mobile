@@ -48,10 +48,13 @@ export default function MenuView() {
                     <Text style={styles.button.text}>{t("navigation.meeting_requests")}</Text>
                 </TouchableOpacity>
 
+                {
+                /*
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'MeetShowroomRequest'})}>
                     <Text style={styles.button.text}>{t("navigation.showroom_requests")}</Text>
                 </TouchableOpacity>                
-
+                */
+                }
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main', {screen: 'Offers'})}>
                     <Text style={styles.button.text}>{t("navigation.offers")}</Text>
                 </TouchableOpacity>
@@ -84,7 +87,7 @@ export default function MenuView() {
 
 
                 <TouchableOpacity style={styles.button} onPress={() => i18n.changeLanguage(lang == "tr" ? "en" : "tr")}>
-                    <Text style={styles.button.text}>{ lang === "tr" ? "English Version" : "Türkçe Versiyon"}</Text>
+                    <Text style={styles.button.text}>{ lang === "tr" ? "English" : "Türkçe"}</Text>
                 </TouchableOpacity> 
 
                 

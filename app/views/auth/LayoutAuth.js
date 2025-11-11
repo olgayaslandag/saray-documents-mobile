@@ -1,8 +1,8 @@
 import { View, SafeAreaView, TouchableOpacity, StyleSheet } from "react-native";
-import Logo from "../../components/auth/Logo";
-import { useNavigation, CommonActions } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import * as Device from "expo-device"
+import * as Device from "expo-device";
+import Logo from "../../components/auth/Logo";
 
 
 export default function LayoutAuth({ children }) {    
@@ -10,13 +10,10 @@ export default function LayoutAuth({ children }) {
 
     function HandleClose() {
         navigation.navigate('Main');
-
-        /*
-        navigation.dispatch(
-            CommonActions.reset()
-        );
-        */
     }
+
+
+
     return (
         <SafeAreaView style={{flex: 1, padding: 10, backgroundColor: '#FFF'}}>  
             <View style={styles.ios_container}>

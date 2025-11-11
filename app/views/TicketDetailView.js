@@ -1,15 +1,18 @@
 import { ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
-import LayoutLock from "./LayoutLock";
-import styleAuth from "../styles/styleAuth";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { TicketDetailStoreApi, TicketDetailsApi } from "../api/TicketApi";
+import LayoutLock from "./LayoutLock";
+import styleAuth from "../styles/styleAuth";
+import useAppTranslation from "../libs/useAppTranslation";
 
 export default function TicketDetailView({ route }) {
     const { ticketId } = route.params;
     const [form, setForm] = useState({message: '', id: 0});    
     const [items, setItems] = useState([]);
     const auth = useSelector(state => state.auth.value);
+
+    const { t } = useAppTranslation();
 
     useEffect(() => {
         (async () => {
@@ -40,7 +43,7 @@ export default function TicketDetailView({ route }) {
 
 
     return (
-        <LayoutLock title="Destek Talebi Detayı">
+        <LayoutLock title={t("ticket.detail.title")}>
             <ScrollView>
             {items.map((item, index) => (
                 <View 
@@ -68,7 +71,7 @@ export default function TicketDetailView({ route }) {
                     style={{...styleAuth.form.item.input, height: 100, marginTop: 20}}
                     onChangeText={val => setForm({...form, message: val})}
                     value={form.message}
-                    placeholder="Mesaj girin..."
+                    placeholder={t("ticket.detail.enter_message")}
                     autoComplete="name"
                     placeholderTextColor="black"
                     inputMode="text"
@@ -79,7 +82,9 @@ export default function TicketDetailView({ route }) {
                 />                
             </View>
             <TouchableOpacity onPress={HandleSubmit} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', borderRadius: 10, padding: 10, marginBottom: 80}}>
-                <Text style={{fontSize: 16, color: 'white'}}>Talebi Gönder</Text>
+                <Text style={{fontSize: 16, color: 'white'}}>
+                    {t("ticket.detail.submit")}
+                </Text>
             </TouchableOpacity>
             </ScrollView>
         </LayoutLock>

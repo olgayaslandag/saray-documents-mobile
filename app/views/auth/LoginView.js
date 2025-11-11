@@ -3,10 +3,11 @@ import { Text, TextInput, TouchableOpacity, View, Alert, StyleSheet } from "reac
 import { LoginApi } from "../../api/authApi";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/authSlice";
-import LayoutAuth from "./LayoutAuth";
 import { useNavigation } from "@react-navigation/native";
 import BottomButton from "../../components/auth/BottomButton";
 import styleAuth from "../../styles/styleAuth";
+import LayoutAuth from "./LayoutAuth";
+import useAppTranslation from "../../libs/useAppTranslation";
 
 
 export default function LoginView() {
@@ -15,10 +16,11 @@ export default function LoginView() {
     const [process, setProcess] = useState(false);
     const dispatch = useDispatch();
     const navigation = useNavigation();
+    const { t } = useAppTranslation();
 
     async function HandleLogin() {
         if(!form.email || !form.password) {
-            Alert.alert("Hata!", "Lütfen tüm alanları doldurunuz.");            
+            Alert.alert(t("global.error"), t("login.error_fill_fields"));
             return;
         }
 
@@ -28,7 +30,7 @@ export default function LoginView() {
                 
          if(!result.status) {
             setErrors(result.data);
-            Alert.alert("Hata", result.message);
+            Alert.alert(t("global.error"), result.message);
             return;
         }    
         
@@ -41,7 +43,9 @@ export default function LoginView() {
     return (
         <LayoutAuth>
             <View style={styleAuth.form.container}>
-                <Text style={{...styleAuth.form.title}}>Giriş Yapın</Text>
+                <Text style={{...styleAuth.form.title}}>
+                    {t("login.title")}
+                </Text>
                 <View style={styleAuth.form.item.container}>
                     <TextInput
                         style={errors.email ? styleAuth.form.item.inputError : styleAuth.form.item.input}
@@ -52,7 +56,7 @@ export default function LoginView() {
                             }
                         }}
                         value={form.email}
-                        placeholder="Eposta adresinizi girin"
+                        placeholder={t("login.email_placeholder")}
                         autoComplete="email"
                         placeholderTextColor="black"
                         inputMode="email"
@@ -69,7 +73,7 @@ export default function LoginView() {
                             }
                         }}
                         value={form.password}
-                        placeholder="Şifrenizi girin"
+                        placeholder={t("login.password_placeholder")}
                         autoComplete="current-password"
                         secureTextEntry={true}
                         placeholderTextColor="black"
@@ -78,11 +82,15 @@ export default function LoginView() {
                 </View>
 
                 <TouchableOpacity onPress={HandleLogin} activeOpacity={0.8} style={{marginBottom: 10}} disabled={process}>
-                    <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>Giriş Yap</Text>
+                    <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>
+                        {t("login.button")}
+                    </Text>
                 </TouchableOpacity>        
 
                 <TouchableOpacity onPress={() => navigation.navigate('Auth', {screen: 'Forget'})} activeOpacity={0.8} style={{marginBottom: 10}}>
-                    <Text style={{...styleAuth.form.button.text, borderWidth: 0}}>Şifremi Unuttum</Text>
+                    <Text style={{...styleAuth.form.button.text, borderWidth: 0}}>
+                        {t("login.forgot_password")}
+                    </Text>
                 </TouchableOpacity>      
             </View>
 

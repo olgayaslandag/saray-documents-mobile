@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { TextInput, View, StyleSheet, TouchableOpacity, Text, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import LayoutForget from "../LayoutForget";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCode } from "../../../store/authSlice";
-
+import LayoutForget from "../LayoutForget";
+import useAppTranslation from "../../../libs/useAppTranslation";
 
 export default function EnterCode({ route }) {
   const [values, setValues] = useState(["", "", "", ""]);
@@ -16,7 +16,7 @@ export default function EnterCode({ route }) {
 
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  console.log(code)
+  const { t } = useAppTranslation();
   
   function handleChange(value, index) {
     if (!/^\d?$/.test(value)) return;
@@ -70,13 +70,17 @@ export default function EnterCode({ route }) {
         {btnShow && (
             <View style={styles.container}>
                 <TouchableOpacity style={styles.button} onPress={HandleConfirm}>
-                    <Text style={styles.button_text}>Onayla</Text>
+                    <Text style={styles.button_text}>
+                        {t("forget.enter_code.send_button")}
+                    </Text>
                 </TouchableOpacity>
             </View>
         )}
         <View style={styles.container}>
           <TouchableOpacity style={styles.button_resend}>
-            <Text style={{color: 'black'}}>Tekrar Gönder</Text>
+            <Text style={{color: 'black'}}>
+                {t("forget.enter_code.resend_button")}
+            </Text>
           </TouchableOpacity>
         </View>
     </LayoutForget>

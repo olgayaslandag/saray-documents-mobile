@@ -3,10 +3,11 @@ import { Text, TextInput, TouchableOpacity, View, Alert, StyleSheet, Modal, Scro
 import { RegisterApi } from "../../api/authApi";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/authSlice";
-import LayoutAuth from "./LayoutAuth";
 import { useNavigation } from "@react-navigation/native";
 import styleAuth from "../../styles/styleAuth";
-
+import LayoutAuth from "./LayoutAuth";
+import useAppTranslation from "../../libs/useAppTranslation";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function RegisterView() {
     const [form, setForm] = useState({name: '', email: '', password: '', company_name: '', phone: ''});
@@ -15,10 +16,11 @@ export default function RegisterView() {
     const [showConsentModal, setShowConsentModal] = useState(false);
     const dispatch = useDispatch();
     const navigation = useNavigation();
+    const { t } = useAppTranslation();
 
     async function HandleLogin() {
         if(!form.name || !form.email || !form.password || !form.company_name || !form.phone) {
-            Alert.alert("Hata!", "Lütfen tüm alanları doldurunuz.");
+            Alert.alert(t("global.error"), t("global.error_fill_all"));
             return;
         }
         setProcess(true);
@@ -29,14 +31,16 @@ export default function RegisterView() {
         
         if(!result.status) {
             setErrors(result.result);
-            Alert.alert("Hata!", result.message);
+            Alert.alert(t("global.error"), result.message);
         }            
     }
 
     return (
         <LayoutAuth>
             <View style={styleAuth.form.container}>
-                <Text style={styleAuth.form.title}>Kayıt Olun</Text>
+                <Text style={styleAuth.form.title}>
+                    {t("register.title")}
+                </Text>
                 {/* Adsoyad */}
                 <View style={styleAuth.form.item.container}>
                     <TextInput
@@ -48,7 +52,7 @@ export default function RegisterView() {
                             }
                         }}
                         value={form.name}
-                        placeholder="Adınızı soyadınızı girin"
+                        placeholder={t("register.name_placeholder")}
                         autoComplete="name"
                         placeholderTextColor="black"
                         inputMode="text"
@@ -67,7 +71,7 @@ export default function RegisterView() {
                             }
                         }}
                         value={form.email}
-                        placeholder="Eposta adresinizi girin"
+                        placeholder={t("register.email_placeholder")}
                         autoComplete="email"
                         placeholderTextColor="black"
                         inputMode="email"
@@ -81,7 +85,7 @@ export default function RegisterView() {
                         style={styleAuth.form.item.input}
                         onChangeText={val => setForm({...form, phone: val})}
                         value={form.phone}
-                        placeholder="Telefon numaranızı girin"
+                        placeholder={t("register.phone_placeholder")}
                         autoComplete="tel"
                         placeholderTextColor="black"
                         inputMode="tel"
@@ -94,7 +98,7 @@ export default function RegisterView() {
                         style={styleAuth.form.item.input}
                         onChangeText={val => setForm({...form, company_name: val})}
                         value={form.password_confirmation}
-                        placeholder="Çalıştığınız Firma"
+                        placeholder={t("register.company_placeholder")}
                         placeholderTextColor="black"
                     />
                 </View>
@@ -110,7 +114,7 @@ export default function RegisterView() {
                             }
                         }}
                         value={form.password}
-                        placeholder="Şifrenizi girin"
+                        placeholder={t("register.password_placeholder")}
                         autoComplete="current-password"
                         secureTextEntry={true}
                         placeholderTextColor="black"
@@ -119,19 +123,23 @@ export default function RegisterView() {
                 </View>                
 
                 <Text style={{ fontSize: 14, marginTop: 10, marginBottom: 20 }}>
-                    Formu gönderirken, kişisel verilerimin işlenmesine ve tarafıma ticari elektronik ileti gönderilmesine{" "}
+                    {t("register.consent_text_start")}{" "}
                     <Text style={{ fontWeight: 'bold' }} onPress={() => setShowConsentModal(true)}>
-                        burada
+                        {t("register.consent_link")}
                     </Text>{" "}
-                    belirtilen Rıza Metni ile onay veriyorum.
+                    {t("register.consent_text_end")}
                 </Text>
 
                 <TouchableOpacity onPress={HandleLogin} activeOpacity={0.8} style={{marginBottom: 10}} disabled={process}>
-                    <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>Kayıt</Text>
+                    <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>
+                        {t("register.button_register")}
+                    </Text>
                 </TouchableOpacity>        
 
                 <TouchableOpacity onPress={() => navigation.navigate('Auth', {screen: 'Login'})} activeOpacity={0.8} style={{marginBottom: 10}}>
-                    <Text style={{...styleAuth.form.button.text, borderWidth: 0}}>Giriş Ekranı</Text>
+                    <Text style={{...styleAuth.form.button.text, borderWidth: 0}}>
+                        {t("register.button_login_screen")}
+                    </Text>
                 </TouchableOpacity>
             </View>
 
@@ -141,51 +149,66 @@ export default function RegisterView() {
                 visible={showConsentModal}
                 onRequestClose={() => setShowConsentModal(false)}>
                 
-                <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20}}>
+                <SafeAreaView style={{flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20, paddingTop: 0}}>
                     <ScrollView>
                         <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 10 }}>
-                            Kişisel Verilerin İşlenmesine Dair Aydınlatma ve Açık Rıza Metni
+                            {t("register.modal.title")}
                         </Text>
 
                         <Text style={{ fontSize: 14, marginBottom: 10 }}>
-                            6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, kimliğinizi belirli ya da belirlenebilir kılan her türlü bilgi “kişisel veri” olarak tanımlanmakta ve tarafımızca aşağıda belirtilen çerçevede işlenmektedir.
+                            {t("register.modal.intro")}
                         </Text>
 
-                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>1. Veri Sorumlusu</Text>
+
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>
+                            {t("register.modal.sections.data_controller.title")}
+                        </Text>
                         <Text style={{ fontSize: 14, marginBottom: 10 }}>
-                            Kişisel verileriniz, veri sorumlusu sıfatıyla tarafımızdan işlenmektedir.
+                            {t("register.modal.sections.data_controller.text")}
                         </Text>
 
-                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>2. İşlenen Kişisel Veriler</Text>
+
+
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>
+                            {t("register.modal.sections.processed_data.title")}
+                        </Text>
                         <Text style={{ fontSize: 14, marginBottom: 10 }}>
-                            Ad, soyad, e-posta adresi, telefon numarası, şirket bilgileri gibi tarafınızca paylaşılan bilgiler işlenmektedir.
+                            {t("register.modal.sections.processed_data.text")}
                         </Text>
 
-                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>3. İşleme Amaçları</Text>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>
+                            {t("register.modal.sections.purpose.title")}
+                        </Text>
                         <Text style={{ fontSize: 14, marginBottom: 10 }}>
-                            Kişisel verileriniz; hizmetlerimizin sunulması, size özel tekliflerin iletilmesi, kampanya, duyuru ve bilgilendirme yapılması, yasal yükümlülüklerin yerine getirilmesi amacıyla işlenmektedir.
+                            {t("register.modal.sections.purpose.text")}
                         </Text>
 
-                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>4. Aktarım</Text>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>
+                            {t("register.modal.sections.transfer.title")}
+                        </Text>
                         <Text style={{ fontSize: 14, marginBottom: 10 }}>
-                            Kişisel verileriniz, hizmet alınan üçüncü taraflarla (örneğin SMS ve e-posta hizmet sağlayıcıları) sadece yukarıda belirtilen amaçlar doğrultusunda ve KVKK’ya uygun şekilde paylaşılabilir.
+                            {t("register.modal.sections.transfer.text")}
                         </Text>
 
-                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>5. Haklarınız</Text>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>
+                            {t("register.modal.sections.rights.title")}
+                        </Text>
                         <Text style={{ fontSize: 14, marginBottom: 10 }}>
-                            KVKK’nın 11. maddesi kapsamında; kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, düzeltilmesini veya silinmesini isteme gibi haklara sahipsiniz.
+                            {t("register.modal.sections.rights.text")}
                         </Text>
 
-                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>6. Açık Rıza</Text>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', marginTop: 10 }}>
+                            {t("register.modal.sections.consent.title")}
+                        </Text>
                         <Text style={{ fontSize: 14, marginBottom: 10 }}>
-                            Yukarıda belirtilen kapsamda, kişisel verilerinizin işlenmesine ve tarafınıza ticari elektronik ileti gönderilmesine açık rıza verdiğinizi beyan edersiniz.
+                            {t("register.modal.sections.consent.text")}
                         </Text>
                     </ScrollView>
 
                     <View style={{ marginTop: 20 }}>
-                        <Button title="Kapat" onPress={() => setShowConsentModal(false)} />
+                        <Button title={t("register.modal.button_close")} onPress={() => setShowConsentModal(false)} />
                     </View>
-                </View>
+                </SafeAreaView>
             </Modal>
         </LayoutAuth>
     );

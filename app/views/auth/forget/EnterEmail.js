@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { ForgetApi } from "../../../api/authApi";
 import { Alert, Text, View, TextInput, TouchableOpacity } from "react-native";
+import { setCode } from "../../../store/authSlice";
 import LayoutForget from "../LayoutForget";
 import styleAuth from "../../../styles/styleAuth";
 import generateNumber from "../../../libs/generateNumber";
-import { setCode } from "../../../store/authSlice";
+import useAppTranslation from "../../../libs/useAppTranslation";
 
 export default function EnterEmail() {
     const [form, setForm] = useState({email: '', password: '', code: ''});
@@ -15,6 +16,7 @@ export default function EnterEmail() {
     const [errors, setErrors] = useState({});
     const navigation = useNavigation();
     const dispatch = useDispatch();
+    const { t } = useAppTranslation();
 
 
     useEffect(() => {
@@ -25,7 +27,7 @@ export default function EnterEmail() {
 
     async function HandleForget() {
         if(!form.email) {
-            Alert.alert("Hata!", "Lütfen tüm alanları doldurunuz!");
+            Alert.alert(t("global.error"), t("global.error_fill_fields"));
             return;
         }
 
@@ -35,12 +37,12 @@ export default function EnterEmail() {
         
         if(!result.status) {
             setErrors(result.result);
-            Alert.alert("Hata!", result.message);
+            Alert.alert(t("global.error"), result.message);
             return;
         }            
          
         dispatch(setCode(systemCode));
-        Alert.alert("Tebrikler", result.message);
+        Alert.alert(t("global.success"), result.message);
         navigation.navigate('Forget', {
             screen: 'EnterCode', 
             params: {email: form.email || 'deneme'}
@@ -50,7 +52,9 @@ export default function EnterEmail() {
 
     return (
         <LayoutForget>
-            <Text style={styleAuth.form.title}>Şifremi Sıfırla</Text>
+            <Text style={styleAuth.form.title}>
+                {t("forget.title")}
+            </Text>
             <View style={styleAuth.form.item.container}>
                 <TextInput
                     style={errors.email ? styleAuth.form.item.inputError : styleAuth.form.item.input}
@@ -61,7 +65,7 @@ export default function EnterEmail() {
                         }
                     }}
                     value={form.email}
-                    placeholder="Eposta adresinizi girin"
+                    placeholder={t("forget.email_placeholder")}
                     autoComplete="email"
                     placeholderTextColor="black"
                     inputMode="email"
@@ -71,11 +75,15 @@ export default function EnterEmail() {
             
 
             <TouchableOpacity onPress={HandleForget} activeOpacity={0.8} style={{marginBottom: 10}} disabled={process}>
-                <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>Şifremi Sıfırla</Text>
+                <Text style={{...styleAuth.form.button.text, backgroundColor: 'black', color: 'white'}}>
+                    {t("forget.send_button")}
+                </Text>
             </TouchableOpacity>        
 
             <TouchableOpacity onPress={() => navigation.navigate('Auth', {screen: 'Login'})} activeOpacity={0.8} style={{marginBottom: 10}}>
-                <Text style={{...styleAuth.form.button.text, borderWidth: 0}}>Giriş Ekranı</Text>
+                <Text style={{...styleAuth.form.button.text, borderWidth: 0}}>
+                    {t("forget.login_button")}
+                </Text>
             </TouchableOpacity>   
         </LayoutForget>
     );

@@ -39,7 +39,7 @@ export default function TicketFormView() {
                 <View style={{marginBottom: 30}}>
                     <FontAwesome name="check" size={100} color="#222" />
                 </View>
-                <Text style={{fontSize: 18, fontWeight: 700}}>{t("ticket.success")}</Text>
+                <Text style={{fontSize: 18, fontWeight: 700}}>{t("ticket.form.success")}</Text>
                 <TouchableOpacity 
                     onPress={() => navigation.dispatch(
                         CommonActions.reset({
@@ -48,14 +48,14 @@ export default function TicketFormView() {
                         })
                     )} 
                     style={{backgroundColor: '#222', paddingVertical: 10, paddingHorizontal: 20, borderRadius: 10, marginTop: 10}}>
-                    <Text style={{fontSize: 16, color: 'white'}}>{t("ticket.go_home")}</Text>
+                    <Text style={{fontSize: 16, color: 'white'}}>{t("ticket.form.go_home")}</Text>
                 </TouchableOpacity>                
             </LayoutLock>
         );
     }
 
     return (
-        <LayoutLock title={t("ticket.title")}>
+        <LayoutLock title={t("ticket.form.title")}>
             <View>
                 {/* Konu */}
                 <View style={{marginBottom: 20}}>
@@ -63,7 +63,7 @@ export default function TicketFormView() {
                         style={styleAuth.form.item.input}
                         onChangeText={val => setForm({...form, title: val})}
                         value={form.title}
-                        placeholder={t("ticket.enter_subject")}
+                        placeholder={t("ticket.form.enter_subject")}
                         autoComplete="name"
                         placeholderTextColor="black"
                         inputMode="text"
@@ -77,7 +77,7 @@ export default function TicketFormView() {
                         style={{...styleAuth.form.item.input, height: 200}}
                         onChangeText={val => setForm({...form, message: val})}
                         value={form.message}
-                        placeholder={t("ticket.enter_message")}
+                        placeholder={t("ticket.form.enter_message")}
                         autoComplete="name"
                         placeholderTextColor="black"
                         inputMode="text"
@@ -89,7 +89,7 @@ export default function TicketFormView() {
                 </View>
 
                 <TouchableOpacity onPress={HandleSubmit} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', borderRadius: 10, padding: 10}}>
-                    <Text style={{fontSize: 16, color: 'white'}}>{t("ticket.submit")}</Text>
+                    <Text style={{fontSize: 16, color: 'white'}}>{t("ticket.form.submit")}</Text>
                 </TouchableOpacity>
             </View>
         </LayoutLock>

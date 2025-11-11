@@ -1,82 +1,275 @@
 {
-    "navigation": {
-      "home": "Home",
-      "corporate": "Corporate",
-      "sustainability": "Sustainability",
-      "meeting_requests": "My Meeting Requests",
-      "showroom_requests": "My Showroom Appointment Requests",
-      "offers": "My Offers",
-      "documents": "Documents",
-      "favorites": "My Favorites",
-      "support_requests": "My Support Requests",
-      "account": "My Account",
-      "login": "Log In",
-      "logout": "Log Out",
-      "current_lang": "English Version"
-    },
-    "forms": {
-      "support_form": "Support Request Form",
-      "enter_subject": "Enter subject…",
-      "enter_message": "Enter message…",
-      "send_request": "Submit Request"
-    },
-    "categories": {
-      "aluminium_extrusion": "Aluminium Extrusion",
-      "composite_panel": "Composite Panel",
-      "foil_rolling": "Aluminium Foil Rolling Mill",
-      "pvc_systems": "PVC Systems",
-      "roller_systems": "Roller Shutter Systems",
-      "recycling_center": "Recycling Center & Billet Casting",
-      "tourism": "Tourism",
-      "energy": "Energy"
-    },
-    "sustainability": {
-      "title_1": "SARAY’s Commitment to a Sustainable Future",
-      "desc_1": "Sustainability and environmental stewardship are at the heart of SARAY’s corporate mission, driving substantial investments in renewable energy sources. These initiatives are not only advancing eco-friendly production processes but also significantly lowering the company’s carbon footprint.",
-      
-      "title_2": "SARAY: Investing in a Sustainable Future with Renewable Energy",
-      "desc_2_1": "SARAY is making strategic investments in renewable energy, reinforcing its dedication to sustainability. By harnessing clean energy from its own power plants, SARAY is leading by example in the industry.",
-      "desc_2_2": "With 6 MW of electricity generated through wind turbine energy and 5 MW from solar energy, the company is reducing its reliance on conventional energy sources and committing to a responsible production model.",
-      
-      "title_3": "Şanlıurfa Solar Power Plant: Advancing Sustainable Energy",
-      "desc_3": "SARAY’s solar power plant investment in Şanlıurfa is set to generate an additional 12 MW of electricity annually. This forward-thinking project will not only fulfill energy needs but also enhance regional sustainability and reduce dependence on non-renewable energy.",
-      
-      "title_4": "Achieving Significant Carbon Footprint Reductions",
-      "desc_4": "Through its renewable energy investments, SARAY is preventing 7,900 tons of carbon emissions annually, marking a significant improvement in production-related greenhouse gas emissions. This is a testament to SARAY’s pioneering steps and commitment to environmental responsibility."
-    },
-    "about": {
-      "title": "Since 1980",
-      "company_name": "Saray Aluminium",
-      "desc_1": "Since 1980, Saray Aluminum has played a major role in building the architectural structures of the future with its pioneering and innovative interior and exterior solutions. Saray Aluminum door, window, facade and handrail systems, aluminum composite panel, PVC door and window systems, shutter systems, machinery, lighting, elevator etc. produces industrial and standard cross-section profiles that the sectors need.",
-      "desc_2": "We are among the top 500 industrial companies in Turkey with export to more than 60 countries worldwide and receives the Metallic Stars of Export award every year with its high export figures.",
-      "desc_3": "Saray Aluminium, which has CE, ISO 9001, Qualanod, Qualicolat, TS EN 755, TS EN 12020, IATF 16949, SEPRO and GOST-R quality certificates, produces in a closed area of 175.000 m² in Istanbul Güneşli and Tekirdağ Çerkezköy. Saray Aluminium is a fully integrated company with aluminium anodizing, aluminium electrostatic powder coating, aluminium extrusion, aluminium billet casting, aluminium composite panel, roller shutter and PVC extrusion production facilities.",
-      "desc_4": "With Project and R&D units, Saray Aluminium provides architectural offices and building investors with special solutions for multi-storey and qualified buildings, providing technical support at all stages from facade design to application. Saray Aluminum plays an important role in the architectural structures of the future and raising the quality of life with its high-performance innovative products."
-    },
-    "home": {
-      "news": "News"
-    },
-    "header": {
-      "good_morning": "Good Morning",
-      "good_afternoon": "Good Afternoon",
-      "good_evening": "Good Evening"
-    },
-    "search": {
-      "search": "What are you looking for?",
-      "no_result": "No result found for your search"
-    },
-    "favorites": {
-      "title": "My Favorites",
-      "empty": "You haven't added any documents to your favorites yet!"
-    },
-    "global": {
-      "login_required": "You must log in!"
-    },
-    "ticket": {
+  "navigation": {
+    "home": "Home",
+    "corporate": "Corporate",
+    "sustainability": "Sustainability",
+    "meeting_requests": "My Meeting Requests",
+    "showroom_requests": "My Showroom Appointment Requests",
+    "offers": "My Offers",
+    "documents": "Documents",
+    "favorites": "My Favorites",
+    "support_requests": "My Support Requests",
+    "account": "My Account",
+    "login": "Log In",
+    "logout": "Log Out",
+    "current_lang": "English Version"
+  },
+
+
+  "forms": {
+    "support_form": "Support Request Form",
+    "enter_subject": "Enter subject…",
+    "enter_message": "Enter message…",
+    "send_request": "Submit Request"
+  },
+
+
+  "categories": {
+    "aluminium_extrusion": "Aluminium Extrusion",
+    "composite_panel": "Composite Panel",
+    "foil_rolling": "Aluminium Foil Rolling Mill",
+    "pvc_systems": "PVC Systems",
+    "roller_systems": "Roller Shutter Systems",
+    "recycling_center": "Recycling Center & Billet Casting",
+    "tourism": "Tourism",
+    "energy": "Energy"
+  },
+
+
+  "sustainability": {
+    "title_1": "SARAY’s Commitment to a Sustainable Future",
+    "desc_1": "Sustainability and environmental stewardship are at the heart of SARAY’s corporate mission, driving substantial investments in renewable energy sources. These initiatives are not only advancing eco-friendly production processes but also significantly lowering the company’s carbon footprint.",
+    
+    "title_2": "SARAY: Investing in a Sustainable Future with Renewable Energy",
+    "desc_2_1": "SARAY is making strategic investments in renewable energy, reinforcing its dedication to sustainability. By harnessing clean energy from its own power plants, SARAY is leading by example in the industry.",
+    "desc_2_2": "With 6 MW of electricity generated through wind turbine energy and 5 MW from solar energy, the company is reducing its reliance on conventional energy sources and committing to a responsible production model.",
+    
+    "title_3": "Şanlıurfa Solar Power Plant: Advancing Sustainable Energy",
+    "desc_3": "SARAY’s solar power plant investment in Şanlıurfa is set to generate an additional 12 MW of electricity annually. This forward-thinking project will not only fulfill energy needs but also enhance regional sustainability and reduce dependence on non-renewable energy.",
+    
+    "title_4": "Achieving Significant Carbon Footprint Reductions",
+    "desc_4": "Through its renewable energy investments, SARAY is preventing 7,900 tons of carbon emissions annually, marking a significant improvement in production-related greenhouse gas emissions. This is a testament to SARAY’s pioneering steps and commitment to environmental responsibility."
+  },
+
+
+  "about": {
+    "title": "Since 1980",
+    "company_name": "Saray Aluminium",
+    "desc_1": "Since 1980, Saray Aluminum has played a major role in building the architectural structures of the future with its pioneering and innovative interior and exterior solutions. Saray Aluminum door, window, facade and handrail systems, aluminum composite panel, PVC door and window systems, shutter systems, machinery, lighting, elevator etc. produces industrial and standard cross-section profiles that the sectors need.",
+    "desc_2": "We are among the top 500 industrial companies in Turkey with export to more than 60 countries worldwide and receives the Metallic Stars of Export award every year with its high export figures.",
+    "desc_3": "Saray Aluminium, which has CE, ISO 9001, Qualanod, Qualicolat, TS EN 755, TS EN 12020, IATF 16949, SEPRO and GOST-R quality certificates, produces in a closed area of 175.000 m² in Istanbul Güneşli and Tekirdağ Çerkezköy. Saray Aluminium is a fully integrated company with aluminium anodizing, aluminium electrostatic powder coating, aluminium extrusion, aluminium billet casting, aluminium composite panel, roller shutter and PVC extrusion production facilities.",
+    "desc_4": "With Project and R&D units, Saray Aluminium provides architectural offices and building investors with special solutions for multi-storey and qualified buildings, providing technical support at all stages from facade design to application. Saray Aluminum plays an important role in the architectural structures of the future and raising the quality of life with its high-performance innovative products."
+  },
+
+
+  "home": {
+    "news": "News"
+  },
+
+
+  "header": {
+    "good_morning": "Good Morning",
+    "good_afternoon": "Good Afternoon",
+    "good_evening": "Good Evening"
+  },
+
+
+  "search": {
+    "search": "What are you looking for?",
+    "no_result": "No result found for your search"
+  },
+
+
+  "favorites": {
+    "title": "My Favorites",
+    "empty": "You haven't added any documents to your favorites yet!"
+  },
+
+
+  "global": {
+    "login_required": "You must log in!",
+    "cancel": "Cancel",
+    "error": "Error!",
+    "success": "Congratulations!",
+    "error_fill_all": "Please fill in all fields!"
+  },
+
+
+  "ticket": {
+    "title":"My Support Requests",
+    "new_button": "New Request",
+    "detail_button": "Details",
+    "form": {
       "title": "Support Request Form",
       "submit": "Submit Request",
       "success": "Your message has been successfully sent!",
       "go_home": "Go to Home",
       "enter_subject": "Enter subject…",
       "enter_message": "Enter message…"
+    },
+    "detail": {
+      "title": "Support Request Details",
+      "enter_message": "Enter message...",
+      "submit": "Submit Request"
+    }
+  },
+
+
+  "offer": {
+    "title": "My Offers",
+    "new_button": "New Offer",
+    "detail_button": "Details",
+    "form": {
+      "title": "Offer Form",
+      "submit": "Submit Offer",
+      "success": "Offer Submitted Successfully!",
+      "name": "Full Name",
+      "place_name": "Enter your full name",
+      "email": "Email",
+      "place_email": "Enter your email address",
+      "phone": "Phone",
+      "place_phone": "Enter your phone number",
+      "company_name": "Company Name",
+      "place_company_name": "Your Company",
+      "file": "Select Document",
+      "back": "Back",
+      "cancel": "Cancel",
+      "all_offers": "View All Offers"
+    },
+    "detail": {
+      "title": "Offer Details",
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "company_name": "Company Name",
+      "file": "Offer Document",
+      "back": "Back",
+      "cancel": "Cancel",
+      "all_offers": "View All Offers"
+    }
+  },
+
+
+  "meet_request": {
+    "title": "Meeting Request",
+    "form": {
+      "title": "Meeting Request Form",
+      "success": "Your request has been submitted successfully!",
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "company_name": "Company Name",
+      "date": "Date",
+      "person": "Number of People",
+
+      "name_placeholder": "Enter your full name",
+      "email_placeholder": "Enter your email address",
+      "phone_placeholder": "Enter your phone number",
+      "company_name_placeholder": "Your company name",
+      "person_placeholder": "Enter number of people",
+
+      "submit": "Submit Request",
+      "go_home": "Go to Home",
+      "enter_subject": "Enter a subject…",
+      "enter_message": "Enter a message…"
+    }
+  },
+
+
+  "profile": {
+    "title": "My Account",
+    "name": "Enter your full name",
+    "email": "Enter your email address",
+    "password": "Enter your password",
+    "update": "Update",
+    "delete": "Delete My Account",
+    "logout": "Log Out",
+    "delete_title": "Delete My Account",
+    "delete_confirm": "Are you sure you want to delete your account?",
+    "success": "Congratulations!",
+    "error": "An error occurred!",
+    "erase": "Delete"
+  },
+
+
+  "login": {
+    "title": "Login",
+    "email_placeholder": "Enter your email address",
+    "password_placeholder": "Enter your password",
+    "button": "Login",
+    "forgot_password": "Forgot Password",
+    "error_title": "Error!",
+    "error_fill_fields": "Please fill in all fields.",
+    "error_default": "An error occurred. Please try again."
+  },
+
+
+  "register": {
+    "title": "Sign Up",
+    "name_placeholder": "Enter your full name",
+    "email_placeholder": "Enter your email address",
+    "phone_placeholder": "Enter your phone number",
+    "company_placeholder": "Your Company",
+    "password_placeholder": "Enter your password",
+    "error_fill_all": "Please fill in all fields.",
+    "error_title": "Error!",
+    "success_title": "Congratulations!",
+    "consent_text_start": "By submitting the form, I consent to the processing of my personal data and the sending of commercial electronic messages to me, as stated",
+    "consent_text_end": "in the Consent Form.",
+    "consent_link": "here",
+    "button_register": "Register",
+    "button_login_screen": "Login Screen",
+    "modal": {
+      "title": "Clarification and Explicit Consent Text Regarding the Processing of Personal Data",
+      "intro": "Pursuant to the Law No. 6698 on the Protection of Personal Data ('KVKK'), any information that identifies or makes you identifiable is defined as 'personal data' and is processed by us within the scope described below.",
+      "sections": {
+        "data_controller": {
+          "title": "1. Data Controller",
+          "text": "Your personal data is processed by us as the data controller."
+        },
+        "processed_data": {
+          "title": "2. Processed Personal Data",
+          "text": "Information you share such as name, surname, email address, phone number, and company details are processed."
+        },
+        "purpose": {
+          "title": "3. Purpose of Processing",
+          "text": "Your personal data is processed for providing our services, delivering personalized offers, conducting campaigns, announcements, and notifications, and fulfilling legal obligations."
+        },
+        "transfer": {
+          "title": "4. Data Transfer",
+          "text": "Your personal data may be shared with third-party service providers (such as SMS or email service providers) solely for the purposes mentioned above and in compliance with the KVKK."
+        },
+        "rights": {
+          "title": "5. Your Rights",
+          "text": "Under Article 11 of the KVKK, you have the right to learn whether your personal data is processed, request information if processed, and demand correction or deletion of your data."
+        },
+        "consent": {
+          "title": "6. Explicit Consent",
+          "text": "You hereby declare that you give your explicit consent for the processing of your personal data and the sending of commercial electronic messages to you, within the scope defined above."
+        }
+      },
+      "button_close": "Close"
+    }
+  },
+
+
+  "forget": {
+    "title": "Forgot Password",
+    "email_placeholder": "Enter your email address",
+    "send_button": "Send Password",
+    "login_button": "Login Screen",
+    "enter_code": {
+      "send_button": "Confirm",
+      "resend_button": "Resend",
+      "wrong_code": "Wrong code!"
+    },
+    "enter_pass": {
+      "title": "Enter your new password",
+      "email_placeholder": "Enter your email address",
+      "send_button": "Save My Password",
+      "error_empty": "Please enter your password.",
+      "error_fill_fields": "Please fill in all fields.",
+      "success": "Your password has been successfully updated."
     }
   }
+}

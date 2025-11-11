@@ -1,12 +1,13 @@
 import { View, Text, TouchableOpacity } from "react-native";
-import styleAuth from "../styles/styleAuth";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { useEffect, useState } from "react";
-import LayoutLock from "./LayoutLock";
 import { useDispatch, useSelector } from "react-redux";
-import DateTimePicker from '@react-native-community/datetimepicker';
 import { FontAwesome } from '@expo/vector-icons';
 import { MeetStoreApi } from "../api/MeetApi";
+import DateTimePicker from '@react-native-community/datetimepicker';
+import LayoutLock from "./LayoutLock";
+import styleAuth from "../styles/styleAuth";
+import useAppTranslation from "../libs/useAppTranslation";
 
 
 
@@ -17,6 +18,7 @@ export default function MeetRequest() {
     const [success, setSuccess] = useState(false);
     const [errors, setErrors] = useState(false);
     const dispatch = useDispatch();
+    const { t } = useAppTranslation();
 
 
     useEffect(() => {
@@ -61,23 +63,25 @@ export default function MeetRequest() {
     
     if(success) {
         return (
-            <LayoutLock title="Toplantı Talebi">
+            <LayoutLock title={t("meet_request.title")}>
                 <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                     <View style={{marginBottom: 30}}>
                         <FontAwesome name="check" size={100} color="#222" />
                     </View>
-                    <Text style={{fontSize: 16, color: 'dark'}}>Talebiniz başarılı bir şekilde gönderildi!</Text>
+                    <Text style={{fontSize: 16, color: 'dark'}}>{t("meet_request.form.success")}</Text>
                 </View>
             </LayoutLock>
         )
     };
 
     return (
-        <LayoutLock title="Toplantı Talebi">
+        <LayoutLock title={t("meet_request.title")}>
             <ScrollView style={{flex: 1}}>
                 {/* Adsoyad */}
                 <View style={{marginBottom: 20}}>
-                    <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Ad Soyad</Text>
+                    <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>
+                        {t("meet_request.form.name")}
+                    </Text>
                     <TextInput
                         style={[
                             styleAuth.form.item.input,
@@ -85,7 +89,7 @@ export default function MeetRequest() {
                         ]}
                         onChangeText={val => setForm({...form, name: val})}
                         value={form.name}
-                        placeholder="Adınızı soyadınızı girin"
+                        placeholder={t("meet_request.form.name")}
                         autoComplete="name"
                         placeholderTextColor="black"
                         inputMode="text"
@@ -97,7 +101,9 @@ export default function MeetRequest() {
 
                 {/* Eposta */}
                 <View style={{marginBottom: 20}}>
-                    <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Eposta</Text>
+                    <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>
+                        {t("meet_request.form.email")}
+                    </Text>
                     <TextInput
                         style={[
                             styleAuth.form.item.input,
@@ -105,7 +111,7 @@ export default function MeetRequest() {
                         ]}
                         onChangeText={val => setForm({...form, email: val})}
                         value={form.email}
-                        placeholder="Eposta adresinizi girin"
+                        placeholder={t("meet_request.form.email")}
                         autoComplete="email"
                         placeholderTextColor="black"
                         inputMode="email"
@@ -117,7 +123,9 @@ export default function MeetRequest() {
 
                 {/* Telefon */}
                 <View style={{marginBottom: 20}}>
-                    <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Telefon</Text>
+                    <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>
+                        {t("meet_request.form.phone")}
+                    </Text>
                     <TextInput
                         style={[
                             styleAuth.form.item.input,
@@ -125,7 +133,7 @@ export default function MeetRequest() {
                         ]}
                         onChangeText={val => setForm({...form, phone: val})}
                         value={form.phone}
-                        placeholder="Telefon numaranızı girin"
+                        placeholder={t("meet_request.form.phone")}
                         autoComplete="tel"
                         placeholderTextColor="black"
                         inputMode="tel"
@@ -137,7 +145,9 @@ export default function MeetRequest() {
 
                 {/* Şirket Adı */}
                 <View style={{marginBottom: 20}}>
-                    <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Şirket Adı</Text>
+                    <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>
+                        {t("meet_request.form.company_name")}
+                    </Text>
                     <TextInput
                         style={[
                             styleAuth.form.item.input,
@@ -145,7 +155,7 @@ export default function MeetRequest() {
                         ]}
                         onChangeText={val => setForm({...form, company_name: val})}
                         value={form.company_name}
-                        placeholder="Çalıştığınız Firma"
+                        placeholder={t("meet_request.form.company_name")}
                         placeholderTextColor="black"
                         inputMode="text"
                     />
@@ -156,7 +166,9 @@ export default function MeetRequest() {
 
                 {/* Tarih */}
                 <View style={{ marginBottom: 20 }}>
-                    <Text style={{ fontWeight: 700, fontSize: 16, marginBottom: 3 }}>Tarih</Text>
+                    <Text style={{ fontWeight: 700, fontSize: 16, marginBottom: 3 }}>
+                        {t("meet_request.form.date")}
+                    </Text>
                     <TouchableOpacity
                         onPress={() => setShowDatePicker(true)}
                         style={{
@@ -180,7 +192,7 @@ export default function MeetRequest() {
                         onChange={(event, selectedDate) => {
                             setShowDatePicker(false);
                             if (selectedDate) {
-                                setForm({ ...form, date: selectedDate.toISOString() });
+                                setForm({ ...form, date: selectedDate });
                             }
                         }}
                         />
@@ -189,7 +201,9 @@ export default function MeetRequest() {
 
                 {/* Kişi Sayısı */}
                 <View style={{marginBottom: 20}}>
-                    <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>Kişi Sayısı</Text>
+                    <Text style={{fontWeight: 700, fontSize: 16, marginBottom: 3}}>
+                        {t("meet_request.form.person")}
+                    </Text>
                     <View style={{width: '100%', height: 50, borderWidth: 1, borderColor: '#C1C1C1', borderRadius: 10, padding: 0}}>
                         <TextInput
                             style={[
@@ -198,7 +212,7 @@ export default function MeetRequest() {
                             ]}
                             onChangeText={val => setForm({...form, person: val})}
                             value={form.person}
-                            placeholder="Kişi sayısı girin."
+                            placeholder={t("meet_request.form.person_placeholder")}
                             placeholderTextColor="black"
                             inputMode="numeric"
                         />
@@ -209,7 +223,9 @@ export default function MeetRequest() {
                 </View>
 
                 <TouchableOpacity onPress={HandleSubmit} style={{justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', borderRadius: 10, padding: 10}}>
-                    <Text style={{fontSize: 16, color: 'white'}}>Toplantı Talebi Formu</Text>
+                    <Text style={{fontSize: 16, color: 'white'}}>
+                        {t("meet_request.form.submit")}
+                    </Text>
                 </TouchableOpacity>
             </ScrollView>            
        </LayoutLock>
