@@ -1,9 +1,12 @@
-// store/languageSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Localization from "expo-localization"; // cihaz dili için
+
+const locale = Localization.locale ?? "en";
+const deviceLang = locale.startsWith("tr") ? "tr" : "en";
 
 const initialState = {
-  lang: "tr",
+  lang: deviceLang,
 };
 
 const languageSlice = createSlice({
