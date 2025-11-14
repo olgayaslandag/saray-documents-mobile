@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { docSelect } from "../../store/docSelectSlice";
 import titleReplace from "../../libs/titleReplace";
 import GetDocIcon from "../GetDocIcon";
+import useTranslatedDocSelected from "../../libs/useTranslatedDocSelected";
 
 
 function FolderIcon({ title, selected }) {  
@@ -14,7 +15,8 @@ function FolderIcon({ title, selected }) {
 }
   
 function Item({ item, index, items }) {
-  const docSelected = useSelector(state => state.docSelect.value || "ALU | CATALOG - ALU | KATALOG");
+  //const docSelected = useSelector(state => state.docSelect.value || "ALU | CATALOG - ALU | KATALOG");
+  const { docSelected } = useTranslatedDocSelected();
 
   const dispatch = useDispatch();
 
@@ -73,6 +75,7 @@ const styles = StyleSheet.create({
     width: 80,
     fontSize: 12,
     textAlign: 'center',
+    textTransform: 'capitalize'
   },
   pyramid: {
     width: 0,

@@ -3,11 +3,13 @@ import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { LogoutApi } from "../../api/authApi";
 import { clearAuth } from "../../store/authSlice";
+import useAppTranslation from "../../libs/useAppTranslation";
 
 export default function BottomButton() {
     const auth = useSelector(state => state.auth.value);
     const dispatch = useDispatch();
     const navigation = useNavigation();
+    const { t } = useAppTranslation();
 
     async function HandleLogout() {
         result = await LogoutApi(auth.token);
@@ -15,7 +17,7 @@ export default function BottomButton() {
             dispatch(clearAuth());
 
         if(!result.status)
-            Alert.alert("Çıkış yapılamadı!");
+            Alert.alert(t("global.error"), t("bottom_button.logout_error"));
     }
 
     return (
@@ -25,7 +27,9 @@ export default function BottomButton() {
                     onPress={HandleLogout} 
                     activeOpacity={0.8} 
                     style={styles.button}>
-                    <Text style={styles.button.text}>Güvenli Çıkış</Text>
+                    <Text style={styles.button.text}>
+                        {t("bottom_button.logout")}
+                    </Text>
                 </TouchableOpacity> 
             )}
             
@@ -34,7 +38,9 @@ export default function BottomButton() {
                     activeOpacity={0.8} 
                     style={styles.button} 
                     onPress={() => navigation.navigate('Auth', {screen: 'Register'})}>
-                    <Text style={styles.button.text}>Yeni Kayıt</Text>
+                    <Text style={styles.button.text}>
+                        {t("bottom_button.register")}
+                    </Text>
                 </TouchableOpacity> 
             )}
         </View>

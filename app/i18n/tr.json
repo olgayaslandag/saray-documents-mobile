@@ -65,6 +65,7 @@
   "home": {
     "news": "Yenilikler"
   },
+  
 
   "slider": {
     "aluminyum": "Alüminyum Ekstrüzyon",
@@ -263,6 +264,7 @@
     }
   },
 
+
   "forget": {
     "title": "Şifremi Unuttum",
     "email_placeholder": "Eposta adresinizi girin",
@@ -281,5 +283,12 @@
       "error_fill_fields": "Lütfen tüm alanları doldurunuz.",
       "success": "Şifreniz başarıyla güncellendi."
     }
+  },
+
+
+  "bottom_button": {
+    "logout": "Güvenli Çıkış",
+    "register": "Yeni Kayıt",
+    "logout_error": "Çıkış yapılamadı!"
   }
 }

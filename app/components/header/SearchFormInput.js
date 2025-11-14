@@ -1,13 +1,15 @@
 import { useRef, useEffect } from "react";
-import SearchIcon from "../icons/SearchIcon";
-import { StyleSheet, TextInput, View, Dimensions, PixelRatio } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import pixelDp from "../../libs/pixelDp";
+import SearchIcon from "../icons/SearchIcon";
+import useAppTranslation from "../../libs/useAppTranslation";
 
 const { width } = pixelDp();
 const screen_width = width;
 
 export default function SearchFormInput({ search, setSearch, order, setOpen, width="100%" }) {        
     const ref = useRef(null);
+    const { t } = useAppTranslation();
 
     useEffect(() => {
         if(order === 2)
@@ -23,7 +25,7 @@ export default function SearchFormInput({ search, setSearch, order, setOpen, wid
     return (
         <View style={{position: 'relative', width}}>
             <TextInput 
-                placeholder="Ne Aramıştınız?" 
+                placeholder={t("search.search")}
                 style={{...styles.searchInput}} 
                 onFocus={HandleFocus}
                 autoFocus={true}

@@ -282,5 +282,12 @@
       "error_fill_fields": "Please fill in all fields.",
       "success": "Your password has been successfully updated."
     }
+  },
+
+
+  "bottom_button": {
+    "logout": "Logout",
+    "register": "Register",
+    "logout_error": "Logout failed!"
   }
 }

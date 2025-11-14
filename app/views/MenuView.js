@@ -7,7 +7,7 @@ import { LogoutApi } from "../api/authApi";
 import { Alert } from "react-native";
 import useAppTranslation from "../libs/useAppTranslation";
 import { setLanguage } from "../store/languageSlice";
-
+import { CommonActions, DrawerActions } from '@react-navigation/native';
 
 export default function MenuView() {
     const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function MenuView() {
             dispatch(clearAuth());            
         }
 
-        Alert.alert(result.status ? "Tebrikler" : "Hata Oluştu!", result.message)
+        Alert.alert(result.status ? t("global.success") : t("global.error"), result.message)
         navigation.navigate('Main');
     }
 
@@ -91,9 +91,20 @@ export default function MenuView() {
                     const newLang = lang === "tr" ? "en" : "tr";
                     i18n.changeLanguage(newLang);
                     dispatch(setLanguage(newLang));
+
+                    navigation.dispatch(DrawerActions.closeDrawer());
+                    
+                    navigation.dispatch(
+                        CommonActions.reset({
+                            index: 0,
+                            routes: [{ name: "Home" }],
+                        })
+                    );
                 }}>
                     <Text style={styles.button.text}>{ lang === "tr" ? "English" : "Türkçe"}</Text>
                 </TouchableOpacity> 
+
+                <View style={{marginTop: 10, marginBottom: 10, borderTopWidth: 1, borderColor: '#ccc'}}></View>
 
                 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Auth')}>

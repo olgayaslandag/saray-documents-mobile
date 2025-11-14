@@ -12,8 +12,6 @@ export default function LayoutAuth({ children }) {
         navigation.navigate('Main');
     }
 
-
-
     return (
         <SafeAreaView style={{flex: 1, padding: 10, backgroundColor: '#FFF'}}>  
             <View style={styles.ios_container}>
