@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { docSelect } from "../../store/docSelectSlice";
 import titleReplace from "../../libs/titleReplace";
 import GetDocIcon from "../GetDocIcon";
 import useTranslatedDocSelected from "../../libs/useTranslatedDocSelected";
 
 
-function FolderIcon({ title, selected }) {  
+function FolderIcon({ path, selected }) {  
     return (
       <View style={{...styles.iconBox, backgroundColor: selected ? '#F1F1F1' : 'transparent'}}>
-        <GetDocIcon title={title} selected={selected} />      
+        <GetDocIcon path={path} selected={selected} />      
       </View>
     );    
 }
@@ -32,7 +32,7 @@ function Item({ item, index, items }) {
         marginRight: index === items.length - 2 ? 15 : 5}}>
         {item.dir &&             
           <TouchableOpacity style={styles.iconButton} onPress={() => HandleSelect(item.dir.title)}>
-              <FolderIcon title={item.dir.title} selected={docSelected === item.dir.title} />         
+              <FolderIcon path={item.dir.path} selected={docSelected === item.dir.title} />         
               <Text style={styles.iconTitle}>{titleReplace(item.dir.title)}</Text>          
           </TouchableOpacity>
         }

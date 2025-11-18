@@ -6,7 +6,19 @@ import DocPvcIcon from "./icons/DocPvcIcon";
 import DocRollerIcon from "./icons/DocRollerIcon";
 
 
-export default function GetDocIcon({title, selected}) {
+const iconMap = {
+    "ALU | CATALOG": DocCatalogIcon,
+    "ALU | LEAFLET": DocCatalogIcon,
+    "CERTIFICATES": DocCertificateIcon,
+    "COLOR CHARTS": DocChartIcon,
+    "INDUSTRIAL PROFILES": DocProfilesIcon,
+    "PVC | CATALOG": DocPvcIcon,
+    "SARAY ROLL": DocRollerIcon,
+};
+
+
+export default function GetDocIcon({path, selected}) {
+    /*
     const find = [
         "ALU | CATALOG - ALU | KATALOG",
         "ALU | LEAFLET - ALU | BROŞÜR",
@@ -25,11 +37,13 @@ export default function GetDocIcon({title, selected}) {
         DocProfilesIcon,
         DocPvcIcon,
         DocRollerIcon
-    ];
+    ];    
 
     const index = find.indexOf(title);
 
     const IconComponent =  index !== -1 ? replace[index] : DocCatalogIcon;
+    */
+    const IconComponent = iconMap[path] ?? DocCatalogIcon;
 
     return <IconComponent width="40" height="40" fill={selected ? "red" : "black"} />
 }
